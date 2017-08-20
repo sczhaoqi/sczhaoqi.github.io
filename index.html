@@ -224,16 +224,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -275,9 +265,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -421,9 +445,1341 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2017/01/28/131/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/28/131/" itemprop="url">OS操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-28T18:53:10+08:00">
+                2017-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>进程相关指令<br>ps<br>ps -aux获取当前所有的进程信息(系统,后台)<br>|more //将指令输出的信息分屏显示<br>kill:能够杀掉一个进程(自身权限范围内)<br>kill -9 pid //强行杀掉某个进程</li>
+<li>======================================<br>==========shell程序设计===============<br>vi<br>vim是unix类操作系统的文本编辑器<br>vi abc.txt//开始进入vi并创建打开abc.txt文档<br>1.vi 按下i进入编辑模式的insert<br>2.vi 按下esc进入命令状态<br>3.vi 在命令模式下,按下: 进入命令行,可执行如w–存盘,q–退出 :q!//不保存强制退出</li>
+<li>Shell程序设计==========================<br>shell是os内核与用户之间的一种接口,是一种命令解释程序,用户指令要通过shell解释成<br>os内核可以执行的命令,而os内核执行的返回结果也要通过shell树春程用户可以读懂的信息在屏幕上<br>用户将一批多条指令集中写在一个程序中,交给shell来执行 shell程序,shell脚本<br>目前在unix类型的操作系统中使用最多的是bash-B shell//shell的一个版本</li>
+</ol>
+<hr>
+<ol>
+<li>shell编程基础<br>一.shell变量<br>1.用户自定义的变量:<br>字符型,字符串型.没有专门的数字型的变量<br>复制:变量名=变量值<br>取消赋值:unset<br>set显示所有变量<br>显示变量名 echo $<br>2.系统变量<br>unix系统中的一些系统保留的大写的关键性的变量:PATH//系统搜索目录 PWD …<br>通过env指令,列出当前所有的系统变量.很多系统变量会在一些系统批处理文件中赋值,如:<br>path vi /boot/.bash_profile 是root在系统每次登陆都会执行的批处理配置文件</li>
+<li>=================================================================<br>如何运行shell脚本 ./脚本名 参数<br>—————————Linux的shell编程———————-<br>$变量名===&gt;求得变量的值<br>#注释符号<br>1.shell是一种脚本程序<br>shell用户自定义的变量直接赋值,无类型(字符串)–&gt;一般为小写变量名<br>变量名=”值”;<br>优点:方便,无需编译<br>缺点:面对数字型应用时,必须通过特定的操作来进行转换.</li>
+<li>位置变量 ========= $0~$9 获用户所输入的参数(紧跟在shell指令后的)<h1 id="特色变量"><a href="#特色变量" class="headerlink" title="$#,$$,$@,$!,$?(特色变量)"></a>$#,$$,$@,$!,$?(特色变量)</h1></li>
+<li>控制流<br>条件表达式 [ 正则表达式 ] 左右有空格 ===&gt;[ 表达式1 -关键子 表达式2 ]<br>常用正则表达式关键字<br>-eq 数值相等<br>-ne 数值不等<br>-gt 大于 -ge 大于等于<br>-lt 小于 -le 小于等于</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/12/20/html5canvas-e7-bb-98-e5-9b-be/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/20/html5canvas-e7-bb-98-e5-9b-be/" itemprop="url">html5Canvas绘图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T14:30:34+08:00">
+                2016-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&lt;!DOCTYPE html&gt;<br>&lt;html lang=”zh”&gt;<br>&lt;head&gt;<br>&lt;meta charset=”utf-8”&gt;<br>&lt;style type=”text/css”&gt;<br>body {<br>text-align: center;<br>}<br>canvas{<br>background:<br>-webkit-linear-gradient(top,transparent39px,blue40px),<br>-webkit-linear-gradient(left,transparent39px,blue40px)<br>;<br>background-size:40px40px;<br>}<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;canvas id=”cds” width=”800”height=”600”style=”border:1px solid #c3c3c3”&gt;<br>您的浏览器不支持canvas标签，请改为最新版本的chrome，firefox或Opera浏览器<br>&lt;/canvas&gt;<br>&lt;script type=”text/javascript”&gt;<br>var mc=document.getElementById(“cds”);<br>var w=mc.width;<br>var h=mc.height;<br>var centerw=20;<br>var centerh=h-20;<br>function drawgrid(){<br>var ele=document.getElementById(“cds”);<br>var ctx=ele.getContext(“2d”);<br>var g_h=20;<br>var g_w=20;<br>var g_r=h/g_h;<br>var g_c=w/g_w;<br>//绘图<br>ctx.beginPath();<br>for(var i=0;i&lt;=g_r;i++){<br>ctx.moveTo(0,i<em>g_h);<br>ctx.lineTo(w,i</em>g_h);<br>}<br>for(var i=0;i&lt;=g_c;i++){<br>ctx.moveTo(i<em>g_w,0);<br>ctx.lineTo(i</em>g_w,h);<br>}<br>ctx.lineWidth=0.2;<br>ctx.strokeStyle=”green”;<br>ctx.stroke();<br>};<br>function drawcds(){<br>var c=document.getElementById(“cds”);<br>var ctx=c.getContext(“2d”);</p>
+<p>ctx.beginPath();<br>ctx.font=”20px Georgia”;<br>//原点<br>ctx.fillText(“O(0,0)”,centerw,centerh+10);<br>//画出y轴<br>ctx.moveTo(centerw,0);<br>ctx.lineTo(centerw-10,10);<br>ctx.moveTo(centerw,0);<br>ctx.lineTo(centerw+10,10);<br>ctx.moveTo(centerw,0);<br>ctx.lineTo(centerw,h);<br>ctx.fillText(“y轴”,20,20);<br>//画出x轴<br>ctx.moveTo(w,centerh);<br>ctx.lineTo(w-10,centerh-10);<br>ctx.moveTo(w,centerh);<br>ctx.lineTo(w-10,centerh+10);<br>ctx.moveTo(0,centerh);<br>ctx.lineTo(w,centerh);<br>ctx.fillText(“x轴”,w-40,h-20);<br>ctx.lineWidth=1;</p>
+<p>ctx.strokeStyle=”#000000”;<br>ctx.stroke();<br>};<br>function viewX(x){<br>return x<em>2+centerw;<br>}<br>function viewY(y){<br>return centerh-y</em>2;<br>}<br>function drawtest(){<br>var c=document.getElementById(“cds”);<br>var ctx=c.getContext(“2d”);<br>ctx.moveTo(viewX(0),viewY(0));<br>ctx.lineTo(viewX(100),viewY(100));<br>ctx.lineWidth=1;</p>
+<p>ctx.strokeStyle=”#000000”;<br>ctx.stroke();<br>}<br>function init(){<br>drawgrid();<br>drawcds();<br>drawtest();<br>};<br>window.onload=init;<br>&lt;/script&gt;</p>
+<p>&lt;/body&gt;<br>&lt;/html&gt;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/17/handler-e7-9a-84-e6-80-bb-e7-bb-93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/17/handler-e7-9a-84-e6-80-bb-e7-bb-93/" itemprop="url">Handler的总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-17T10:04:36+08:00">
+                2016-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="brief bgF8F8F8"><br><br># Android开发中Handler的经典总结<br><br><div class="msg"></div><br><div class="brieftext"><br><br>当应用程序启动时，Android首先会开启一个主线程(也就是UI线程)，主线程为管理界面中的UI控件，进行事件分发。<br><br></div><br></div><br><div class="content bgF8F8F8 f14"><br><div id="content"><br><br><a href="http://s5.51cto.com/wyfs02/M00/2F/BF/wKioL1OhN5mRGI3xAAA4g3j4V30690.jpg" target="_blank" rel="external"><img src="http://s5.51cto.com/wyfs02/M00/2F/BF/wKioL1OhN5mRGI3xAAA4g3j4V30690.jpg" alt=""></a><br><br><strong>一、Handler的定义：</strong><br><br>主要接受子线程发送的数据， 并用此数据配合主线程更新UI。<br><br>解释：当应用程序启动时，Android首先会开启一个主线程 (也就是UI线程) ， 主线程为管理界面中的UI控件， 进行事件分发， 比如说， 你要是点击一个 Button ，Android会分发事件到Button上，来响应你的操作。  如果此时需要一个耗时的操作，例如: 联网读取数据，    或者读取本地较大的一个文件的时候，你不能把这些操作放在主线程中，如果你放在主线程中的话，界面会出现假死现象， 如果5秒钟还没有完成的话，会收到Android系统的一个错误提示  “强制关闭”。  这个时候我们需要把这些耗时的操作，放在一个子线程中，因为子线程涉及到UI更新，，Android主线程是线程不安全的， 也就是说，更新UI只能在主线程中更新，子线程中操作是危险的。 这个时候，Handler就出现了。，来解决这个复杂的问题 ，由于Handler运行在主线程中(UI线程中)，  它与子线程可以通过Message对象来传递数据， 这个时候，Handler就承担着接受子线程传过来的(子线程用sedMessage()方法传弟)Message对象，(里面包含数据)  ， 把这些消息放入主线程队列中，配合主线程进行更新UI。<br><br><strong>二、Handler一些特点</strong><br><br>handler可以分发Message对象和Runnable对象到主线程中， 每个Handler实例，都会绑定到创建他的线程中(一般是位于主线程)，它有两个作用：<br><br>(1)安排消息或Runnable 在某个主线程中某个地方执行；<br><br>(2)安排一个动作在不同的线程中执行。<br><br>Handler中分发消息的一些方法<br><br>post(Runnable)<br><br>postAtTime(Runnable，long)<br><br>postDelayed(Runnable long)<br><br>sendEmptyMessage(int)<br><br>sendMessage(Message)<br><br>sendMessageAtTime(Message，long)<br><br>sendMessageDelayed(Message，long)<br><br>以上post类方法允许你排列一个Runnable对象到主线程队列中，<br><br>sendMessage类方法， 允许你安排一个带数据的Message对象到队列中，等待更新。<br><br><strong>三、Handler实例</strong><br><br>子类需要继承Hendler类，并重写handleMessage(Message msg) 方法， 用于接受线程数据。<br><br>以下为一个实例，它实现的功能为：通过线程修改界面Button的内容<br><br>1.  <span class="keyword">public</span> <span class="keyword">class</span> MyHandlerActivity <span class="keyword">extends</span> Activity {<br>2.  Button button;<br>3.  MyHandler myHandler;<br>4.5.  <span class="keyword">protected</span> <span class="keyword">void</span> onCreate(Bundle savedInstanceState) {<br>6.  <span class="keyword">super</span>。onCreate(savedInstanceState);<br>7.  setContentView(R。layout。handlertest);<br>8.9.  button = (Button) findViewById(R。id。button);<br>10.  myHandler = <span class="keyword">new</span> MyHandler();<br>11.  <span class="comment">// 当创建一个新的Handler实例时， 它会绑定到当前线程和消息的队列中，开始分发数据</span><br>12.  <span class="comment">// Handler有两个作用， (1) : 定时执行Message和Runnalbe 对象</span><br>13.  <span class="comment">// (2): 让一个动作，在不同的线程中执行。</span><br>14.15.  <span class="comment">// 它安排消息，用以下方法</span><br>16.  <span class="comment">// post(Runnable)</span><br>17.  <span class="comment">// postAtTime(Runnable，long)</span><br>18.  <span class="comment">// postDelayed(Runnable，long)</span><br>19.  <span class="comment">// sendEmptyMessage(int)</span><br>20.  <span class="comment">// sendMessage(Message);</span><br>21.  <span class="comment">// sendMessageAtTime(Message，long)</span><br>22.  <span class="comment">// sendMessageDelayed(Message，long)</span><br>23.24.  <span class="comment">// 以上方法以 post开头的允许你处理Runnable对象</span><br>25.  <span class="comment">//sendMessage()允许你处理Message对象(Message里可以包含数据，)</span><br>26.27.  MyThread m = <span class="keyword">new</span> MyThread();<br>28.  <span class="keyword">new</span> Thread(m)。start();<br>29.  }<br>30.31.  <span class="comment">/<em>*</em></span><br>32.  <span class="comment">     接受消息，处理消息 ，此Handler会与当前主线程一块运行</span><br>33.  <span class="comment">    <em> </em>/</span><br>34.35.  <span class="keyword">class</span> MyHandler <span class="keyword">extends</span> Handler {<br>36.  <span class="keyword">public</span> MyHandler() {<br>37.  }<br>38.39.  <span class="keyword">public</span> MyHandler(Looper L) {<br>40.  <span class="keyword">super</span>(L);<br>41.  }<br>42.43.  <span class="comment">// 子类必须重写此方法，接受数据</span><br>44.  <span class="annotation">@Override</span><br>45.  <span class="keyword">public</span> <span class="keyword">void</span> handleMessage(Message msg) {<br>46.  <span class="comment">// TODO Auto-generated method stub</span><br>47.  Log。d(<span class="string">“MyHandler”</span>， <span class="string">“handleMessage。。。。。。”</span>);<br>48.  <span class="keyword">super</span>。handleMessage(msg);<br>49.  <span class="comment">// 此处可以更新UI</span><br>50.  Bundle b = msg。getData();<br>51.  String color = b。getString(<span class="string">“color”</span>);<br>52.  MyHandlerActivity。<span class="keyword">this</span>。button。append(color);<br>53.54.  }<br>55.  }<br>56.57.  <span class="keyword">class</span> MyThread <span class="keyword">implements</span> Runnable {<br>58.  <span class="keyword">public</span> <span class="keyword">void</span> run() {<br>59.60.  <span class="keyword">try</span> {<br>61.  Thread。sleep(<span class="number">10000</span>);<br>62.  } <span class="keyword">catch</span> (InterruptedException e) {<br>63.  <span class="comment">// TODO Auto-generated catch block</span><br>64.  e。printStackTrace();<br>65.  }<br>66.67.  Log。d(<span class="string">“thread。。。。。。。”</span>， <span class="string">“mThread。。。。。。。。”</span>);<br>68.  Message msg = <span class="keyword">new</span> Message();<br>69.  Bundle b = <span class="keyword">new</span> Bundle();<span class="comment">// 存放数据</span><br>70.  b。putString(<span class="string">“color”</span>， <span class="string">“我的”</span>);<br>71.  msg。setData(b);<br>72.73.  MyHandlerActivity。<span class="keyword">this</span>。myHandler。sendMessage(msg); <span class="comment">// 向Handler发送消息，更新UI</span><br>74.75.  }<br>76.  }<br>77.  }<br></div><br></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/17/e5-b8-b8-e8-a7-81-e9-a2-98-e5-9e-8b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/17/e5-b8-b8-e8-a7-81-e9-a2-98-e5-9e-8b/" itemprop="url">常见题型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-17T09:55:09+08:00">
+                2016-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="answer_top_bottom_title"></div><br><div class="answer_top_bottom_a"></div><br><div class="answer_top_bottom_b"><form id="answerRadioId"><br><br>#### category的作用<br><br><div><input name="answer" type="radio">category可以添加新的方法</div><br><div><input name="answer" type="radio">将类的实ps现分散到多个不同文件或多个不同框架中</div><br><div><input name="answer" type="radio">创建对私有方法的前向引用</div>
+
+<h4 id="强制卸载已安装软件需要的参数-rpm-e-–node"><a href="#强制卸载已安装软件需要的参数-rpm-e-–node" class="headerlink" title="强制卸载已安装软件需要的参数   rpm -e –node"></a>强制卸载已安装软件需要的参数  <span style="color: #ff0000;"> rpm -e –node</span></h4><h4 id="BroadcastReceiver作用"><a href="#BroadcastReceiver作用" class="headerlink" title="BroadcastReceiver作用"></a>BroadcastReceiver作用</h4><div>是用来接收广播Intent的</div><br><div class="active">一个广播Inten可以被<span style="color: #ff0000;">多个订阅</span>了此广播的BroadcastReceiver所接收</div><br><div>对有序广播，系统会根据接收者声明的优先级别按顺序逐个执行接收者</div><br><div>接收者声明的优先级别在&lt; intent-filter &gt;的android:priority属性中声明，数值越大优先级别越高</div><br><div></div>
+
+<h4 id="IPv6地址占16个字节-128位-IPv4-32位-4个字节"><a href="#IPv6地址占16个字节-128位-IPv4-32位-4个字节" class="headerlink" title="IPv6地址占16个字节 128位 IPv4 32位 4个字节"></a>IPv6地址占<strong>16</strong>个字节 128位 IPv4 32位 4个字节</h4><p></p></form></div><p></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/14/e8-b5-b5-e7-a5-ba-e7-9a-84-e4-b8-aa-e4-ba-ba-e5-a4-b1-e7-89-a9-e6-8b-9b-e9-a2-86-e7-bd-91-e7-ab-99-e4-b8-8a-e7-ba-bf-e4-ba-86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/14/e8-b5-b5-e7-a5-ba-e7-9a-84-e4-b8-aa-e4-ba-ba-e5-a4-b1-e7-89-a9-e6-8b-9b-e9-a2-86-e7-bd-91-e7-ab-99-e4-b8-8a-e7-ba-bf-e4-ba-86/" itemprop="url">赵祺的个人失物招领网站上线了!!</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-14T19:03:26+08:00">
+                2016-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/公告/" itemprop="url" rel="index">
+                    <span itemprop="name">公告</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://www.zhaoqi.online/sw/" target="_blank" rel="external">赵祺的个人失物招领网站上线了!!</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/14/hashmap-hashtable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/14/hashmap-hashtable/" itemprop="url">Hashmap HashTable</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-14T13:12:03+08:00">
+                2016-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>1,hashmap允许存在null的key,hashtable不允许</p>
+<p>2.Hashtable是基于线程的,线程安全,可同步;Hashmap不安全</p>
+<p>3.HashTable的默认大小为11 增长为2<em>old+1;’HashMap默认大小为16 增长为2</em>;</p>
+<p>4.Hash值的使用 Hashtable直接使用对象的Hash值</p>
+<p>HashTable同步时,只允许一个线程对其进行修改</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/14/hashmap-hashtable/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/14/arraylist-vector-linkedlist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/14/arraylist-vector-linkedlist/" itemprop="url">ArrayList Vector LinkedList</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-14T11:07:48+08:00">
+                2016-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>共同点:都是可伸缩长度的数组</p>
+<p>ArrayList:obj[] array(与vector) 默认扩充长度1.5倍(不提供修改方法) 线程不安全</p>
+<p>Vector: 同ArrayList 默认扩充2倍 (提供修改方法) 线程安全 效率低于 ArrayList</p>
+<p>LinkedList:双向链表结构,只是方便插入 线程不安全</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/14/java-e5-ae-b9-e5-99-a8-collection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/14/java-e5-ae-b9-e5-99-a8-collection/" itemprop="url">JAVA 容器 Collection && 迭代器Iterator</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-14T10:38:19+08:00">
+                2016-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>分类:<br>List<br>Queue<br>Set<br>Stack<br>Map</p>
+<p>常用特点</p>
+<p>set 元素不能重复,保证equals的值唯一:常用有HashSet和TreeSet(实现SortedSet,有序的)</p>
+<p>List 有序的,可重复的,对插入和删除进行有效的控制:常用的有LinkedList ArrayList Vector</p>
+<p>Map key-&gt;value key不同value可以相同:常用有</p>
+<p>HashMap //基于散列表,便于查询</p>
+<p>TreeMap//基于<a href="http://baike.baidu.com/link?url=r35L5n5QENt_HIbb9UV6BBEPv3fmdSSe61LYb-bT-WlqvDr0hlbpSFvjw4GYtKeeuVOxyxR--yDM4n_LCepJzK" target="_blank" rel="external">红黑树,</a>按需排列</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>用于遍历并选择序列中的对象,</p>
+<p>用法:序列对象.Iterator()方法 返回一个Iterator的对象,Iterator对象集合可以对其进行hasNext(),next();获取其中的OBJ,同时可以remove()将取出的对象从源集合对象中移除</p>
+<p>注意:在Iterator遍历过程中不要使用其他的操作,改变ModCount,否则会抛出异常(只限使用Iterator对象的remove()方法)</p>
+<p>引申:ListIterator支持左右遍历和元素的修改</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://sczhaoqi.github.io/2016/09/13/92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QwsOne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/av.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="qws的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/13/92/" itemprop="url">java NextInt() 后 取出NextLine();</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-13T21:13:18+08:00">
+                2016-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java学习/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>在调用了nextInt()后，我们可以先调用一次nextLine(),将该行剩下的内容抛弃；</p>
+<p>int option = input<span class="hljs-preprocessor">.nextInt</span>()<span class="hljs-comment">;</span><br>input<span class="hljs-preprocessor">.nextLine</span>()<span class="hljs-comment">;  // Consume newline left-over</span><br>String str1 = input<span class="hljs-preprocessor">.nextLine</span>()<span class="hljs-comment">;</span>`</p>
+<div class="save_code tracking-ad" data-mod="popu_249"></div>
+</li>
+<li><p>全部都使用nextLine()读入，然后将其读入的数据转换为Integer。<br><pre class="prettyprint">`<span class="hljs-built_in">int</span> <span class="hljs-built_in">option</span> = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">try</span> {</pre></p>
+<pre><code>&lt;span class=&quot;hljs-built_in&quot;&gt;option&lt;/span&gt; = Integer.parseInt(input.nextLine());
+</code></pre><p>} catch (NumberFormatException e) {</p>
+<pre><code>e.printStackTrace();
+</code></pre><p>}<br>String str1 = input.nextLine();</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -467,14 +1823,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
@@ -720,6 +2094,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
