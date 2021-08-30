@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-flink写入es报limit-of-total-fields-1000" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/flink%E5%86%99%E5%85%A5es%E6%8A%A5limit-of-total-fields-1000/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T08:34:52.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/18/flink%E5%86%99%E5%85%A5es%E6%8A%A5limit-of-total-fields-1000/">flink写入Es报Limit of total fields [1000]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>ElasticsearchSinkFunction</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">StringData</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String data;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> StringData data = <span class="keyword">new</span> StringData(jsonData);</span><br><span class="line"></span><br><span class="line">IndexRequest indexRequest = Requests.indexRequest()</span><br><span class="line">                .index(indices)</span><br><span class="line">                .type(<span class="string">&quot;_doc&quot;</span>)</span><br><span class="line">                .id(id)</span><br><span class="line">                .version(System.currentTimeMillis())</span><br><span class="line">                .versionType(VersionType.EXTERNAL)</span><br><span class="line">                <span class="comment">// .source(data, XContentType.JSON) 直接传入对象，会调用进行嵌套解析导致错误。</span></span><br><span class="line">                .source(mapper.writeValueAsString(data), XContentType.JSON)</span><br><span class="line">                ;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/flink%E5%86%99%E5%85%A5es%E6%8A%A5limit-of-total-fields-1000/" data-id="cksy3fwz9002apnv98oeg8y0v" data-title="flink写入Es报Limit of total fields [1000]" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sink/" rel="tag">sink</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hive解析复杂json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/08/hive%E8%A7%A3%E6%9E%90%E5%A4%8D%E6%9D%82json/" class="article-date">
+  <time class="dt-published" datetime="2021-01-08T15:04:13.000Z" itemprop="datePublished">2021-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/08/hive%E8%A7%A3%E6%9E%90%E5%A4%8D%E6%9D%82json/">Hive解析复杂json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">with ta as (</span><br><span class="line">select &#x27;[&#123;&quot;a&quot;:1&#125;,&#123;&quot;a&quot;:2&#125;]&#x27; as a</span><br><span class="line">)</span><br><span class="line">-- 拆分json数组</span><br><span class="line">, taa as (</span><br><span class="line">select aa from ta lateral view explode(split(regexp_replace(regexp_replace(a , &#x27;\\]\\[&#x27; ,&#x27;&#x27;) ,&#x27;\\&#125;\\,\\&#123;&#x27;,&#x27;\\&#125;\\;\\&#123;&#x27; ),&#x27;\\;&#x27;) ) b as aa</span><br><span class="line">)</span><br><span class="line">-- 使用json_tuple解析</span><br><span class="line">select json_tuple(aa,&#x27;a&#x27;)</span><br><span class="line">from taa</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/08/hive%E8%A7%A3%E6%9E%90%E5%A4%8D%E6%9D%82json/" data-id="cksy3fwzs0035pnv9evnzf1o7" data-title="Hive解析复杂json" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/" rel="tag">json</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-objectmapper（jackson）解析json对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/08/objectmapper%EF%BC%88jackson%EF%BC%89%E8%A7%A3%E6%9E%90json%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2021-01-08T02:17:55.000Z" itemprop="datePublished">2021-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/08/objectmapper%EF%BC%88jackson%EF%BC%89%E8%A7%A3%E6%9E%90json%E5%AF%B9%E8%B1%A1/">ObjectMapper（Jackson）解析Json对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"><span class="comment">// 忽略大小写</span></span><br><span class="line">mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, <span class="keyword">true</span>);</span><br><span class="line"><span class="comment">// 下划线 与 驼峰转化</span></span><br><span class="line">mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);</span><br><span class="line"><span class="comment">// 未知字段不报错</span></span><br><span class="line">mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>否则报错</p>
+<p>com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/08/objectmapper%EF%BC%88jackson%EF%BC%89%E8%A7%A3%E6%9E%90json%E5%AF%B9%E8%B1%A1/" data-id="cksy3fx1d005ppnv95qa30e3d" data-title="ObjectMapper（Jackson）解析Json对象" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/" rel="tag">json</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-flink异步读取外部数据（mysql、redis）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/07/flink%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%EF%BC%88mysql%E3%80%81redis%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2021-01-07T09:36:47.000Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/07/flink%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%EF%BC%88mysql%E3%80%81redis%EF%BC%89/">Flink异步读取外部数据（Mysql、Redis）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SingleOutputStreamOperator&lt;String&gt; sream = AsyncDataStream.unorderedWait(stream,</span><br><span class="line">              <span class="keyword">new</span> AsyncMySQLRequest()</span><br><span class="line">               , <span class="number">20000</span>, TimeUnit.MILLISECONDS, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mysql</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncMySQLRequest</span> <span class="keyword">extends</span> <span class="title">RichAsyncFunction</span>&lt;<span class="title">String</span>, <span class="title">String</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> DruidDataSource dataSource;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> ExecutorService executorService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AsyncMySQLRequest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(Configuration parameters)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.open(parameters);</span><br><span class="line">        executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        dataSource = (DruidDataSource) DruidDataSourceFactory.createDataSource(PropertyUtil.getPropertiesByPrefix(<span class="string">&quot;db.ylzslave.&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asyncInvoke</span><span class="params">(String in, ResultFuture&lt;String&gt; resultFuture)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">        Future&lt;String&gt; future = executorService.submit(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> queryFromMySql(in);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> future.get();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).thenAccept((dbResult) -&gt; &#123;</span><br><span class="line">            resultFuture.complete(Collections.singleton(dbResult));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">queryFromMySql</span><span class="params">(String in)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        Connection connection = <span class="keyword">null</span>;</span><br><span class="line">        PreparedStatement stmt = <span class="keyword">null</span>;</span><br><span class="line">        ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">        String result = in;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            connection = dataSource.getConnection();</span><br><span class="line">            stmt = connection.prepareStatement(<span class="string">&quot;select 1&quot;</span>);</span><br><span class="line">            rs = stmt.executeQuery();</span><br><span class="line">            <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">                result += rs.getInt(<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (rs != <span class="keyword">null</span>) &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (stmt != <span class="keyword">null</span>) &#123;</span><br><span class="line">                stmt.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">                connection.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        dataSource.close();</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncEsDataRequest</span> <span class="keyword">extends</span> <span class="title">RichAsyncFunction</span>&lt;<span class="title">Tuple2</span>&lt;<span class="title">String</span>, <span class="title">String</span>&gt;, <span class="title">Tuple3</span>&lt;<span class="title">String</span>, <span class="title">String</span>, <span class="title">String</span>&gt;&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> RestHighLevelClient restHighLevelClient;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(Configuration parameters)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        HttpHost httpHost = <span class="keyword">new</span> HttpHost(<span class="string">&quot;swarm-manager&quot;</span>, <span class="number">9200</span>, <span class="string">&quot;http&quot;</span>);</span><br><span class="line">        <span class="comment">//初始化ElasticSearch-Client</span></span><br><span class="line">        restHighLevelClient = <span class="keyword">new</span> RestHighLevelClient(RestClient.builder(httpHost));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        restHighLevelClient.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asyncInvoke</span><span class="params">(Tuple2&lt;String, String&gt; input, ResultFuture&lt;Tuple3&lt;String, String, String&gt;&gt; resultFuture)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        search(input, resultFuture);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//异步去读Es表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(Tuple2&lt;String, String&gt; input, ResultFuture&lt;Tuple3&lt;String, String, String&gt;&gt; resultFuture)</span> </span>&#123;</span><br><span class="line">        SearchRequest searchRequest = <span class="keyword">new</span> SearchRequest(<span class="string">&quot;renyuanku&quot;</span>);</span><br><span class="line">        String uid = input.f0;</span><br><span class="line">        QueryBuilder builder = QueryBuilders.boolQuery().must(QueryBuilders.termQuery(<span class="string">&quot;uid&quot;</span>, uid));</span><br><span class="line">        SearchSourceBuilder sourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">        sourceBuilder.query(builder);</span><br><span class="line">        searchRequest.source(sourceBuilder);</span><br><span class="line">        ActionListener&lt;SearchResponse&gt; listener = <span class="keyword">new</span> ActionListener&lt;SearchResponse&gt;() &#123;</span><br><span class="line">            String uid = input.f0;</span><br><span class="line">            String phone = input.f1;</span><br><span class="line">            String username = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//成功</span></span><br><span class="line">            <span class="meta">@SneakyThrows</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(SearchResponse searchResponse)</span> </span>&#123;</span><br><span class="line">                SearchHit[] searchHits = searchResponse.getHits().getHits();</span><br><span class="line">                <span class="keyword">if</span> (searchHits.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    JsonNode node = mapper.readValue(searchHits[<span class="number">0</span>].getSourceAsString(), JsonNode.class);</span><br><span class="line">                    username = node.get(<span class="string">&quot;username&quot;</span>).toString();</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                resultFuture.complete(Collections.singleton(Tuple3.create(uid, username, phone)));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//失败</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">                System.out.println(e.getMessage());</span><br><span class="line">                resultFuture.complete(Collections.singleton(Tuple3.create(uid, username, phone)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        restHighLevelClient.searchAsync(searchRequest, listener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/07/flink%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E6%95%B0%E6%8D%AE%EF%BC%88mysql%E3%80%81redis%EF%BC%89/" data-id="cksy3fwza002dpnv9fuyxe3xy" data-title="Flink异步读取外部数据（Mysql、Redis）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-python调用jdbcdriver连接其他数据源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/12/22/python%E8%B0%83%E7%94%A8jdbcdriver%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E6%BA%90/" class="article-date">
+  <time class="dt-published" datetime="2020-12-22T14:14:08.000Z" itemprop="datePublished">2020-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/12/22/python%E8%B0%83%E7%94%A8jdbcdriver%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E6%BA%90/">Python调用jdbcDriver连接其他数据源</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Python调用jdbcDriver连接其他数据源"><a href="#Python调用jdbcDriver连接其他数据源" class="headerlink" title="Python调用jdbcDriver连接其他数据源"></a>Python调用jdbcDriver连接其他数据源</h1><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用python的pyhive pyhs2之类的库，在windows上一直无法正常运行</span><br><span class="line">sasl的库依赖问题</span><br></pre></td></tr></table></figure>
+
+<h3 id="采用折中的方式实现与远端hive的通信"><a href="#采用折中的方式实现与远端hive的通信" class="headerlink" title="采用折中的方式实现与远端hive的通信"></a>采用折中的方式实现与远端hive的通信</h3><ol>
+<li>连接hive<ol>
+<li> 下载hive-jdbc-1.1.0-cdh5.12.1-standalone.jar的驱动包</li>
+<li> ​pip3 install jaydebeapi 安装python依赖</li>
+<li>编写程序 jdbc.py <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> jaydebeapi</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jdbc</span>:</span></span><br><span class="line"><span class="comment">#prepared sql</span></span><br><span class="line">base_sql = [</span><br><span class="line"><span class="string">&quot;set hive.mapred.mode=nonstrict&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+</ol>
+ def query(self, sql, db = ‘default’):<br> url = ‘jdbc:hive2://host:port/‘ + db dirver = ‘org.apache.hive.jdbc.HiveDriver’ DIR = os.getcwd() + ‘/‘ jarFile = [ DIR + ‘hive-jdbc-1.1.0-cdh5.12.1-standalone.jar’, ] conn = jaydebeapi.connect(dirver, url, [‘hive’, ‘hive’], jarFile) curs = conn.cursor() for _sql in self.base_sql: curs.execute(_sql) curs.execute(sql) result = curs.fetchall() curs.close() conn.close() return result<h1 id="test-case"><a href="#test-case" class="headerlink" title="test case"></a>test case</h1> res=Jdbc().query(‘select 1’) print(res) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**结果如下**</span><br><span class="line">python3  jdbc.py</span><br><span class="line">输出</span><br><span class="line">[(1,)]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="同理可以推衍到其他数据源"><a href="#同理可以推衍到其他数据源" class="headerlink" title="同理可以推衍到其他数据源"></a>同理可以推衍到其他数据源</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/12/22/python%E8%B0%83%E7%94%A8jdbcdriver%E8%BF%9E%E6%8E%A5%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E6%BA%90/" data-id="cksy3fx1k0062pnv9b1it4ui1" data-title="Python调用jdbcDriver连接其他数据源" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mac下安装scrapy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/30/mac%E4%B8%8B%E5%AE%89%E8%A3%85scrapy/" class="article-date">
+  <time class="dt-published" datetime="2020-11-30T14:03:28.000Z" itemprop="datePublished">2020-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/11/30/mac%E4%B8%8B%E5%AE%89%E8%A3%85scrapy/">mac下安装scrapy</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li> 直接执行 pip3 install scrapy</li>
+</ol>
+<blockquote>
+<p>error: command ‘/usr/bin/clang’ failed with exit status 1 对应clang的包不正确</p>
+<p>解决方案 直接去Apple 官网下载最新版本的<a target="_blank" rel="noopener" href="https://developer.apple.com/download/more/">Command Line Tools</a>安装即可</p>
+</blockquote>
+<ol start="2">
+<li> 安装Command Line Tools后</li>
+</ol>
+<blockquote>
+<p>error: pip3 ModuleNotFoundError: No module named ‘pip._internal.cli.main’</p>
+<p>解决方案 python3 -m pip install –upgrade pip</p>
+</blockquote>
+<ol start="3">
+<li> include &lt;openssl/opensslv.h&gt; file not found</li>
+</ol>
+<blockquote>
+<p>解决方案 brew upgrade openssl 在设置环境变量 export CPPFLAGS=-I/usr/local/opt/openssl/include export LDFLAGS=-L/usr/local/opt/openssl/lib</p>
+</blockquote>
+<ol start="4">
+<li> 再次安装， pip3 install scrapy 成功</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/30/mac%E4%B8%8B%E5%AE%89%E8%A3%85scrapy/" data-id="cksy3fx0n004ppnv9c1ld9k6h" data-title="mac下安装scrapy" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-如何获取全国省市的经纬点坐标信息" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/30/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E7%9A%84%E7%BB%8F%E7%BA%AC%E7%82%B9%E5%9D%90%E6%A0%87%E4%BF%A1%E6%81%AF/" class="article-date">
+  <time class="dt-published" datetime="2020-11-30T13:06:39.000Z" itemprop="datePublished">2020-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/11/30/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E7%9A%84%E7%BB%8F%E7%BA%AC%E7%82%B9%E5%9D%90%E6%A0%87%E4%BF%A1%E6%81%AF/">如何获取全国省市的经纬点坐标信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><a target="_blank" rel="noopener" href="https://lbs.amap.com/api/webservice/guide/api/district/">https://lbs.amap.com/api/webservice/guide/api/district/</a> 登陆高德lbs官网 查询行政区划 =》 中国 2 base 查询中国的两级行政区的坐标点位置</li>
+<li>打开控制台 （chrome F12）点击运行 =》 保存请求响应为 js对象 var data = 复制Response内容</li>
+<li>开始解析处理数据 由于直辖市存在的city列表为市区，直接追加一条当前省份的记录 var dataArray = data.districts.map(item =&gt; { return item.districts.map(p =&gt; { let province = [{country:item.name,country_center:item.center,province:p.name,province_center: p.center}];let citys=p.districts.map(c =&gt; { return {country:item.name,country_center:item.center,province:p.name,province_center: p.center,city: c.name, city_center: c.center} }); return province.concat(citys) }) }).flat(2) 同时，使用js的flat(2),对二维数组展开为一维</li>
+<li>导出为文件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let jData =JSON.stringify(dataArray); </span><br><span class="line">let sblob = new Blob([jData],&#123;type: &#x27;text/plain;charset=UTF-8&#x27;&#125;) ; </span><br><span class="line">let url = window.URL.createObjectURL(sblob); </span><br><span class="line">let link = document.createElement(&#x27;a&#x27;); </span><br><span class="line">link.style.display = &#x27;none&#x27;; </span><br><span class="line">link.href = url; </span><br><span class="line">link.setAttribute(&#x27;download&#x27;, &#x27;district&#x27;) ; //这里的filename就是指定浏览器生成的文件名 </span><br><span class="line">document.body.appendChild(link); </span><br><span class="line">link.click(); //a标签自动触发点击事件</span><br></pre></td></tr></table></figure>
+</li>
+<li>导出为excel <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//转换函数</span><br><span class="line">function arrayToTable(newarray)&#123;</span><br><span class="line">let tbody=&quot;&quot;;</span><br><span class="line">let head=&quot;&quot;;</span><br><span class="line">for(let i=0;i&lt;newarray.length;i++)&#123;</span><br><span class="line">if (head==&quot;&quot;)&#123;</span><br><span class="line">for(let key in newarray[i])&#123;</span><br><span class="line">head+=&quot;&lt;th&gt;&quot;+key+&quot;&lt;/th&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">head=&quot;&lt;tr&gt;&quot;+head+&quot;&lt;/tr&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">let tds=&quot;&quot;;</span><br><span class="line">for(let key in newarray[i])&#123;</span><br><span class="line">tds+=&quot;&lt;td&gt;&quot;+newarray[i][key]+&quot;&lt;/td&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">tbody+=&quot;&lt;tr&gt;&quot;+tds+&quot;&lt;/tr&gt;&quot;</span><br><span class="line">&#125;</span><br><span class="line">return &quot;&lt;table&gt;&quot;+head+tbody+&quot;&lt;/table&gt;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 调用 arrayToTable (dataArray) 复制 输出的html表格 至 excel中 完成</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/30/%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E5%85%A8%E5%9B%BD%E7%9C%81%E5%B8%82%E7%9A%84%E7%BB%8F%E7%BA%AC%E7%82%B9%E5%9D%90%E6%A0%87%E4%BF%A1%E6%81%AF/" data-id="cksy3fx2d007xpnv9ebuc3jpo" data-title="如何获取全国省市的经纬点坐标信息" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wordpress修改目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/30/wordpress%E4%BF%AE%E6%94%B9%E7%9B%AE%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2020-11-30T12:56:03.000Z" itemprop="datePublished">2020-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/11/30/wordpress%E4%BF%AE%E6%94%B9%E7%9B%AE%E5%BD%95/">wordpress修改目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>移动目录文件夹 如 从 /var/www/html 移动到 /var/www/html/wordpress</li>
+<li>选中wordpress的database USE wordpress</li>
+<li>查看wp_options表单（数据库的URL存在这里。） mysql&gt; select * from wp_options limit 2; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+-----------+-------------+---------------------+----------+</span><br><span class="line"> option_id  option_name  option_value         autoload </span><br><span class="line">+-----------+-------------+---------------------+----------+</span><br><span class="line">         1  siteurl      http://0.0.0.0:8000  yes      </span><br><span class="line">         2  home         http://0.0.0.0:8000  yes      </span><br><span class="line">+-----------+-------------+---------------------+----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li> 更改URL，其中your_wordpress_url是你的新URL，需要的URL mysql&gt; UPDATE wp_options SET option_value=”your_wordpress_url” WHERE option_name=”siteurl”; mysql&gt; UPDATE wp_options SET option_value=”your_wordpress_url” WHERE option_name=”home”;</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/30/wordpress%E4%BF%AE%E6%94%B9%E7%9B%AE%E5%BD%95/" data-id="cksy3fx22007apnv9a63v0bsk" data-title="wordpress修改目录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mysql运行原理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/08/10/mysql%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2020-08-10T07:10:50.000Z" itemprop="datePublished">2020-08-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/08/10/mysql%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/">MySQL运行原理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL执行过程"><a href="#SQL执行过程" class="headerlink" title="SQL执行过程"></a>SQL执行过程</h1><ol>
+<li>连接 进程间通信方式 TCP/IP 命名管道和共享内存 Unix域套接字文件（socket文件）</li>
+<li>解析与优化 查询缓存 编译 词法分析 语法分析 语义分析 谓词下推 动态编译 生成执行计划 优化 向量优化 Join优化 执行代价 成本计算 执行计划优化 规则优化 查询重写</li>
+<li>存储引擎</li>
+</ol>
+<p>引擎名</p>
+<p>功能</p>
+<p>InnoDB</p>
+<p>具备外键支持功能的事务存储引擎</p>
+<p>MERGE</p>
+<p>用来管理多个MyISAM表构成的表集合</p>
+<p>MyISAM</p>
+<p>主要的非事务处理存储引擎</p>
+<p>NDB</p>
+<p>MySQL集群专用存储引擎</p>
+<ol start="4">
+<li> 常用字符集及最大长度</li>
+</ol>
+<p>字符集名称</p>
+<p>Maxlen</p>
+<p>ascii</p>
+<p>1</p>
+<p>latin1</p>
+<p>1</p>
+<p>gb2312</p>
+<p>2</p>
+<p>gbk</p>
+<p>2</p>
+<p>utf8</p>
+<p>3</p>
+<p>utf8mb4</p>
+<p>4</p>
+<ol start="5">
+<li>数据引擎 InnoDB<ol>
+<li> 数据页 InnoDB采取的方式是：将数据划分为若干个页，以页作为磁盘和内存之间交互的基本单位，InnoDB中页的大小一般为 16 KB</li>
+<li> 行格式（记录格式） 行格式，分别是Compact、Redundant、Dynamic和Compressed行格式</li>
+</ol>
+</li>
+<li>索引 因为各个页中的记录并没有规律，我们并不知道我们的搜索条件匹配哪些页中的记录，所以 不得不 依次遍历所有的数据页 实际用户记录其实都存放在B+树的最底层的节点上，这些节点也被称为叶子节点或叶节点，其余用来存放目录项的节点称为非叶子节点或者内节点，其中B+树最上边的那个节点也称为根节点 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">记录头信息里的record_type属性 取值 意思：</span><br><span class="line">0：普通的用户记录</span><br><span class="line">1：目录项记录</span><br><span class="line">2：最小记录</span><br><span class="line">3：最大记录</span><br></pre></td></tr></table></figure>
+ <strong>聚簇索引（二级索引）</strong><blockquote>
+<ol>
+<li>使用记录主键值的大小进行记录和页的排序，这包括三个方面的含义：<ol>
+<li> 页内的记录是按照主键的大小顺序排成一个单向链表。</li>
+<li> 各个存放用户记录的页也是根据页中用户记录的主键大小顺序排成一个双向链表。</li>
+<li> 存放目录项记录的页分为不同的层次，在同一层次中的页也是根据页中目录项记录的主键大小顺序排成一个双向链表。</li>
+</ol>
+</li>
+<li>B+树的叶子节点存储的是完整的用户记录。</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p><strong>所谓完整的用户记录，就是指这个记录中存储了所有列的值（包括隐藏列)</strong></p>
+<p><strong>B+树</strong></p>
+<blockquote>
+<p><strong>B+树与聚簇索引有几处不同:</strong></p>
+<ol>
+<li>使用记录c2列的大小进行记录和页的排序，这包括三个方面的含义：<ol>
+<li> 页内的记录是按照c2列的大小顺序排成一个单向链表。</li>
+<li> 各个存放用户记录的页也是根据页中记录的c2列大小顺序排成一个双向链表。</li>
+<li> 存放目录项记录的页分为不同的层次，在同一层次中的页也是根据页中目录项记录的c2列大小顺序排成一个双向链表。</li>
+</ol>
+</li>
+<li> B+树的叶子节点存储的并不是完整的用户记录，而只是c2列+主键这两个列的值。</li>
+<li> 目录项记录中不再是主键+页号的搭配，而变成了c2列+页号的搭配。</li>
+</ol>
+</blockquote>
+<p><strong>回表</strong> 当查询B+树获取记录的主键后，必须再次通过<strong>聚簇索引</strong>获取完整的用户记录 这个过程称为<strong>回表</strong> <strong>联合索引</strong> 同时以多个列的大小作为排序规则，也就是同时为多个列联合建立索引</p>
+<blockquote>
+<ol>
+<li> B+树索引在空间和时间上都有代价，尽量减少索引</li>
+<li> B+树索引适用于下边这些情况：</li>
+<li> 全值匹配</li>
+<li> 匹配左边的列</li>
+<li> 匹配范围值</li>
+<li> 精确匹配某一列并范围匹配另外一列</li>
+<li> 用于排序</li>
+<li> 用于分组</li>
+<li> 在使用索引时需要注意下边这些事项：</li>
+<li> 只为用于搜索、排序或分组的列创建索引</li>
+<li> 为列的基数大的列创建索引</li>
+<li> 索引列的类型尽量小</li>
+<li> 可以只对字符串值的前缀建立索引</li>
+<li> 只有索引列在比较表达式中单独出现才可以适用索引</li>
+<li> 为了尽可能少的让聚簇索引发生页面分裂和记录移位的情况，建议让主键拥有AUTO_INCREMENT属性。</li>
+<li> 定位并删除表中的重复和冗余索引</li>
+<li> 尽量使用覆盖索引进行查询，避免回表带来的性能损耗。</li>
+</ol>
+</blockquote>
+<p><strong>独立表空间结构</strong></p>
+<blockquote>
+<p><strong>区（extent）的概念</strong> 表空间被划分为许多连续的区，每个区默认由64个页组成，每256个区划分为一组，每个组的最开始的几个页面类型是固定,个区就是在物理位置上连续的64个页,降随机I/O为顺序I/O <strong>段（segment）的概念</strong> 一个索引会生成2个段，一个叶子节点段，一个非叶子节点段 <strong>区的分类</strong> 分为4种类型：</p>
+<ol>
+<li> 空闲的区：现在还没有用到这个区中的任何页面。</li>
+<li> 有剩余空间的碎片区：表示碎片区中还有可用的页面。</li>
+<li> 没有剩余空间的碎片区：表示碎片区中的所有页面都被使用，没有空闲页面。</li>
+<li> 附属于某个段的区。每一个索引都可以分为叶子节点段和非叶子节点段，除此之外InnoDB还会另外定义一些特殊作用的段，在这些段中的数据量很大时将使用区来作为基本的分配单位。</li>
+</ol>
+</blockquote>
+<p>状态名</p>
+<p>含义</p>
+<p>FREE</p>
+<p>空闲的区</p>
+<p>FREE_FRAG</p>
+<p>有剩余空间的碎片区</p>
+<p>FULL_FRAG</p>
+<p>没有剩余空间的碎片区</p>
+<p>FSEG</p>
+<p>附属于某个段的区</p>
+<p><strong>InnoDB统计信息</strong></p>
+<blockquote>
+<ol>
+<li> InnoDB以表为单位来收集统计数据，这些统计数据可以是基于磁盘的永久性统计数据，也可以是基于内存的非永久性统计数据。</li>
+<li>innodb_stats_persistent控制着使用永久性统计数据还是非永久性统计数据；innodb_stats_persistent_sample_pages控制着永久性统计数据的采样页面数量；innodb_stats_transient_sample_pages控制着非永久性统计数据的采样页面数量；innodb_stats_auto_recalc控制着是否自动重新计算统计数据。</li>
+<li> 针对某个具体的表，在创建和修改表时通过指定STATS_PERSISTENT、STATS_AUTO_RECALC、STATS_SAMPLE_PAGES的值来控制相关统计数据属性。</li>
+<li> innodb_stats_method决定着在统计某个索引列不重复值的数量时如何对待NULL值。</li>
+</ol>
+</blockquote>
+<p><strong>缓存LRU</strong> InnoDB的Buffer Pool采用LRU的策略处理缓存加载 为降低随机预读与大规模全表扫描 造成缓存失效淘汰问题</p>
+<ol>
+<li> LRU缓存 拆分为 yong区（热数据） 和 old区（冷数据）</li>
+<li> 在对某个处在old区域的缓存页进行第一次访问时就在它对应的控制块中记录下来这个访问时间，如果后续的访问时间与第一次访问的时间在某个时间间隔内，那么该页面就不会被从old区域移动到young区域的头部，否则将它移动到young区域的头部 3.降低young区的缓存移动 某个缓存页对应的节点在young区域的1/4中，再次访问该缓存页时也不会将其移动到LRU链表头部 <strong>目的 尽量高效的提高 Buffer Pool 的缓存命中率。</strong></li>
+</ol>
+<p><strong>脏页数据的落盘</strong> 后台有专门的线程每隔一段时间负责把脏页刷新到磁盘 1.从LRU链表的冷数据中刷新一部分页面到磁盘 2.从flush链表中刷新一部分页面到磁盘</p>
+<p><strong>事务</strong> 事务的4个原则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一致性（Consistency）</span><br><span class="line">原子性（Atomicity）</span><br><span class="line">隔离性（Isolation）</span><br><span class="line">持久性（Durability）</span><br></pre></td></tr></table></figure>
+
+<p>事务的5个状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">活动的（active）事务处于执行过程</span><br><span class="line">部分提交的（partially committed） 未进行落盘 持久化</span><br><span class="line">失败的（failed）执行异常手动停止后的状态</span><br><span class="line">中止的（aborted）执行过程中被终止的状态 需要回滚操作</span><br><span class="line">提交的（committed）执行成功，顺利落盘</span><br></pre></td></tr></table></figure>
+
+<p><strong>只有当事务处于提交的或者中止的状态时，一个事务的生命周期才算是结束</strong></p>
+<p><strong>开始事务</strong> BEGIN/START TRANSACTION</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">READ ONLY：标识当前事务是一个只读事务， 属于该事务的数据库操作只能读取数据，而不能修改数据。</span><br><span class="line">READ WRITE：标识当前事务是一个读写事务，属于该事务的数据库操作既可以读取数据，也可以修改数据</span><br><span class="line">WITH CONSISTENT SNAPSHOT：启动一致性读</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，<strong>读写模式</strong></p>
+<p><strong>ROLLBACK（回滚事务）</strong></p>
+<p>支持事务的存储引擎（InnoDB和NDB） 默认 自动提交 SET autocommit = OFF;关闭自动提交 一些语句会自动进行隐式的事务 如ddl，modify table，load data。。。</p>
+<p><strong>savepoint （保存点)</strong> 保存点（英文：savepoint）,在事务对应的数据库语句，调用ROLLBACK语句时可以指定会滚到哪个点，而不是回到最初的原点</p>
+<p><strong>redoundo日志</strong> 会把事务在执行过程中对数据库所做的所有修改都记录下来，在之后系统崩溃重启后可以把事务所做的任何修改都恢复出来 判断某些redo日志占用的磁盘空间是否可以覆盖的依据就是它对应的脏页是否已经刷新到磁盘里 为了实现事务的原子性，InnoDB存储引擎在实际进行增、删、改一条记录时，都需要先把对应的undo日志记下来 通过记录的roll_pointer指向对应undo日志</p>
+<p><strong>事务隔离级别</strong></p>
+<blockquote>
+<p>事务并发读写的问题</p>
+<ol>
+<li> 脏写（Dirty Write） 一个事务修改了另一个未提交事务修改过的数据</li>
+<li> 脏读（Dirty Read） 一个事务读到了另一个未提交事务修改过的数据</li>
+<li> 不可重复读（Non-Repeatable Read） 一个事务只能读到另一个已经提交的事务修改过的数据，并且其他事务每对该数据进行一次修改并提交后，该事务都能查询得到最新值</li>
+<li> 幻读（Phantom） 一个事务先根据某些条件查询出一些记录，之后另一个事务又向表中插入了符合这些条件的记录，原先的事务再次按照该条件查询时，能把另一个事务插入的记录也读出来 <strong>注意：幻读是再次读取 出现之前未出现的记录；若删除记录，再次读取记录减少，标记为 不可重复读</strong></li>
+</ol>
+</blockquote>
+<p><strong>SQL标准中的四种隔离级别</strong></p>
+<blockquote>
+<p>脏写 &gt; 脏读 &gt; 不可重复读 &gt; 幻读 隔离级别：</p>
+<ol>
+<li> READ UNCOMMITTED：未提交读。</li>
+<li> READ COMMITTED：已提交读。</li>
+<li> REPEATABLE READ：可重复读。</li>
+<li> SERIALIZABLE：可串行化。</li>
+</ol>
+</blockquote>
+<p>隔离级别</p>
+<p>脏读</p>
+<p>不可重复读</p>
+<p>幻读</p>
+<p>READ UNCOMMITTED</p>
+<p>Possible</p>
+<p>Possible</p>
+<p>Possible</p>
+<p>READ COMMITTED</p>
+<p>Not Possible</p>
+<p>Possible</p>
+<p>Possible</p>
+<p>REPEATABLE READ</p>
+<p>Not Possible</p>
+<p>Not Possible</p>
+<p>Possible</p>
+<p>SERIALIZABLE</p>
+<p>Not Possible</p>
+<p>Not Possible</p>
+<p>Not Possible</p>
+<blockquote>
+<ol>
+<li> READ UNCOMMITTED隔离级别下，可能发生脏读、不可重复读和幻读问题。 1.READ COMMITTED隔离级别下，可能发生不可重复读和幻读问题，但是不可以发生脏读问题。 1.REPEATABLE READ隔离级别下，可能发生幻读问题，但是不可以发生脏读和不可重复读的问题。 1.SERIALIZABLE隔离级别下，各种问题都不可以发生 <strong>MySQL在REPEATABLE READ隔离级别下，是可以禁止幻读问题的发生的</strong></li>
+</ol>
+</blockquote>
+<p><strong>设置事务隔离级别</strong> <strong>默认隔离级别为REPEATABLE READ</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> [GLOBALSESSION] TRANSACTION ISOLATION LEVEL &#123;level&#125;;</span><br><span class="line">level: &#123;</span><br><span class="line">     REPEATABLE READ</span><br><span class="line">    READ COMMITTED</span><br><span class="line">    READ UNCOMMITTED</span><br><span class="line">    SERIALIZABLE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>MVCC原理（Multi-Version Concurrency Control ，多版本并发控制）</strong> 使用READ COMMITTD、REPEATABLE READ这两种隔离级别的事务在执行普通的SELECT操作时访问记录的版本链的过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">聚簇索引中隐藏列</span><br><span class="line">1. trx_id：每次一个事务对某条聚簇索引记录进行改动时，都会把该事务的事务id赋值给trx_id隐藏列。</span><br><span class="line">2. roll_pointer：每次对某条聚簇索引记录进行改动时，都会把旧的版本写入到undo日志中，</span><br><span class="line">然后这个隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>版本链</strong> 对一条记录多次更新，每次更新后，都会将旧值放到一条undo日志中，就算是该记录的一个旧版本，随着更新次数的增多，所有的版本都会被roll_pointer属性连接成一个链表。 <strong>版本链的头节点就是当前记录最新的值</strong> <strong>ReadView</strong> ReadView包含4个信息</p>
+<ol>
+<li> m_ids：表示在生成ReadView时当前系统中活跃的读写事务的事务id列表。</li>
+<li> min_trx_id：表示在生成ReadView时当前系统中活跃的读写事务中最小的事务id，也就是m_ids中的最小值。</li>
+<li> max_trx_id：表示生成ReadView时系统中应该分配给下一个事务的id值。</li>
+<li> creator_trx_id：表示生成该ReadView的事务的事务id。 <strong>生成ReadView的时机</strong> READ COMMITTD在每一次进行普通SELECT操作前都会生成一个ReadView REPEATABLE READ只在第一次进行普通SELECT操作前生成一个ReadView，之后的查询操作都重复使用这个ReadView</li>
+</ol>
+</blockquote>
+<p><strong>解决并发事务带来问题的两种基本方式</strong></p>
+<ul>
+<li>  读-读情况：即并发事务相继读取相同的记录。</li>
+<li>  写-写情况：即并发事务相继对相同的记录做出改动。</li>
+<li>  读-写或写-读情况：也就是一个事务进行读取操作，另一个进行改动操作。</li>
+</ul>
+<p><strong>一致性读（Consistent Reads）</strong> 事务利用MVCC进行的读取操作称之为一致性读/一致性无锁读/快照读(无锁状态)</p>
+<p><strong>锁定读（Locking Reads）</strong> 共享锁（S锁）和独占锁（X锁）</p>
+<p><strong>多粒度锁</strong> 行锁 表锁</p>
+<blockquote>
+<p><strong>给表加S锁：</strong> 如果一个事务给表加了S锁： 别的事务可以继续获得该表的S锁 别的事务可以继续获得该表中的某些记录的S锁 别的事务不可以继续获得该表的X锁 别的事务不可以继续获得该表中的某些记录的X锁 <strong>给表加X锁</strong> 该事务要独占这个表，那么： 别的事务不可以继续获得该表的S锁 别的事务不可以继续获得该表中的某些记录的S锁 别的事务不可以继续获得该表的X锁 别的事务不可以继续获得该表中的某些记录的X锁</p>
+</blockquote>
+<p><strong>意向共享锁IS和意向独占锁IX</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">意向共享锁，英文名：Intention Shared Lock，简称IS锁。</span><br><span class="line">当事务准备在某条记录上加S锁时，需要先在表级别加一个IS锁。</span><br><span class="line"></span><br><span class="line">意向独占锁，英文名：Intention Exclusive Lock，简称IX锁。</span><br><span class="line">当事务准备在某条记录上加X锁时，需要先在表级别加一个IX锁。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/10/mysql%E8%BF%90%E8%A1%8C%E5%8E%9F%E7%90%86/" data-id="cksy3fx19005cpnv93a21b2fl" data-title="MySQL运行原理" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-336" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/08/06/336/" class="article-date">
+  <time class="dt-published" datetime="2020-08-06T03:21:36.000Z" itemprop="datePublished">2020-08-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2020/08/06/336/">Redis-cluster集群</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cqming/p/11191079.html">Redis-cluster集群搭建</a></p>
+<h1 id="1-Redis-cluster集群"><a href="#1-Redis-cluster集群" class="headerlink" title="1           Redis-cluster集群"></a>1           Redis-cluster集群</h1><h2 id="1-1-哨兵模式的缺陷"><a href="#1-1-哨兵模式的缺陷" class="headerlink" title="1.1        哨兵模式的缺陷"></a>1.1        哨兵模式的缺陷</h2><p>在哨兵模式中，仍然只有一个Master节点。当<strong>并发写请求</strong>较大时，哨兵模式并不能缓解写压力。   我们知道只有主节点才具有写能力，那如果在一个集群中，能够配置多个主节点，是不是就可以缓解写压力了呢？ 答：是的。这个就是redis-cluster集群模式。  </p>
+<h2 id="1-2-Redis-cluster集群概念"><a href="#1-2-Redis-cluster集群概念" class="headerlink" title="1.2        Redis-cluster集群概念"></a>1.2        Redis-cluster集群概念</h2><p>（1）由多个Redis服务器组成的分布式网络服务集群； （2）集群之中有多个Master主节点，每一个主节点都可读可写； （3）节点之间会互相通信，两两相连； （4）Redis集群无中心节点。 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195331148-841121986.png">   1.3        集群节点复制 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195351550-334983840.png">   在Redis-Cluster集群中，可以给每一个主节点添加从节点，主节点和从节点直接遵循主从模型的特性。 当用户需要处理更多读请求的时候，添加从节点可以扩展系统的读性能。  </p>
+<h2 id="1-4-故障转移"><a href="#1-4-故障转移" class="headerlink" title="1.4        故障转移"></a>1.4        故障转移</h2><p>Redis集群的主节点内置了类似Redis Sentinel的节点故障检测和自动故障转移功能，当集群中的某个主节点下线时，集群中的其他在线主节点会注意到这一点，并对已下线的主节点进行故障转移。 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195416365-2116782552.png">   集群进行故障转移的方法和Redis Sentinel进行故障转移的方法基本一样，不同的是，在集群里面，故障转移是由集群中其他在线的主节点负责进行的，所以集群不必另外使用Redis Sentinel。  </p>
+<h2 id="1-5-集群分片策略"><a href="#1-5-集群分片策略" class="headerlink" title="1.5        集群分片策略"></a>1.5        集群分片策略</h2><p>Redis-cluster分片策略，是用来解决key存储位置的。   集群将整个数据库分为16384个槽位slot，所有key-value数据都存储在这些slot中的某一个上。一个slot槽位可以存放多个数据，key的槽位计算公式为：slot_number=crc16(key)%16384，其中crc16为16位的循环冗余校验和函数。 集群中的每个主节点都可以处理0个至16383个槽，当16384个槽都有某个节点在负责处理时，集群进入上线状态，并开始处理客户端发送的数据命令请求。 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195446140-1547039173.png">   1.6        集群redirect转向 由于Redis集群无中心节点，请求会随机发给任意主节点； 主节点只会处理自己负责槽位的命令请求，其它槽位的命令请求，该主节点会返回客户端一个转向错误； 客户端根据错误中包含的地址和端口重新向正确的负责的主节点发起命令请求。 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195508671-848776405.png">   1.7        集群搭建</p>
+<h3 id="1-7-1-准备工作"><a href="#1-7-1-准备工作" class="headerlink" title="1.7.1       准备工作"></a>1.7.1       准备工作</h3><p>（1）安装ruby环境 redis集群管理工具redis-trib.rb依赖ruby环境，首先需要安装ruby环境：  </p>
+<p>yum -y install ruby yum -y install rubygems</p>
+<p>  （2）安装ruby和redis的接口程序 拷贝redis-3.0.0.gem至/usr/local下，执行安装：</p>
+<p>gem install /usr/local/redis-3.0.0.gem</p>
+<p> </p>
+<h3 id="1-7-2-集群规划"><a href="#1-7-2-集群规划" class="headerlink" title="1.7.2       集群规划"></a>1.7.2       集群规划</h3><p>（1）Redis集群最少需要6个节点，可以分布在一台或者多台主机上。 本教案在一台主机上创建伪分布式集群，不同的端口表示不同的redis节点，如下： 主节点：192.168.56.3:7001 192.168.56.3:7002 192.168.56.3:7003 从节点：192.168.56.3:7004 192.168.56.3:7005 192.168.56.3:7006   （2）在/usr/local/redis下创建redis-cluster目录，其下创建7001、7002。。7006目录，如下： <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195541043-1268156495.png">   （3）将redis解压路径下的配置文件redis.conf，依次拷贝到每个700X目录内，并修改每个700X目录下的redis.conf配置文件：</p>
+<p>必选配置： port 700X bind 192.168.23.3 <strong>cluster-enabled yes</strong> 建议配置： daemonized  yes logfile  /usr/local/redis/redis-cluster/700X/node.log</p>
+<h3 id="1-7-3-启动每个结点redis服务"><a href="#1-7-3-启动每个结点redis服务" class="headerlink" title="1.7.3       启动每个结点redis服务"></a>1.7.3       启动每个结点redis服务</h3><p>依次以700X下的redis.conf，启动redis节点。（必须指定redis.conf文件）</p>
+<p>redis-server  /usr/local/redis/redis-cluster/700X/redis.conf</p>
+<p> </p>
+<h3 id="1-7-4-执行创建集群命令"><a href="#1-7-4-执行创建集群命令" class="headerlink" title="1.7.4       执行创建集群命令"></a>1.7.4       执行创建集群命令</h3><p>进入到redis源码存放目录redis/redis-4.10.3/src下，执行<strong>redis-trib.rb</strong>，此脚本是ruby脚本，它依赖ruby环境。</p>
+<p>./redis-trib.rb create –replicas 1 192.168.159.10:7001 192.168.159.10:7002 192.168.159.10:7003 192.168.159.10:7004 192.168.159.10:7005  192.168.159.10:7006</p>
+<p>  创建过程如下： <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195604871-1593166579.png">   1.7.5       查询集群信息 集群创建成功登陆任意redis结点查询集群中的节点情况。 ./redis-cli -c -h 192.168.56.3 -p 7001 <img src="https://img2018.cnblogs.com/blog/1093855/201907/1093855-20190715195636231-2072966350.png">   说明：**./redis-cli -c -h 192.168.56.3 -p 7001** <strong>，其中:</strong></p>
+<p><strong>-c<strong><strong>表示以集群方式连接redis</strong></strong>，</strong> <strong>-h<strong><strong>指定ip</strong></strong>地址，</strong> <strong>-p****指定端口号</strong>  <strong>cluster nodes</strong> 查询集群结点信息； <strong>cluster info</strong> 查询集群状态信。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/08/06/336/" data-id="cksy3fwxn0003pnv9em1bcns6" data-title="Redis-cluster集群" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/program/JAVA/">JAVA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/SPRING/">SPRING</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">问题求解</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/">research</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLDialects/" rel="tag">SQLDialects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDF/" rel="tag">UDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airflow/" rel="tag">airflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atlas/" rel="tag">atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/" rel="tag">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blob/" rel="tag">blob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/" rel="tag">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs/" rel="tag">hdfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parquet/" rel="tag">parquet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/password/" rel="tag">password</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ppa/" rel="tag">ppa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/presto/" rel="tag">presto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sink/" rel="tag">sink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/" rel="tag">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/streaming/" rel="tag">streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-with-resources/" rel="tag">try-with-resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E7%BD%91/" rel="tag">公网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" rel="tag">分位数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" rel="tag">前端搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" rel="tag">可见性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" rel="tag">名词解释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" rel="tag">多数据源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" rel="tag">奇门秘籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" rel="tag">容器云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" rel="tag">常用软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" rel="tag">异常分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" rel="tag">数据血缘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E6%9C%9F/" rel="tag">日期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" rel="tag">源码编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag">源码解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="tag">版本切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" rel="tag">系统服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag">腾讯云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQLDialects/" style="font-size: 10px;">SQLDialects</a> <a href="/tags/UDF/" style="font-size: 10px;">UDF</a> <a href="/tags/airflow/" style="font-size: 10px;">airflow</a> <a href="/tags/atlas/" style="font-size: 10px;">atlas</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/blob/" style="font-size: 10px;">blob</a> <a href="/tags/centos/" style="font-size: 13.33px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/elasticsearch/" style="font-size: 11.11px;">elasticsearch</a> <a href="/tags/element-ui/" style="font-size: 12.22px;">element-ui</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/federation/" style="font-size: 10px;">federation</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flink/" style="font-size: 13.33px;">flink</a> <a href="/tags/flink-sql/" style="font-size: 10px;">flink-sql</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/footer/" style="font-size: 10px;">footer</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/guava/" style="font-size: 10px;">guava</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 12.22px;">hdfs</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/hive/" style="font-size: 16.67px;">hive</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/json/" style="font-size: 11.11px;">json</a> <a href="/tags/k8s/" style="font-size: 12.22px;">k8s</a> <a href="/tags/kylin/" style="font-size: 13.33px;">kylin</a> <a href="/tags/mac/" style="font-size: 15.56px;">mac</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 17.78px;">mysql</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/parquet/" style="font-size: 10px;">parquet</a> <a href="/tags/password/" style="font-size: 10px;">password</a> <a href="/tags/ppa/" style="font-size: 10px;">ppa</a> <a href="/tags/presto/" style="font-size: 11.11px;">presto</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/scala/" style="font-size: 11.11px;">scala</a> <a href="/tags/scrapy/" style="font-size: 10px;">scrapy</a> <a href="/tags/shell/" style="font-size: 11.11px;">shell</a> <a href="/tags/sink/" style="font-size: 10px;">sink</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/spark/" style="font-size: 11.11px;">spark</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/streaming/" style="font-size: 10px;">streaming</a> <a href="/tags/try-with-resources/" style="font-size: 10px;">try-with-resources</a> <a href="/tags/ubuntu/" style="font-size: 11.11px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 14.44px;">vue</a> <a href="/tags/webflux/" style="font-size: 10px;">webflux</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/wordpress/" style="font-size: 12.22px;">wordpress</a> <a href="/tags/wtf/" style="font-size: 10px;">wtf</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">中间件</a> <a href="/tags/%E5%85%AC%E7%BD%91/" style="font-size: 10px;">公网</a> <a href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" style="font-size: 10px;">分位数</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" style="font-size: 10px;">分布式锁</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.22px;">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">前端搭建</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 10px;">原理</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" style="font-size: 10px;">可见性</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 17.78px;">基础</a> <a href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">备案信息</a> <a href="/tags/%E5%A4%87%E6%B3%A8/" style="font-size: 10px;">备注</a> <a href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size: 10px;">多数据源</a> <a href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" style="font-size: 10px;">奇门秘籍</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" style="font-size: 12.22px;">容器云</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">常用软件</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 10px;">异常分析</a> <a href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" style="font-size: 10px;">异步读取</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 18.89px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14.44px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">数据类型</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" style="font-size: 10px;">数据血缘</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 10px;">日期</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" style="font-size: 10px;">源码编译</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">源码解析</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" style="font-size: 10px;">版本切换</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" style="font-size: 10px;">目录修改</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" style="font-size: 10px;">窗口函数</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">系统服务</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 10px;">腾讯云</a> <a href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" style="font-size: 10px;">行政区划</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E8%B0%83%E4%BC%98/" style="font-size: 10px;">调优</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">高德地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/wp-footer/">wp_footer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

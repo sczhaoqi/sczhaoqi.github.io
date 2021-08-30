@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/9/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-spring基础知识（一）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/21/spring%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-04-21T14:43:05.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/SPRING/">SPRING</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/21/spring%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/">Spring基础知识（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="1-BeanpostProcessor-BeanFactoryPostProcessor区别"><a href="#1-BeanpostProcessor-BeanFactoryPostProcessor区别" class="headerlink" title="1. BeanpostProcessor,BeanFactoryPostProcessor区别"></a>1. BeanpostProcessor,BeanFactoryPostProcessor区别</h3><p>spring初始化bean流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">定义bean标签 &gt; 将bean标签解析成BeanDefinition &gt; 调用构造方法实例化(IOC) &gt; 属性值依赖注入(DI) &gt; init-method</span><br></pre></td></tr></table></figure>
+
+<p>BeanpostProcessor</p>
+<p>BeanFactoryPostProcessor</p>
+<p>发生在Spring容器的实例化和依赖注入之后,init-method前后</p>
+<p>BeanDefinition之后,IOC之前</p>
+<h3 id="2-BeanFactory和ApplicationContext作用与区别"><a href="#2-BeanFactory和ApplicationContext作用与区别" class="headerlink" title="2. BeanFactory和ApplicationContext作用与区别"></a>2. BeanFactory和ApplicationContext作用与区别</h3><p>BeanFactory： 是Spring里面最低层的接口，提供了最简单的容器的功能，只提供了实例化对象和拿对象的功能；</p>
+<p>ApplicationContext： 应用上下文，继承BeanFactory接口，它是Spring的一各更高级的容器，提供了更多的有用的功能；</p>
+<ol>
+<li> 国际化（MessageSource）</li>
+<li> 访问资源，如URL和文件（ResourceLoader）</li>
+<li> 载入多个（有继承关系）上下文 ，使得每一个上下文都专注于一个特定的层次，比如应用的web层</li>
+<li> 消息发送、响应机制（ApplicationEventPublisher）</li>
+<li> AOP（拦截器）</li>
+</ol>
+<h3 id="3-如何从文件系统加载spring-xml文件"><a href="#3-如何从文件系统加载spring-xml文件" class="headerlink" title="3. 如何从文件系统加载spring xml文件"></a>3. 如何从文件系统加载spring xml文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">一: XmlBeanFactory 引用资源</span><br><span class="line">Resource resource = <span class="keyword">new</span> ClassPathResource(“appcontext.xml”);</span><br><span class="line">BeanFactory factory = <span class="keyword">new</span> XmlBeanFactory(resource);</span><br><span class="line"></span><br><span class="line">二: ClassPathXmlApplicationContext 编译路径</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> ClassPathXmlApplicationContext(“classpath:appcontext.xml”);</span><br><span class="line"><span class="comment">// src目录下的</span></span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> ClassPathXmlApplicationContext(“appcontext.xml”);</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="keyword">new</span> String[] &#123;“bean1.xml”,“bean2.xml”&#125;);</span><br><span class="line"><span class="comment">// src/conf 目录下的</span></span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> ClassPathXmlApplicationContext(“conf/appcontext.xml”);</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> ClassPathXmlApplicationContext(“file:G:/Test/src/appcontext.xml”);</span><br><span class="line"></span><br><span class="line">三: 用文件系统的路径</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> FileSystemXmlApplicationContext(“src/appcontext.xml”);</span><br><span class="line"><span class="comment">//使用了 classpath: 前缀,作为标志, 这样,FileSystemXmlApplicationContext 也能够读入classpath下的相对路径</span></span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> FileSystemXmlApplicationContext(“classpath:appcontext.xml”);</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> FileSystemXmlApplicationContext(“file:G:/Test/src/appcontext.xml”);</span><br><span class="line">ApplicationContext factory=<span class="keyword">new</span> FileSystemXmlApplicationContext(“G:/Test/src/appcontext.xml”);</span><br><span class="line"></span><br><span class="line">四: XmlWebApplicationContext是专为Web工程定制的。</span><br><span class="line">ServletContext servletContext = request.getSession().getServletContext();</span><br><span class="line">ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(servletContext );</span><br><span class="line"></span><br><span class="line">五: 使用BeanFactory</span><br><span class="line">BeanDefinitionRegistry reg = <span class="keyword">new</span> DefaultListableBeanFactory();</span><br><span class="line">XmlBeanDefinitionReader reader = <span class="keyword">new</span> XmlBeanDefinitionReader(reg);</span><br><span class="line">reader.loadBeanDefinitions(<span class="keyword">new</span> ClassPathResource(“bean1.xml”));</span><br><span class="line">reader.loadBeanDefinitions(<span class="keyword">new</span> ClassPathResource(“bean2.xml”));</span><br><span class="line">BeanFactory bf=(BeanFactory)reg;</span><br><span class="line"></span><br><span class="line">六：Web 应用启动时加载多个配置文件 【目前项目中xml比较多】</span><br><span class="line">通过ContextLoaderListener 也可加载多个配置文件，在web.xml文件中利用</span><br><span class="line"></span><br><span class="line">&lt;context-pararn&gt;元素来指定多个配置文件位置，其配置如下: </span><br><span class="line">&lt;context-param&gt; </span><br><span class="line">        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;</span><br><span class="line">            classpath:config<span class="comment">/*.xml   //代表加载类路径下config下的所有xml文件</span></span><br><span class="line"><span class="comment">        &lt;/param-value&gt;</span></span><br><span class="line"><span class="comment"> &lt;/context-param&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-多个bean初始化顺序"><a href="#4-多个bean初始化顺序" class="headerlink" title="4. 多个bean初始化顺序"></a>4. 多个bean初始化顺序</h3><ol>
+<li> 构造方法依赖</li>
+<li> @DependOn 注解 需要注意的是 bean 的初始化方法调用顺序无法保证</li>
+<li> BeanPostProcessor手动控制 重写postProcessAfterInstantiation方法</li>
+</ol>
+<h3 id="5-spring-Ioc-AOP的核心技术"><a href="#5-spring-Ioc-AOP的核心技术" class="headerlink" title="5. spring Ioc,AOP的核心技术"></a>5. spring Ioc,AOP的核心技术</h3><h3 id="6-spring中事务如何实现"><a href="#6-spring中事务如何实现" class="headerlink" title="6. spring中事务如何实现"></a>6. spring中事务如何实现</h3><h3 id="7-spring的设计模式"><a href="#7-spring的设计模式" class="headerlink" title="7. spring的设计模式"></a>7. spring的设计模式</h3><h3 id="8-spring-AOP的应用场景"><a href="#8-spring-AOP的应用场景" class="headerlink" title="8. spring AOP的应用场景"></a>8. spring AOP的应用场景</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/21/spring%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cksy3fx1u006mpnv96v1i9a1t" data-title="Spring基础知识（一）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java基础（三）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/21/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2019-04-20T17:12:14.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/21/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/">JAVA基础篇（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="14-Java中的IO流"><a href="#14-Java中的IO流" class="headerlink" title="14. Java中的IO流"></a>14. Java中的IO流</h3><p>按功能划分: 输入流 InputStream和 输出流 OutputStream 按类型划分: 字符流 和 字节流</p>
+<h4 id="1-InputStream"><a href="#1-InputStream" class="headerlink" title="1. InputStream"></a>1. InputStream</h4><p>inputstream 基类</p>
+<blockquote>
+<ol>
+<li> available():返回stream中的可读字节数，inputstream类中的这个方法始终返回的是0，这个方法需要子类去实现。</li>
+<li> close():关闭stream方法，这个是每次在用完流之后必须调用的方法。</li>
+<li> read():方法是读取一个byte字节,但是返回的是int。</li>
+<li> read(byte[]):一次性读取内容到缓冲字节数组</li>
+<li> read(byte[],int,int):从数据流中的哪个位置offset开始读长度为len的内容到缓冲字节数组</li>
+<li> skip(long):从stream中跳过long类型参数个位置</li>
+<li> mark(int):用于标记stream的作用</li>
+<li> markSupported()：返回的是boolean类型，因为不是所有的stream都可以调用mark方法的，这个方法就是用来判断stream是否可以调用mark方法和reset方法</li>
+<li> reset()：这个方法和mark方法一起使用的，让stream回到mark的位置。</li>
+</ol>
+</blockquote>
+<p><code>`BufferedInputStream类调用mark(int readlimit)方法后读取多少字节标记才失效，是取readlimit和BufferedInputStream类的缓冲区大小两者中的最大值，而并非完全由readlimit确定，`</code></p>
+<h5 id="1-1ByteArrayInputStream"><a href="#1-1ByteArrayInputStream" class="headerlink" title="1.1ByteArrayInputStream"></a>1.1ByteArrayInputStream</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> ByteArrayInputStream -- 把内存中的一个缓冲区作为 InputStream 使用 .</span><br><span class="line">construct---</span><br><span class="line">(A)ByteArrayInputStream(byte[]) 创建一个新字节数组输入流（ ByteArrayInputStream ），它从指定字节数组中读取数据（ 使用 byte 作为其缓冲区数组）</span><br><span class="line">(B)ByteArrayInputStream(byte[], int, int) 创建一个新字节数组输入流，它从指定字节数组中读取数据。</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2StringBufferInputStream"><a href="#1-2StringBufferInputStream" class="headerlink" title="1.2StringBufferInputStream"></a>1.2StringBufferInputStream</h5><p>StringBufferInputStream(String) 据指定串创建一个读取数据的输入流串。 不推荐，推荐使用StringReader 创建字符串输入流</p>
+<h5 id="1-3-FileInputStream"><a href="#1-3-FileInputStream" class="headerlink" title="1.3 FileInputStream"></a>1.3 FileInputStream</h5><p>把一个文件作为 InputStream ，实现对文件的读取操作</p>
+<blockquote>
+<p>construct— (A)FileInputStream(File name) 创建一个输入文件流，从指定的 File 对象读取数据。 (B)FileInputStream(FileDescriptor) 创建一个输入文件流，从指定的文件描述器读取数据。 (C)-FileInputStream(String name) 创建一个输入文件流，从指定名称的文件读取数据。</p>
+</blockquote>
+<p>额外实现</p>
+<blockquote>
+<p>getChannel()：这个方法返回一个FileChannel对象，这个主要用于JNIO中的通道的。 getFD()：这个方法返回一个FileDescriptor对象，这个在构造函数中使用过。</p>
+<h5 id="1-4-PipedInputStream"><a href="#1-4-PipedInputStream" class="headerlink" title="1.4 PipedInputStream"></a>1.4 PipedInputStream</h5><p>实现了 pipe 的概念，主要在线程中使用 . 管道输入流是指一个通讯管道的接收端。 一个线程通过管道输出流发送数据，而另一个线程通过管道输入流读取数据，这样可实现两个线程间的通讯。 construct— PipedInputStream() 创建一个管道输入流，它还未与一个管道输出流连接。 PipedInputStream(PipedOutputStream) 创建一个管道输入流 , 它已连接到一个管道输出流。</p>
+<h5 id="1-5-SequenceInputStream"><a href="#1-5-SequenceInputStream" class="headerlink" title="1.5 SequenceInputStream"></a>1.5 SequenceInputStream</h5><p>把多个 InputStream 合并为一个 InputStream . “序列输入流”类允许应用程序把几个输入流连续地合并起来， 并且使它们像单个输入流一样出现。每个输入流依次被读取，直到到达该流的末尾。</p>
+<h5 id="1-6-ObjectInputStream"><a href="#1-6-ObjectInputStream" class="headerlink" title="1.6 ObjectInputStream"></a>1.6 ObjectInputStream</h5><p>用于操作Object的stream，这个在stream主要用在对象传输的过程中，其中牵涉到了序列化的知识 常用方法 readObject将一个对象写入到stream中，但是这个object必须序列化</p>
+<h5 id="1-7-FilterInputStream"><a href="#1-7-FilterInputStream" class="headerlink" title="1.7 FilterInputStream"></a>1.7 FilterInputStream</h5><p>一个过滤的InputStream FilterInputStream(InputStream):使用一个InputStream为参数实例化一个FilterInputStream,其实就是来修饰InputStream的 实现了InputStream中的所有方法</p>
+<h6 id="1-7-1-BufferedInputStream-使用缓冲区的stream"><a href="#1-7-1-BufferedInputStream-使用缓冲区的stream" class="headerlink" title="1.7.1 BufferedInputStream :使用缓冲区的stream"></a>1.7.1 BufferedInputStream :使用缓冲区的stream</h6><p>BufferedInputStream(InputStream):使用InputStream为参数初始化实例 BufferedInputStream(InputStream,int):能够设置缓冲区大小的BufferedInputStream 实现了FilterInputStream中的所有方法(其实也是实现了InputStream中的所有方法)</p>
+<h6 id="1-7-2-DataInputStream-数字格式化的stream"><a href="#1-7-2-DataInputStream-数字格式化的stream" class="headerlink" title="1.7.2 DataInputStream :数字格式化的stream"></a>1.7.2 DataInputStream :数字格式化的stream</h6><p>DataInputStream(InputStream):使用InputStream参数来初始化实例 实现了FilterInputStream中的部分方法 额外的方法： readInt,readFloat,readDouble…这样可以直接从stream中读取基本类型的数据</p>
+</blockquote>
+<h4 id="2-OutputStream"><a href="#2-OutputStream" class="headerlink" title="2. OutputStream"></a>2. OutputStream</h4><p>基类OutputStream</p>
+<blockquote>
+<ol>
+<li> write(int):写入一个字节到stream中</li>
+<li> write(byte[])写入一个byte数组到stream中</li>
+<li> write(byte[],int,int)：把byte数组中从offset开始处写入长度为len的数据</li>
+<li> close()：关闭流，这个是在操作完stream之后必须要调用的方法</li>
+<li> flush():这个方法是用来刷新stream中的数据，让缓冲区中的数据强制的输出</li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1. ByteArrayOutputStream </span><br><span class="line">    把信息存入内存中的一个缓冲区中 . 该类实现一个以字节数组形式写入数据的输出流。</span><br><span class="line">    当数据写入缓冲区时，它自动扩大。</span><br><span class="line">    用 toByteArray() 和 toString() 能检索数据。</span><br><span class="line">2. FileOutputStream</span><br><span class="line">    文件输出流是向 File 或 FileDescriptor 输出数据的一个输出流</span><br><span class="line">3. PipedOutputStream </span><br><span class="line">    管道输出流是指一个通讯管道的发送端。</span><br><span class="line">    一个线程通过管道输出流发送数据，而另一个线程通过管道输入流读取数据，这样可实现两个线程间的通讯。</span><br><span class="line">4. ObjectOutputStream 输出Object对象的stream</span><br><span class="line">5. FilterOutputStream 过滤的OutputStream</span><br><span class="line">     BufferedOutputStream :带有缓冲区的stream</span><br><span class="line">     DataOutputStream :具有格式化的OutputStream</span><br><span class="line">     PrintStream :直接输出到控制台中：我们最熟悉的就是System.out就是一个PrintStream</span><br></pre></td></tr></table></figure>
+
+<h3 id="以字符为导向的-Stream-Reader-Writer"><a href="#以字符为导向的-Stream-Reader-Writer" class="headerlink" title="以字符为导向的 Stream Reader/Writer"></a>以字符为导向的 Stream Reader/Writer</h3><p>以 Unicode 字符为导向的 stream ，表示以 Unicode 字符为单位从 stream 中读取或往 stream 中写入信息。 Reader/Writer 为 abstact 类</p>
+<h4 id="Reader-基于字符流的输入stream"><a href="#Reader-基于字符流的输入stream" class="headerlink" title="Reader:基于字符流的输入stream"></a>Reader:基于字符流的输入stream</h4><p>InputStream中读取的是byte,而Reader中读取的是char</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. CharArrayReader ：与 ByteArrayInputStream 对应此类实现一个可用作字符输入流的字符缓冲区</span><br><span class="line">2. StringReader ： 与 StringBufferInputStream 对应其源为一个字符串的字符流</span><br><span class="line">3. FileReader ： 与 FileInputStream 对应</span><br><span class="line">4. PipedReader ：与 PipedInputStream 对应</span><br><span class="line">5. InputStreamReader ： 将InputStream转化成Reader</span><br></pre></td></tr></table></figure>
+
+<h4 id="Writer-基于字符的输出stream"><a href="#Writer-基于字符的输出stream" class="headerlink" title="Writer: 基于字符的输出stream"></a>Writer: 基于字符的输出stream</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2.1 CharArrayWriter ： 与 ByteArrayOutputStream 对应</span><br><span class="line">2.2 StringWriter ：无与之对应的以字节为导向的 stream</span><br><span class="line">2.3 FileWriter ： 与 FileOutputStream 对应</span><br><span class="line">2.4 PipedWriter ：与 PipedOutputStream 对应</span><br><span class="line">2.5 OutputStreamWriter ：将OutputStream转化成Writer</span><br><span class="line">2.6 PrintReader ： 和PrintStream对应</span><br></pre></td></tr></table></figure>
+
+<h4 id="InputStreamReader-和-OutputStreamWriter-："><a href="#InputStreamReader-和-OutputStreamWriter-：" class="headerlink" title="InputStreamReader 和 OutputStreamWriter ："></a>InputStreamReader 和 OutputStreamWriter ：</h4><p>把一个以字节为导向的 stream 转换成一个以字符为导向的 stream 。</p>
+<p>InputStreamReader 类是从字节流到字符流的桥梁：它读入字节，并根据指定的编码方式，将之转换为字符流。</p>
+<p>使用的编码方式可能由名称指定，或平台可接受的缺省编码方式。</p>
+<p>InputStreamReader 的 read() 方法之一的每次调用，可能促使从基本字节输入流中读取一个或多个字节。</p>
+<p>为了达到更高效率，考虑用 BufferedReader 封装 InputStreamReader ， BufferedReader in = new BufferedReader(new InputStreamReader(System.in));</p>
+<p>附，PushbackInputStream, PushbackReader, 回退流，允许放入重读，例如字符乱码处理，语法、词法分析 LineNumberInputStream, LineNumberReader 从流中读取数据时，会得到相应的行号</p>
+<h3 id="15-BIO、NIO、AIO区别"><a href="#15-BIO、NIO、AIO区别" class="headerlink" title="15. BIO、NIO、AIO区别"></a>15. BIO、NIO、AIO区别</h3><p>BIO</p>
+<p>NIO</p>
+<p>AIO</p>
+<p><strong>同步阻塞式IO</strong>，使用简单并发能力低</p>
+<p><strong>New IO同步非阻塞式IO</strong>，服务器和客户端通过channel通讯，实现多路复用，客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理</p>
+<p><strong>NIO.2 异步非阻塞</strong>，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理</p>
+<p>链接数较少</p>
+<p>NIO方式适用于连接数目多且连接比较短（轻操作）的架构，</p>
+<p>AIO方式使用于连接数目多且连接比较长（重操作）的架构</p>
+<p>聊天服务器，并发局限于应用中，编程比较复杂</p>
+<p>相册服务器，充分调用OS参与并发操作，编程比较复杂</p>
+<p>Jdk1.5创造了一个假的nio 用一个HanderExecutorPool来限定了线程数量,无法从根本上解决并发问题</p>
+<h4 id="3个NIO相关概念"><a href="#3个NIO相关概念" class="headerlink" title="3个NIO相关概念"></a>3个NIO相关概念</h4><blockquote>
+<ol>
+<li> Buffer 缓冲区 相比老的IO将数据直接读/写到Stream对象,NIO是将所有数据都用到缓冲区处理,它本质上是一个数组 2.Channel 通道 支持网络数据从Channel中读写,通道写流最大不同是通道是双向的,而流是一个方向上移动(InputStream/OutputStream),通道可用于读/写或读写同时进行,它还可以和下面要讲的selector结合起来,有多种状态位,方便selector去识别. 通道分两类，一：网络读写（selectableChannel),另一类是文件操作(FileChannel) 3.Selector 多路复用选择器 多路复用选择器提供选择已经就绪的任务的能力,也就是selector会不断轮询注册在其上的通道(Channel),如果某个通道发生了读写操作,这个通道处于就绪状态,会被selector轮询出来,然后通过selectionKey可以取得就绪的Channel集合,从而进行后续的IO操作. 一个多路复用器(Selector)可以负责成千上万个Channel,没有上限,这也是JDK使用epoll代替了传统的selector实现,获得连接句柄没有限制.这也意味着我们只要一个线程负责selector的轮询,就可以接入成千上万个客户端,这是JDK,NIO库的巨大进步. 16.Files的常用方法 exists 文件是否存在 createFile 创建文件 createDirectory 创建文件夹 delete 删除文件 copy 复制文件 move 移动文件 size 查看文件个数 read 读取文件 write 写入文件</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/21/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/" data-id="cksy3fx04003tpnv9diu11jet" data-title="JAVA基础篇（三）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java基础篇二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/19/java%E5%9F%BA%E7%A1%80%E7%AF%87%E4%BA%8C/" class="article-date">
+  <time class="dt-published" datetime="2019-04-19T02:16:45.000Z" itemprop="datePublished">2019-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/19/java%E5%9F%BA%E7%A1%80%E7%AF%87%E4%BA%8C/">JAVA基础篇(二)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="8-String-str-“a”-与-String-str-new-String-“a”"><a href="#8-String-str-“a”-与-String-str-new-String-“a”" class="headerlink" title="8. String str = “a” 与 String str= new String(“a”)"></a>8. String str = “a” 与 String str= new String(“a”)</h3><p>String str = “a” jvm会将其分配到常量池中 String str = new String(“a”) 则会将其分配到堆内存中</p>
+<h3 id="9-字符串反转"><a href="#9-字符串反转" class="headerlink" title="9. 字符串反转"></a>9. 字符串反转</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder 或StringBuffer的reverse()方法</span><br><span class="line">StringBuffer,StringBuilder都是调用的 AbstractStringBuilder reverse()</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-String的常用方法"><a href="#10-String的常用方法" class="headerlink" title="10. String的常用方法"></a>10. String的常用方法</h3><ol>
+<li>indexOf（） public int indexOf(int ch，int fromIndex); 返回给定字符在字符串中的第一次位置，未找到返回-1， ‘char’实际是转换为int indexOf（） public int indexOf(String str，int fromIndex); 查找子串的第一个匹配位置，先找到第一个字符串的位置，再匹配剩余字符串</li>
+<li>charAt（int index） 返回数组的对应位置的字符，越界抛出StringIndexOutOfBoundsException</li>
+<li>replace(char oldChar, char newChar) 替换第一个指定字符串，返回new String（value， true），新建一个char[],替换元素，并修改引用 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* Package private constructor which shares value array for speed.</span></span><br><span class="line"><span class="comment">* this constructor is always expected to be called with share==true.</span></span><br><span class="line"><span class="comment">* a separate constructor is needed because we already have a public</span></span><br><span class="line"><span class="comment">* String(char[]) constructor that makes a copy of the given char[].</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">String(<span class="keyword">char</span>[] value, <span class="keyword">boolean</span> share) &#123;</span><br><span class="line">    <span class="comment">// assert share : &quot;unshared not supported&quot;;</span></span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line">通过替换 String所对应的 <span class="keyword">char</span>[] 数组</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">char</span> value[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = Arrays.copyOf(value, value.length);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> String(value) 是直接复制一个value对应的数组</span><br></pre></td></tr></table></figure>
+</li>
+<li>trim（）去除两端的空白字符，指向一个新的String对象 获取当前字符串两端的空白字符串的 index，调用substring（），即 new String（char[], start, end）,使用Arrays.copyOfRange新建</li>
+<li>split（）以指定表达式分割，返回字符串数组，表达式为1个字符时，会循环调用indexOf和substring方法构建String[],当时表达式时，会调用 Pattern.compile(regex).split(this, limit);</li>
+<li>getBytes 返回字符串byte类型的数组 调用StringCoding.encode进行编码，先使用defaultCharset，编码失败，则再尝试”ISO-8859-1”进行编码，若再次失败抛出UnsupportedEncodingException，并退出System.exit(1);</li>
+<li>length 返回字符串的长度，即数组的长度</li>
+<li>toLowerCase toUpperCase 小写 大写</li>
+<li>substring 截取字符串， 返回新的字符串对象</li>
+<li>equals 字符串比较 先使用==判断是否是同一个对象 ，再 进行字符串的逐个字符比较</li>
+</ol>
+<h3 id="11-抽象类-是否一定要有抽象方法"><a href="#11-抽象类-是否一定要有抽象方法" class="headerlink" title="11.抽象类 是否一定要有抽象方法"></a>11.抽象类 是否一定要有抽象方法</h3><p>抽象 是 面向对象中重要的部分 是（封装继承多态）继承的一种关系 声明抽象方法会造成以下两个结果：</p>
+<blockquote>
+<ol>
+<li> 如果一个类包含抽象方法，那么该类必须是抽象类。</li>
+<li> 任何子类必须重写父类的抽象方法，或者声明自身为抽象类。</li>
+</ol>
+</blockquote>
+<p>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。</p>
+<h3 id="12-普通类和抽象类的区别"><a href="#12-普通类和抽象类的区别" class="headerlink" title="12.普通类和抽象类的区别"></a>12.普通类和抽象类的区别</h3><p>普通类不能包含抽象方法，抽象类不一定包含抽象方法 抽象类不能直接实例化 <strong>抽象类不能用final关键字修饰，普通类可以</strong>，会在编译阶段提示错误 一般情况我们使用abstract 抽象出基类的抽象方法，默认实现一些共有的方法，在子类中自定义实现特有的抽象方法，要确保子类方法不会被再次继承，使用final修饰（例如 dataProvider =&gt; jdbcDataProvider =&gt; mysqlDataProvider）</p>
+<h3 id="13-接口和抽象类的区别"><a href="#13-接口和抽象类的区别" class="headerlink" title="13.接口和抽象类的区别"></a>13.接口和抽象类的区别</h3><p>参数</p>
+<p>抽象类</p>
+<p>接口</p>
+<p>默认的方法实现</p>
+<p>它可以有默认的方法实现</p>
+<p>接口完全是抽象的。它根本不存在方法的实现</p>
+<p>实现</p>
+<p>子类使用extends关键字来继承抽象类。如果子类不是抽象类的话，它需要提供抽象类中所有声明的方法的实现。</p>
+<p>子类使用关键字implements来实现接口。它需要提供接口中所有声明的方法的实现</p>
+<p>构造器</p>
+<p>抽象类可以有构造器</p>
+<p>接口不能有构造器</p>
+<p>与正常Java类的区别</p>
+<p>除了你不能实例化抽象类之外，它和普通Java类没有任何区别</p>
+<p>接口是完全不同的类型</p>
+<p>访问修饰符</p>
+<p>抽象方法可以有public、protected和default这些修饰符</p>
+<p>接口方法默认修饰符是public。你不可以使用其它修饰符。</p>
+<p>main方法</p>
+<p>抽象方法可以有main方法并且我们可以运行它</p>
+<p>接口没有main方法，因此我们不能运行它。</p>
+<p>多继承</p>
+<p>抽象方法可以继承一个类和实现多个接口</p>
+<p>接口只可以继承一个或多个其它接口</p>
+<p>速度</p>
+<p>它比接口速度要快</p>
+<p>接口是稍微有点慢的，因为它需要时间去寻找在类中实现的方法。</p>
+<p>添加新方法</p>
+<p>如果你往抽象类中添加新的方法，你可以给它提供默认的实现。因此你不需要改变你现在的代码。</p>
+<p>如果你往接口中添加方法，那么你必须改变实现该接口的类。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/19/java%E5%9F%BA%E7%A1%80%E7%AF%87%E4%BA%8C/" data-id="cksy3fx03003qpnv987t128ct" data-title="JAVA基础篇(二)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-presto使用过程中调整参数记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/17/presto%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B0%83%E6%95%B4%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2019-04-17T06:27:01.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/17/presto%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B0%83%E6%95%B4%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/">PRESTO使用过程中调整参数记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参数名称</p>
+<p>参数作用</p>
+<p>配置位置</p>
+<p>使用场景</p>
+<p>hive.recursive-directories(truefalse)</p>
+<p>读取hive数据时,是否允许递归读取</p>
+<p>hive catalog的配置文件中</p>
+<p>在hive中有 tez 引擎生成的hive表,每个tez的job的stage会产生一个子文件夹,具体的数据文件在子文件夹内部,默认情况下此参数为false,此时读取会导致无法读取到对应的数据</p>
+<p>hive.hdfs.authentication.type=NONE</p>
+<p>使用NONE带模拟的身份验证时，Presto会在访问HDFS时模拟正在运行查询的用户,访问HDFS</p>
+<p>hive.hdfs.impersonation.enabled=true</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/17/presto%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B0%83%E6%95%B4%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/" data-id="cksy3fx1j0060pnv9gzdbdc5j" data-title="PRESTO使用过程中调整参数记录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/presto/" rel="tag">presto</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java基础篇" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/17/java%E5%9F%BA%E7%A1%80%E7%AF%87/" class="article-date">
+  <time class="dt-published" datetime="2019-04-17T02:00:48.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/17/java%E5%9F%BA%E7%A1%80%E7%AF%87/">JAVA基础篇（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>（）</p>
+<p>1.JDK和JRE的区别</p>
+<p>对比项</p>
+<p>JDK</p>
+<p>JRE</p>
+<p>名称释义</p>
+<p>Java Development Kit</p>
+<p>Java Runtime Enviroment</p>
+<p>开发环境工具包,包含了各种类库和工具</p>
+<p>运行环境</p>
+<p>面向对象</p>
+<p>开发人员</p>
+<p>使用人员</p>
+<p>细节对比</p>
+<p>jdk/jre/bin中client和server文件夹下都包含一个jvm.dll</p>
+<p>jre中只有server下面的jvm.dll</p>
+<p>安装使用</p>
+<p>配置环境变量后使用的javac,jdk</p>
+<p>如果同时安装了jre和jdk使用的java要看环境变量中的配置顺序</p>
+<ul>
+<li>如果一台电脑安装两套以上的JRE，谁来决定呢？<blockquote>
+<p>这个重大任务就落在java.exe身上。Java.exe的工作就是找到合适的JRE来运行Java程序。 Java.exe依照底下的顺序来查找JRE：自己的目录下有没有JRE；父目录有没有JRE；查询注册表： [HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment] 所以java.exe的运行结果与你的电脑里面哪个JRE被执行有很大的关系。</p>
+</blockquote>
+</li>
+</ul>
+<p>2.equals和==的区别</p>
+<p>比较对象</p>
+<p>方法</p>
+<p>比较原则</p>
+<p>基本类型</p>
+<p>==</p>
+<p>比较值是否相等</p>
+<p>equals</p>
+<p>比较值是否相等</p>
+<p>引用类型</p>
+<p>==</p>
+<p>比较引用是否相等</p>
+<p>equals</p>
+<p>默认情况下使用 == 比较,若重写了equals方法,使用重写后的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">深入 String重写了Object的equals方法,把引用比较改为了值比较,故两个值同 string的 equals 结果为true</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li> 对象 hashCode() 与 equals() 是否对等: hashCode()相等 是否 一定 equals()为 true</li>
+</ol>
+<blockquote>
+<p>在JAVA中所有类都是Object类的子类, 在实际的实现中可以重写对应的方法,故不一定对等 例如 两个String 对象的hashCode可能一样 但实际 equals() = false</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HashSet 使用HashMap 将要保存的元素作为key,PRESENT 作为键值对put 到map中</span><br><span class="line">private static final Object PRESENT = new Object();</span><br><span class="line">即使用要放入的元素 的 hashCode方法作重复校验,使用hashMap的put方法,默认情况下会更新值,但不会更新key, </span><br><span class="line">所有当我们要实现自定义 Class 去重, 且保留最先进入的元素可以用hashset, 同时重写 hashCode()方法</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例如</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CaseTest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">DemoSet</span></span>&#123;</span><br><span class="line">        String id;</span><br><span class="line">        <span class="keyword">int</span> name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">DemoSet</span><span class="params">(String id, <span class="keyword">int</span> name)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.id = id;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> result = <span class="number">17</span>;</span><br><span class="line">            result = <span class="number">31</span> * result + (id == <span class="keyword">null</span> ? <span class="number">0</span> : id.hashCode());</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> DemoSet)&#123;</span><br><span class="line">                DemoSet ds = (DemoSet) obj;</span><br><span class="line">                <span class="keyword">if</span>(ds.id.equals(<span class="keyword">this</span>.id))&#123; <span class="comment">// ds.id == this.id</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> String.format(<span class="string">&quot;&#123;id:%s,name:%d&#125;&quot;</span>,id,name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        HashSet set = <span class="keyword">new</span> HashSet();</span><br><span class="line">        Set&lt;DemoSet&gt; demoSets = Sets.newConcurrentHashSet();</span><br><span class="line">        demoSets.add(<span class="keyword">new</span> DemoSet(<span class="string">&quot;1&quot;</span>,<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        Set&lt;DemoSet&gt; demoSets2 = Sets.newConcurrentHashSet();</span><br><span class="line">        demoSets2.add(<span class="keyword">new</span> DemoSet(<span class="string">&quot;1&quot;</span>,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        demoSets.addAll(demoSets2);</span><br><span class="line"></span><br><span class="line">        System.out.println(demoSets);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最终列表之后保留 1,1 注意字符串 == 比较引用</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li> final 修饰符的作用</li>
+</ol>
+<p>作用</p>
+<p>特性</p>
+<p>类</p>
+<p>最终类,不可继承</p>
+<p>方法</p>
+<p>不可重写</p>
+<p>变量</p>
+<p>常量,必须被初始化,初始化值不可修改<br>只要在对象构造完成之前初始化即可</p>
+<blockquote>
+<p>引申 为什么匿名内部类参数必须为final类型 局部内部类能访问方法中的所有的局部变量,问题在于 <strong>局部变量的生命周期与局部内部类的对象的生命周期的不一致性</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  设方法f被调用,从而在它的调用栈中生成了变量i,此时产生了一个局部内部类对象inner_object,它访问了该局部变量i.</span><br><span class="line">当方法f()运行结束后,局部变量i就已死亡了,不存在了</span><br><span class="line">但:局部内部类对象inner_object还可能一直存在(只能没有人再引用该对象时,它才会死亡),它不会随着方法f()运行结束死亡.</span><br><span class="line">这时:出现了一个&quot;荒唐&quot;结果:局部内部类对象 inner_object要访问一个已不存在的局部变量i!</span><br><span class="line">2.  当变量是final时,通过将final局部变量&quot;复制&quot;一份,复制品直接作为局部内部中的数据成员.这样:当局部内部类访问局部变量 时,其实真正访问的是这个局部变量的&quot;复制品&quot;(即:这个复制品就代表了那个局部变量).因此:当运行栈中的真正的局部变量死亡时,局部内部类对象仍可以 访问局部变量(其实访问的是&quot;复制品&quot;),给人的感觉:好像是局部变量的&quot;生命期&quot;延长了.</span><br><span class="line">3.  那么:核心的问题是:怎么才能使得:访问&quot;复制品&quot;与访问真正的原始的局部变量,其语义效果是一样的呢?</span><br><span class="line">4.  当变量是final时,若是基本数据类型,由于其值不变,因而:其复制品与原始的量是一样.语义效果相同.(若:不是final,就无法保证:复制品与原始变量保持一致了,因为:在方法中改的是原始变量,而局部内部类中改的是复制品)</span><br><span class="line">5.  当变量是final时,若是引用类型,由于其引用值不变(即:永远指向同一个对象),因而:其复制品与原始的引用变量一样,永远指向同一个对象(由于是 final,从而保证:只能指向这个对象,再不能指向其它对象),达到:局部内部类中访问的复制品与方法代码中访问的原始对象,永远都是同一个即:语义效 果是一样的.否则:当方法中改原始变量,而局部内部类中改复制品时,就无法保证:复制品与原始变量保持一致了(因此:它们原本就应该是同一个变量.) </span><br><span class="line">from https://feiyeguohai.iteye.com/blog/1500108</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>java中Math函数易错知识 Math.round(-1.5) = -1 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* &lt;ul&gt;&lt;li&gt;If the argument is NaN, the result is 0.</span><br><span class="line">* &lt;li&gt;If the argument is negative infinity or any value less than or</span><br><span class="line">* equal to the value of &#123;@code Integer.MIN_VALUE&#125;, the result is</span><br><span class="line">* equal to the value of &#123;@code Integer.MIN_VALUE&#125;.</span><br><span class="line">* &lt;li&gt;If the argument is positive infinity or any value greater than or</span><br><span class="line">* equal to the value of &#123;@code Integer.MAX_VALUE&#125;, the result is</span><br><span class="line">* equal to the value of &#123;@code Integer.MAX_VALUE&#125;.&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+ 距离一致，取较大的值 Math.rint(-10.5) = -10.0 Math.rint(-11.5) = -12.0 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StrictMath.rint(a)</span><br><span class="line">x取整为它最接近的整数，如果x与两个整数的距离相等，则返回其中为偶数的那一个</span><br></pre></td></tr></table></figure>
+ 6.java的基本数据类型 java中有8中基本类型 byte boolean char short int float long double</li>
+</ol>
+<p>基本类型</p>
+<p>字节长度</p>
+<p>默认值</p>
+<p>byte</p>
+<p>1</p>
+<p>0</p>
+<p>short</p>
+<p>2</p>
+<p>0</p>
+<p>int</p>
+<p>4</p>
+<p>0</p>
+<p>long</p>
+<p>8</p>
+<p>0L</p>
+<p>float</p>
+<p>4</p>
+<p>0.0f</p>
+<p>double</p>
+<p>8</p>
+<p>0.0d</p>
+<p>char</p>
+<p>2</p>
+<p>‘\u0000’</p>
+<p>boolean</p>
+<p>1</p>
+<p>false</p>
+<ol start="7">
+<li> Java中字符串操作类，String StringBuffer StringBuilder 对比</li>
+</ol>
+<p>操作类</p>
+<p>特点</p>
+<p>String</p>
+<p>声明不可变对象，每次操作产生新的对象，修改指针指向</p>
+<p>StringBuffer</p>
+<p>线程安全，每次可操作原有对象</p>
+<p>StringBuilder</p>
+<p>线程不安全，更高性能，操作原有对象</p>
+<p>StringBUffer 在方法上使用 synchronized关键字 保证线程安全</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/17/java%E5%9F%BA%E7%A1%80%E7%AF%87/" data-id="cksy3fx01003mpnv94yh718pl" data-title="JAVA基础篇（一）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-常用数据源获取字段备注信息" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/16/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E6%BA%90%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%A4%87%E6%B3%A8%E4%BF%A1%E6%81%AF/" class="article-date">
+  <time class="dt-published" datetime="2019-04-16T04:37:28.000Z" itemprop="datePublished">2019-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/16/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E6%BA%90%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%A4%87%E6%B3%A8%E4%BF%A1%E6%81%AF/">常用数据源获取字段备注信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>mysql</p>
+<p>show full columns from table_name;</p>
+<p>hive</p>
+<p>desc table_name;</p>
+<p>presto</p>
+<p>desc table_name;</p>
+<p>postgresql</p>
+<p>SELECT<br>col_description (A .attrelid, A .attnum) AS COMMENT,<br>format_type (A .atttypid, A .atttypmod) AS TYPE,<br>A .attname AS NAME,<br>A .attnotnull AS NOTNULL<br>FROM<br>(SELECT<br>pg_class.oid,*<br>FROM<br>pg_class<br>INNER JOIN pg_namespace<br>ON concat(pg_namespace.nspname,’.’,pg_class.relname)= ‘table_name’<br>AND pg_namespace.oid = pg_class.relnamespace) C,<br>pg_attribute AS A<br>WHERE A .attrelid = C .oid<br>AND A .attnum &gt; 0</p>
+<p>oracle</p>
+<p>/* user_tab_columns：<br>table_name,column_name,data_type,data_length,data_precision,data_scale,nullable,column_id等<br>all_tab_columns ：<br>ower,table_name,column_name,data_type,data_length,data_precision,data_scale,nullable,column_id等<br>dba_tab_columns：<br>ower,table_name,column_name,data_type,data_length,data_precision,data_scale,nullable,column_id等<br>*/<br>SELECT<br>column_name,<br>comments<br>FROM<br>all_col_comments<br>WHERE<br>CONCAT (<br>CONCAT (OWNER, ‘.’),<br>table_name<br>) = ‘table_name’  </p>
+<p>sql server</p>
+<p><code>SELECT</code> <br><code>表名       = case</code> <code>when</code> <code>a.colorder=1 then</code> <code>d.name</code> <code>else</code> <code>&#39;&#39;</code> <code>end,</code><br><code>表说明     = case</code> <code>when</code> <code>a.colorder=1 then</code> <code>isnull(f.value,&#39;&#39;) else</code> <code>&#39;&#39;</code> <code>end,</code><br><code>字段序号   = a.colorder,</code><br><code>字段名     = a.name,</code><br><code>标识       = case</code> <code>when</code> <code>COLUMNPROPERTY( a.id,a.name,&#39;IsIdentity&#39;)=1 then</code> <code>&#39;√&#39;else</code> <code>&#39;&#39;</code> <code>end,</code><br><code>主键       = case</code> <code>when</code> <code>exists(SELECT</code> <code>1 FROM</code> <code>sysobjects where</code> <code>xtype=&#39;PK&#39;</code> <code>and</code> <code>parent_obj=a.id and</code> <code>name</code> <code>in</code> <code>(</code><br><code>SELECT</code> <code>name</code> <code>FROM</code> <code>sysindexes WHERE</code> <code>indid in( SELECT</code> <code>indid FROM</code> <code>sysindexkeys WHERE</code> <code>id = a.id AND</code> <code>colid=a.colid))) then</code> <code>&#39;√&#39;</code> <code>else</code> <code>&#39;&#39;</code> <code>end,</code><br><code>类型       = b.name,</code><br><code>占用字节数 = a.length,</code><br><code>长度       = COLUMNPROPERTY(a.id,a.name,&#39;PRECISION&#39;),</code><br><code>小数位数   = isnull(COLUMNPROPERTY(a.id,a.name,&#39;Scale&#39;),0),</code><br><code>允许空     = case</code> <code>when</code> <code>a.isnullable=1 then</code> <code>&#39;√&#39;else</code> <code>&#39;&#39;</code> <code>end,</code><br><code>默认值     = isnull(e.text,&#39;&#39;),</code><br><code>字段说明   = isnull(g.[value],&#39;&#39;)</code><br><code>FROM</code> <br><code>syscolumns a</code><br><code>left</code> <code>join</code> <br><code>systypes b</code><br><code>on</code> <br><code>a.xusertype=b.xusertype</code><br><code>inner</code> <code>join</code> <br><code>sysobjects d</code><br><code>on</code> <br><code>a.id=d.id  and</code> <code>d.xtype=&#39;U&#39;</code> <code>and</code>  <code>d.name&lt;&gt;&#39;dtproperties&#39;</code><br><code>left</code> <code>join</code> <br><code>syscomments e</code><br><code>on</code> <br><code>a.cdefault=e.id</code><br><code>left</code> <code>join</code> <br><code>sys.extended_properties   g</code><br><code>on</code> <br><code>a.id=G.major_id and</code> <code>a.colid=g.minor_id</code><br><code>left</code> <code>join</code> <br> <br><code>sys.extended_properties f</code><br><code>on</code> <br><code>d.id=f.major_id and</code> <code>f.minor_id=0</code><br><code>where</code> <br><code>d.name=&#39;C_PARTY_SPREADER&#39;</code>    <code>--如果只查询指定表,加上此条件</code><br><code>order</code> <code>by</code> <br><code>a.id,a.colorder</code><br>-- from<br><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/120080672">https://bbs.csdn.net/topics/120080672</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/16/%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E6%BA%90%E8%8E%B7%E5%8F%96%E5%AD%97%E6%AE%B5%E5%A4%87%E6%B3%A8%E4%BF%A1%E6%81%AF/" data-id="cksy3fx2m0088pnv97b4wh4jb" data-title="常用数据源获取字段备注信息" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-browserhistory和hashhistory的差别-history" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/06/browserhistory%E5%92%8Chashhistory%E7%9A%84%E5%B7%AE%E5%88%AB-history/" class="article-date">
+  <time class="dt-published" datetime="2019-04-06T12:33:23.000Z" itemprop="datePublished">2019-04-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/06/browserhistory%E5%92%8Chashhistory%E7%9A%84%E5%B7%AE%E5%88%AB-history/">browserHistory和hashHistory的差别  history</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1.browserHistory和hashHistory的差别</p>
+<p><code>hashHistory</code> 使用如 <code>https://cdn.com/#/users/123</code> 这样的 URL，取井号后面的字符作为路径。<code>browserHistory</code> 则直接使用 <code>https://cdn.com/users/123</code> 这样的 URL。使用 <code>hashHistory</code> 时浏览器访问到的始终都是根目录下 <code>index.html</code>。使用 <code>browserHistory</code> 则需要服务器做好处理 URL 的准备，处理应用启动最初的 <code>/</code> 这样的请求应该没问题，但当用户来回跳转并在 <code>/users/123</code> 刷新时，服务器就会收到来自 <code>/users/123</code> 的请求，这时你需要配置服务器能处理这个 URL 返回正确的 <code>index.html</code>。如果你能控制服务端，我们推荐使用 <code>browserHistory</code> </p>
+<p>-– From <a target="_blank" rel="noopener" href="https://pro.ant.design/docs/deploy-cn">https://pro.ant.design/docs/deploy-cn</a></p>
+<p>2.history</p>
+<p>histoty 是 RR4 的两大重要依赖之一（另一个当然是 React 了），在不同的 javascript 环境中， history 以多种能够行驶实现了对会话（session）历史的管理。</p>
+<p>我们会经常使用以下术语：<br>“browser history” - history 在 DOM 上的实现，用于支持 HTML5 history API 的浏览器<br>“hash history” - history 在 DOM 上的实现，用于旧版浏览器。<br>“memory history” - history 在内存上的实现，用于测试或非 DOM 环境（例如 React Native）。</p>
+<p>history 对象通常具有以下属性和方法：</p>
+<p>length: number 浏览历史堆栈中的条目数<br>action: string 路由跳转到当前页面执行的动作，分为 PUSH, REPLACE, POP<br>location: object 当前访问地址信息组成的对象，具有如下属性：<br>pathname: string URL路径<br>search: string URL中的查询字符串<br>hash: string URL的 hash 片段<br>state: string 例如执行 push(path, state) 操作时，location 的 state 将被提供到堆栈信息里，state 只有在 browser 和 memory history 有效。<br>push(path, [state]) 在历史堆栈信息里加入一个新条目。<br>replace(path, [state]) 在历史堆栈信息里替换掉当前的条目<br>go(n) 将 history 堆栈中的指针向前移动 n。<br>goBack() 等同于 go(-1)<br>goForward 等同于 go(1)<br>block(prompt) 阻止跳转</p>
+<p>history 对象是可变的，因为建议从 的 prop 里来获取 location，而不是从 history.location 直接获取。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/06/browserhistory%E5%92%8Chashhistory%E7%9A%84%E5%B7%AE%E5%88%AB-history/" data-id="cksy3fwyn0018pnv900c2etzr" data-title="browserHistory和hashHistory的差别  history" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hadoop联邦" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/04/01/hadoop%E8%81%94%E9%82%A6/" class="article-date">
+  <time class="dt-published" datetime="2019-04-01T02:24:39.000Z" itemprop="datePublished">2019-04-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/04/01/hadoop%E8%81%94%E9%82%A6/">HADOOP联邦</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Federation即为“联邦”，该特性允许一个HDFS集群中存在多个NameNode同时对外提供服务，这些NameNode分管一部分目录（水平切分），彼此之间相互隔离，但共享底层的DataNode存储资源。</p>
+<p>在hadoop1.x中HDFS的架构</p>
+<p>文件的存储是放在块上的（Block Storage）<br>文件的元数据是放在namenode上的，只有一个Namespace（命名空间）。随着HDFS的数据越来越多，单个namenode的资源使用必然会达到上限，而且namenode的负载能力也会越来越高，限制HDFS的性能。</p>
+<p>hdfs主要有两层架构：<br>1.命名空间（namespace）<br>由目录、文件、块组成。<br>支持创建、删除、修改、列举命名空间相关系统的操作。<br>2.块的存储<br>管理Block（在datanode中的完成）<br>通过控制注册以及阶段性的心跳，来保证datanode的正常运行。<br>运行块的信息报该哦啊，维护块的位置信息。<br>创建、删除、修改、查询块。<br>管理副本和副本位置<br>存储：提供对块的读写（由namenode提供）</p>
+<p>单namenode架构的局限性</p>
+<p>1.NameSpace（命名空间的限制）<br>由于Namenode再内存中存储所有的元数据（metadata），因此单个Namenode所能存储的对象（文件+块）数目收到Namenode所在JVM的heap（堆） size的限制。50G的heap能够存储20亿个对象，这20亿个对象支持4000个datanode，12PB的存储（假设文件爱呢平均大小为40MB）。随着数据的飞速增长，存储的需求也随之增长。单个datanode从4T增长到36T，集群的尺寸增长到8000个datanode。存储的需求从12PB增长到大于100PB。（内存的限制）<br>2.性能的瓶颈<br>由于是单个Namenode的HDFS架构，因此整个HDFS文件系统的吞吐量受限于单个NameNode的吞吐量。<br>3.隔离问题<br>由于HDFS仅有一个Namenode，无法隔离各个程序，因此HDFS上的一个实验程序很可能影响整个HDFS上运行的程序。<br>4.集群的可用性<br>在只有一个Namenode的HDFS中，此Namenode的宕机无疑会导致整个集群的不可用。（低可用性）<br>5.Namespace和Block Management的紧密耦合<br>Hadoop 1.x在Namenode中的Namespace和Block Management组合的紧密耦合关系会导致如果想要实现另外一套Namenode方案比较困难，而且也限制了其他想要直接使用块存储的应用。</p>
+<p>为什么纵向扩展目前的NameNode不可行？</p>
+<p>比如将NameNode的Heap空间扩大到512GB。<br>1.启动问题，启动花费时间太长。（Hadoop 1.x具有50GB Heap Namenode的HDFS启动一次大概需要30分钟到2小时）<br>2.Namenode在Full GC时，如果发生错误将会导致整个集群宕机。<br>3.对大JVM Heap进行调试比较困难。优化Namenode的内存使用性价比比较低。</p>
+<p>hadoop2.x</p>
+<p>增加了Federation的概念</p>
+<p>为什么要引入Federation</p>
+<p>1.采用Federation的最主要的原因是简单，Federation能够快速的解决大部分单Namenode的问题。<br>2.Federation是简单鲁棒的设计，由于联邦中各个Namenode之间是相互独立的。Federation整个核心设实现大概用了3.5个月。大部分改变是在Datanode、Config和Tools，而Namenode本身的改动非常少，这样Namenode的原先的鲁棒性不会受到影响。比分布式的Namenode简单，虽然这种事先的扩展性比起真正的分布式的Namenode要小些，但是可以迅速满足需求。<br>3.Federation良好的向后兼容性，已有的单Namenode的部署配置不需要任何改变就可以继续工作。</p>
+<p>Federation架构设计</p>
+<p>为了水平扩展Namenode，Federation使用了多个独立的Namenode/NameSpace。这些Namenode之间是联合的，也就是说，他们之间相互独立且不需要互相协调，各自分工，管理自己的区域。分布式的datanode被用作通用的数据块存储存储设备。每个DataNode要向集群中所有的namenode注册，且周期性的向所有namenode发送心跳和块报告，并执行来自所有namenode的命令。<br>所谓Block Pool（块池）就是属于单个命名空间的一组block（块）。<br>每一个DataNode为所有的Block Pool存储块。DataNode是一个物理概念，而Block<br>Pool是一个重新将block划分的逻辑概念。同一个datanode中可以存着属于多个Block Pool的多个块。<br>Block Pool允许一个命名空间在不通知其他命名空间的情况下为一个新的block创建Block ID。同时一个Namenode失效不会影响其下Datanode为其他Namenode服务。<br>每个Block Pool内部自治，也就是说各自管理各自的block，不会与其他Block Pool交流。一个Namenode挂掉了，不会影响其他NameNode。<br>当DN与NN建立联系并开始会话后自动建立Block Pool。每个block都有一个唯一的表示，这个表示我们称之为扩展块ID,在HDFS集群之间都是惟一的，为以后集群归并创造了条件。<br>DN中的数据结构都通过块池ID索引，即DN中的BlockMap，storage等都通过BPID索引。<br>某个NN上的NameSpace和它对应的Block Pool一起被称为NameSpace Volume。它是管理的基本单位。当一个NN/NS被删除后，其所有DN上对应的Block Pool也会被删除。当集群升级时，每个NameSpace Volume作为一个基本单元进行升级。<br>Federation HDFS与Hadoop 1.xHDFS的比较</p>
+<p>Hadoop 1.xHDFS只有一个命名空间（Namespace），它使用全部的块。Federation HDFS中有多个独立的命名空间，并且每一个命名空间使用一个块池。<br>Hadoop 1.xHDFS中只有一组块。而Federation HDFS中有多组独立的块。块池就是属于同一个命名空间的一组块。<br>Hadoop 1.x HDFS由一个Namenode和一组DataNode组成。而Federation HDFS由多个Namenode和一组DataNode，每一个datanode回味多个块池存储块。<br>datanode改进</p>
+<p>在datanode中，对应于每个Namenode都有一条相应的县城<br>每个DN回去每一个NN注册，并且周期性的给所有的NN发送心跳及DN的使用报告。<br>DN还会给NN发送其所在的块池的快报告<br>由于有多个NN同时存在，因此任何一个NN都可以随时动态加入、删除和更新。<br>Namespace Volume（命名空间卷）</p>
+<p>一个Namespace和它的块池合并在一起成为Namespace Volume。<br>Namespace Volume是一个独立完整的管理单元。<br>当一个Namenode/Namespace被删除，与之相对应的块池也被删除。<br>在升级时，每一个Manespace Volume也会整体作为一个单元。<br>ClusterId</p>
+<p>在HDFS Federation中添加了ClusterID用来区分汲取中的每一个节点。<br>当格式化一个Namenode时，这个Cluster Id会自动生成或者手动提供。<br>在格式化统一集群中其他Namenode时会用到这个ClusterID。<br>Federation的主要优点</p>
+<p>1.namespace是一个可扩展的，相当于namenode是一个分布式的。<br>2.性能提升了，操作不会由于一个namenode的吞吐量收到限制。</p>
+<h2 id="3-隔离性。每个namenode只管理一部分文件-。不同用户可以被namespace隔离。"><a href="#3-隔离性。每个namenode只管理一部分文件-。不同用户可以被namespace隔离。" class="headerlink" title="3.隔离性。每个namenode只管理一部分文件 。不同用户可以被namespace隔离。"></a>3.隔离性。每个namenode只管理一部分文件 。不同用户可以被namespace隔离。</h2><p>作者：杯底囚人<br>来源：CSDN<br>原文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/beidiqiuren/article/details/51549007">https://blog.csdn.net/beidiqiuren/article/details/51549007</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/04/01/hadoop%E8%81%94%E9%82%A6/" data-id="cksy3fwzj002opnv9gjbm9l3v" data-title="HADOOP联邦" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-javaannotation注解-原理到案例" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/03/24/javaannotation%E6%B3%A8%E8%A7%A3-%E5%8E%9F%E7%90%86%E5%88%B0%E6%A1%88%E4%BE%8B/" class="article-date">
+  <time class="dt-published" datetime="2019-03-24T14:48:12.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/03/24/javaannotation%E6%B3%A8%E8%A7%A3-%E5%8E%9F%E7%90%86%E5%88%B0%E6%A1%88%E4%BE%8B/">Java:Annotation(注解)--原理到案例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Annotation为何而来"><a href="#1-Annotation为何而来" class="headerlink" title="1.Annotation为何而来"></a>1.Annotation为何而来</h2><ol>
+<li> JDK5开始，java增加了对元数据(MetaData)的支持，通过Annotation(注解）来实现。Annotation提供了为程序元素设置元数据的方法。**<a target="_blank" rel="noopener" href="http://baike.baidu.com/link?url=etK4p_wPODnDqBcUaZKGj2yv09H-jtTdjEwY8Ou2W_-U3OqW_xMfJsKMks1wuyKQjLVIGqCjT7e_nNX4q-QKj_J7aS5OUCS6YGDDUyJ-eOHCYxihaCV7kL-J_zAnWPjF">元数据</a>：描述数据的数据。**</li>
+<li> <strong>Annotation可以设置元数据程序元素：</strong>包括修饰包、类、构造器、方法、成员变量、参数、局部变量的声明。元数据的信息被存储在Annotation的“name=value”对中。</li>
+<li> <strong>程序使用方式</strong>：数据的信息被存储在Annotation的“name=value”对中。Annotation是一个接口，程序可以通过反射来获取指定程序元素的Annotation对象，然后通过Annotation对象来取得注解里的元数据。</li>
+<li> Annotation不影响程序代码的执行，无论增加、删除Annotation，代码都始终如一的执行。如果希望让程序中的Annotation在运行时起一定的作用，只有通过某种配套工具对Annotation中的信息进行访问和处理。<strong>jdk7之前访问和处理Annotation的工具统称APT（Annotation Processing Tool)(jdk7后就被废除了），jdk7及之后采用了JSR 269 API。相关原因<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/7/docs/technotes/guides/apt/">官方说明</a> 、 <a target="_blank" rel="noopener" href="http://openjdk.java.net/jeps/117">原因</a></strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">public class User &#123;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue(strategy=GenerationType.AUTO)</span><br><span class="line">    private Long uid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么使用Annotation"><a href="#为什么使用Annotation" class="headerlink" title="为什么使用Annotation"></a>为什么使用Annotation</h2><ol>
+<li>  Annotation就像代码里的特殊标记，这些标记可以在<strong>编译、类加载、运行时</strong>被读取。读取到了程序元素的元数据，就可以执行相应的处理。通过注解，程序开发人员可以在不改变原有逻辑的情况下，在源代码文件中嵌入一些补充信息。代码分析工具、开发工具和部署工具可以通过解析这些注解获取到这些补充信息，从而进行验证或者进行部署等。</li>
+<li> 有些注解只是为了防止我们犯低级错误，通过这些注解，让编译器在编译期就可以检查出一些低级错误，对于这些注解，可以加或者不加，当然还有很多其他注解都是起辅助编程作用。但是有一些注解的作用很重要，不加的话就实现不了一些功能，比如，数据持久化操作中，通过@Entity注解来标识持久化实体类，如果不使用该注解程序就识别不了持久化实体类。</li>
+</ol>
+<p> </p>
+<h2 id="二-基本Annotation"><a href="#二-基本Annotation" class="headerlink" title="二. 基本Annotation"></a>二. 基本Annotation</h2><blockquote>
+<p>Java提供了5个基本的Annotation</p>
+</blockquote>
+<ol>
+<li> @Override ：限定重写父类方法，它可以强制一个子类必须覆盖父类的方法。<strong>写在子类的方法上</strong>，在编译期，编译器检查这个方法，检查父类必须包含该方法，否则编译出错。该注解只能修饰方法，在编译期被读取。</li>
+<li> @Deprecated：用于表示某个程序元素（类、方法等）已过时。编译时读取，编译器编译到过时元素会给出警告。</li>
+<li>@SuppressWarnings：抑制编译警告，被该注解修饰的程序元素（以及该程序元素中的所有子元素）取消显示指定的编译警告。<br> 比如：如果程序使用没有泛型限制的集合会引起编译器警告，为了避免这种警告可以使用该注解<ol>
+<li>  @SuppressWarnings(value=”unchecked”) unchecked异常：运行时异常。是RuntimeException的子类，不需要在代码中显式地捕获unchecked异常做处理。</li>
+<li>  @SuppressWarnings(“deprecation”)</li>
+</ol>
+</li>
+<li> @SafeVarargs (java7新增）：去除“堆污染”警告</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/palmtale/article/details/9302711">堆污染</a>：把一个不带泛型的对象赋给一个带泛型的变量时就会发生堆污染。<br>例如：下面代码引起堆污染，会给出警告</p>
+<p>List l2 = new ArrayList();<br>List ls = l2;    </p>
+<p>三种方式去掉上面方法产生的警告<br>1.使用注解@SafeVarargs修饰引发该警告的方法或构造器。<br>2.使用@SuppressWarnings(“unchecked”) 修饰。<br>3.使用编译器参数命令：-Xlint:varargs</p>
+<p> 5.  @Functionlnterface （java8新增）：修饰函数式接口</p>
+<ul>
+<li>使用该注解修饰的接口必须是函数式接口，不然编译会出错。那么什么是函数式接口？答：如果接口中只有一个抽象方法（可以包含多个default方法或static方法），就是函数式接口。<br>  如：</li>
+</ul>
+<p>@Functionlnterface<br>public interface FunInterface{<br>  static void foo(){<br>      System.out.println(“foo类方法”); }<br>  default void bar(){<br>      System.out.println(“bar默认方法”); }<br>  void test();//只定义一个抽象方法，默认public<br>}</p>
+<h2 id="三-JDK元Annotation-修饰注解的注解"><a href="#三-JDK元Annotation-修饰注解的注解" class="headerlink" title="三. JDK元Annotation(修饰注解的注解)"></a>三. JDK元Annotation(修饰注解的注解)</h2><ul>
+<li>  元注解(Meta Annotation)：和元数据一样，<strong>修饰注解的注解</strong>。</li>
+<li>  java提供了6个元注解（Meta Annotation)，在java.lang.annotation中。<strong>其中5个用于修饰其他的Annonation定义</strong>。而@Repeatable专门用于定义Java8新增的重复注解。所以要定义注解必须使用到5个元注解来定义。</li>
+</ul>
+<h2 id="Retention（英文：保留）"><a href="#Retention（英文：保留）" class="headerlink" title="@Retention（英文：保留）"></a>@Retention（英文：保留）</h2><ul>
+<li>  用于指定被修饰的Annotation可以保留多长时间，只能修饰Annotation定义。@Retention包含一个RetentionPolicy类型的value成员变量，使用@Retention必须为该value成员变量指定值。value成员变量的值有3个选择：</li>
+<li>  RetentionPolicy.CLASS:编译器将把Annotation记录在class文件中。当运行java程序时，JVM不可获取Annotation信息。（默认值）</li>
+<li>  RetentionPolicy.RUNTIME:编译器将把Annotation记录在class文件中。当运行java程序时，JVM也可获取Annotation信息，程序可以通过反射获取该Annotation信息</li>
+<li>RetentionPolicy.SOURCE:Annotation只保留在源代码中（.java文件中），编译器直接丢弃这种Annotation。<br>  案例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//定义下面的Testable Annotation保留到运行时，也可以使用value=RetentionPolicy.RUNTIME</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface Testable&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Target-目标"><a href="#Target-目标" class="headerlink" title="@Target ( 目标)"></a>@Target ( 目标)</h2><p>用于指定被修饰的Annotation能用于修饰哪些程序单元，只能修饰Annotation定义。它包含一个名为value的成员变量，取值如下：</p>
+<ul>
+<li>  @Target(ElementType.ANNOTATION_TYPE)：指定该该策略的Annotation只能修饰Annotation.</li>
+<li>  @Target(ElementType.TYPE) //接口、类、枚举、注解</li>
+<li>  @Target(ElementType.FIELD) //成员变量（字段、枚举的常量）</li>
+<li>  @Target(ElementType.METHOD) //方法</li>
+<li>  @Target(ElementType.PARAMETER) //方法参数</li>
+<li>  @Target(ElementType.CONSTRUCTOR) //构造函数</li>
+<li>  @Target(ElementType.LOCAL_VARIABLE)//局部变量</li>
+<li>  @Target(ElementType.PACKAGE) ///修饰包定义</li>
+<li>  @Target(ElementType.TYPE_PARAMETER) //java8新增，后面Type Annotation有介绍</li>
+<li>  @Target(ElementType.TYPE_USE) ///java8新增，后面Type Annotation有介绍</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Target(ElementType.FIELD)</span><br><span class="line">public @interface ActionListenerFor&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h2><ul>
+<li>  用于指定被修饰的Annotation将被javadoc工具提取成文档。即说明该注解将被包含在javadoc中。</li>
+</ul>
+<h2 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h2><ul>
+<li>  用于指定被修饰的Annotation具有继承性。即子类可以继承父类中的该注解。—》注解@WW被元注解@Inherited修饰，把@WW添加在类Base上，则Base的所有子类也将默认使用@WW注解。</li>
+</ul>
+<h1 id="5-自定义注解"><a href="#5-自定义注解" class="headerlink" title="5.自定义注解"></a>5.自定义注解</h1><ul>
+<li>  使用@interface关键字</li>
+<li>  注解放在修饰元素的上面</li>
+<li><h2 id="5-1一个简单的注解"><a href="#5-1一个简单的注解" class="headerlink" title="5.1一个简单的注解"></a>5.1一个简单的注解</h2>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//定义一个简单的注解Test</span><br><span class="line">public @interface Test&#123;&#125;</span><br></pre></td></tr></table></figure>
+  默认情况下，Annotation可以修饰任何程序元素:类、接口、方法等。  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public class MyClass&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-2带成员变量的注解"><a href="#5-2带成员变量的注解" class="headerlink" title="5.2带成员变量的注解"></a>5.2带成员变量的注解</h2><ul>
+<li>  以无形参的方法形式来声明Annotation的成员变量，方法名和返回值定义了成员变量名称和类型。使用default关键字设置初始值。没设置初始值的变量则使用时必须提供，有初始值的变量可以设置也可以不设置。</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//定义带成员变量注解MyTag</span><br><span class="line">@Rentention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.METHOD)</span><br><span class="line">public @interface MyTag&#123;</span><br><span class="line">  //定义两个成员变量，以方法的形式定义</span><br><span class="line">  String name();</span><br><span class="line">  int age() default 32;</span><br><span class="line">&#125;</span><br><span class="line">//使用</span><br><span class="line">public class Test&#123;</span><br><span class="line">  @MyTag(name=&quot;liang&quot;)</span><br><span class="line">  public void info()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-3结论"><a href="#5-3结论" class="headerlink" title="5.3结论"></a>5.3结论</h2><ul>
+<li>  没带成员变量的Annotation被称为标记，这种注解仅利用自身的存在与否来提供信息，如@Override等。</li>
+<li>  包含成员变量的Annotation称为元数据Annotation,因为他们提供更多元数据。</li>
+</ul>
+<h2 id="5-4提取Annotation信息"><a href="#5-4提取Annotation信息" class="headerlink" title="5.4提取Annotation信息"></a>5.4提取Annotation信息</h2><ul>
+<li>使用Annotation修饰了类、方法、成员变量等程序元素之后，这些Annotation不会自己生效，必须由开发者通过API来提取并处理Annotation信息。</li>
+<li>Annotation接口是所有注解的父接口。</li>
+<li><strong>思路：</strong>通过反射获取Annotation，将Annotation转换成具体的注解类，在调用注解类定义的方法获取元数据信息。</li>
+<li><em>获取Annotation</em>*</li>
+<li>AnnotatedElement接口(java.lang.reflect反射包中)代表程序中可以接受注解的程序元素。即所有可以接受注解的程序元素都会实现该接口。而该接口就提供了获取Annotation的方法，它的所有实现类也便拥有了这些方法。常见的实现类：</li>
+<li>Class:类定义。</li>
+<li>Constructor:构造器定义</li>
+<li>Field:类的成员变量定义</li>
+<li>Method:类的方法定义。</li>
+<li>Package:类的包定义。</li>
+<li>由此可见，AnnotatedElement接口的实现类都是一些反射技术设计到的类，所以访问Annotation信息也是通过反射技术来实现的。</li>
+<li>java.lang.reflect包下还包含实现反射功能的工具类，java5开始，java.lang.reflect包提供的反射API增加了读取允许Annotation的能力。但是，<em><em>只有定义Annotation时使用了@Rentention(RetentionPolicy.RUNTIME)修饰，该Annotation才会在运行时可见，JVM才会在装载</em>.class文件时读取保存在class文件中的Annotation</em>*。</li>
+<li>AnnotatedElement接口获取Annotation信息的方法：</li>
+<li><T extends Annotation> T getAnnotation(Class<T> annotationClass)：返回修饰该程序元素的指定类型的注解，不存在则返回 null。</li>
+<li><T extends Annotation> T getDeclaredAnnotation(Class<T> annotationClass)：返回直接修饰该程序元素的指定类型的注解，不存在则返回 null。 （java8新增）</li>
+<li>Annotation[] getAnnotations()：返回此元素上存在的所有注解。</li>
+<li>Annotation[] getDeclaredAnnotations()：返回<strong>直接</strong>存在于此元素上的所有注解。</li>
+<li>boolean isAnnotationPresent (Class&lt; ? extends Annotation&gt; annotationClass)：如果指定类型的注解存在于此元素上，则返回 true，否则返回 false。<br>  java8新增了重复注解功能，所以下面两个方法在java8之后才有：</li>
+<li><T extends Annotation> T[] getAnnotationsByType(Class<T> annotationClass)：返回修饰该程序元素的指定类型的多个注解，不存在则返回 null。</li>
+<li><T extends Annotation> T[] getDeclaredAnnotationsByType(Class<T> annotationClass)：返回直接修饰该程序元素的指定类型的多个注解，不存在则返回 null。</li>
+<li><strong>案例</strong></li>
+<li>需求：获取Test类的info方法上的所有注解，并打印出来，如果包含MyTag注解，则再输出MyTag注解的元数据。</li>
+<li>  实现：正如我们所知，仅在程序中使用注解是不起任何作用的，必须使用注解处理工具来处理程序中的注解。下面就写一个注解处理类。处理注解的思路如下：通过反射获取Test的类描述类Class，然后在获取其info方法描述类Method，因为Method实现了AnnotatedElement接口，所以调用getAnnotations方法获取所有注解，在遍历打印。</li>
+</ul>
+  MyTag注解处理器  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class MyTagAnnotationProcessor &#123;</span><br><span class="line">    public static void process(String className) throws ClassNotFoundException&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">             Class clazz =Class.forName(className);</span><br><span class="line">             Annotation[] aArray= clazz.getMethod(&quot;info&quot;).getAnnotations();</span><br><span class="line">             for( Annotation an :aArray)&#123;</span><br><span class="line">                 System.out.println(an);//打印注解</span><br><span class="line">                 if( an instanceof MyTag)&#123;</span><br><span class="line">                     MyTag tag = (MyTag) an;</span><br><span class="line">                     System.out.println(&quot;tag.name():&quot;+tag.name());</span><br><span class="line">                     System.out.println(&quot;tag.age():&quot;+tag.age());</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125; catch (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (SecurityException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  场景测试  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            MyTagAnnotationProcessor.process(&quot;annotation.Test&quot;);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+  测试结果  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@annotation.MyTag(age=25, name=liang)</span><br><span class="line">tag.name():liang</span><br><span class="line">tag.age():25</span><br></pre></td></tr></table></figure>
+<h1 id="6-使用Annotation示例"><a href="#6-使用Annotation示例" class="headerlink" title="6.使用Annotation示例"></a>6.使用Annotation示例</h1><ul>
+<li>  想找spring中关于注解定义、使用、注解处理的代码，注解处理的代码没找到，不知道在哪个类中。</li>
+</ul>
+<h1 id="7-Java8新增的重复注解"><a href="#7-Java8新增的重复注解" class="headerlink" title="7.Java8新增的重复注解"></a>7.Java8新增的重复注解</h1><ul>
+<li>  在java8以前，同一个程序元素只能使用一个相同类型的Annotation。如下代码是错误的。</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//代码错误，不可以使用相同注解在一个程序元素上。</span><br><span class="line"> @MyTag(name=&quot;liang&quot;)</span><br><span class="line">@MyTag(name=&quot;huan&quot;)</span><br><span class="line">public void info()&#123;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-1-java8之前实现思路"><a href="#7-1-java8之前实现思路" class="headerlink" title="7.1 java8之前实现思路"></a>7.1 java8之前实现思路</h2><ul>
+<li>要想达到使用多个注解的目的，可以使用注解”容器“：其实就是新定义一个注解DupMyTag ，让这个DupMyTag 注解的成员变量value的类型为注解MyTag数组。这样就可以通过注解DupMyTag 使用多个注解MyTag了。换个思路实现，只是书写形式不一样而已。</li>
+<li><em>操作步骤2步：1编写需要重复的注解@MyTag，上面定义过了。2.编写”容器“注解DupMyTag 。</em>*</li>
+<li>  如下DupMyTag 注解：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(value=ElementType.METHOD)</span><br><span class="line">public @interface DupMyTag &#123;</span><br><span class="line">    //成员变量为MyTag数组类型</span><br><span class="line">    MyTag[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  使用@DupMyTag，为@DupMyTag 注解的成员变量设置多个@MyTag注解，从而达到效果。</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//代码正确，换个思路实现，在同一个程序元素上使用了多个相同的注解MyTag</span><br><span class="line"> @DupMyTag (&#123; @MyTag(name=&quot;liang&quot;),@MyTag(name=&quot;huan&quot;,age=18)&#125;)</span><br><span class="line">public void info()&#123;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+  打印注解输出内容如下：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@annotation.DupMyTag(value=[@annotation.MyTag(age=25, name=liang), @annotation.MyTag(age=18, name=huan)])</span><br></pre></td></tr></table></figure>
+<hr>
+  <strong>结论：通过新定义一个容器注解，来实现使用多个相同注解的目的，只是书写形式不能达到期待效果而已，要想书写形式能达到期待效果需要使用java8之后的@Repeatable元注解。</strong>  <strong>注：”容器“注解的保留期Retention必须比它所包含注解的保留期更长，否则编译报错</strong><h2 id="7-2-java8之后"><a href="#7-2-java8之后" class="headerlink" title="7.2 java8之后"></a>7.2 java8之后</h2><ul>
+<li>java8之后新增了@Repeatable元注解，用来开发重复注解，其有一个必填Class类型变量value。</li>
+<li>同样，还是需要新定义一个注解@DupMyTag。和上面定义的一样。不一样的是@Repeatable元注解需要加在@MyTag上，value值设置为DupMyTag.class，开发便完成。</li>
+<li><em>操作步骤2步：1编写需要重复的注解@MyTag，如下。2.编写”容器“注解DupMyTag ，上面定义过了</em>*</li>
+<li>  如下：通过@Repeatable定义了一个重复注解@MyTag。</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//定义带成员变量注解MyTag</span><br><span class="line">@Repeatable(DupMyTag.class)</span><br><span class="line">@Rentention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Method(ElementType.METHOD)</span><br><span class="line">public @interface MyTag&#123;</span><br><span class="line">  //定义两个成员变量，以方法的形式定义</span><br><span class="line">  String name();</span><br><span class="line">  int age() default 32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  使用,书写形式达到了理想效果，当然上面的形式依然可以使用</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@MyTag(name=&quot;liang&quot;)</span><br><span class="line">@MyTag(name=&quot;huan&quot;,age =18)</span><br><span class="line">public void info()&#123;</span><br><span class="line">&#125;</span><br><span class="line">//两种形式都可以</span><br><span class="line">@DupMyTag (&#123; @MyTag(name=&quot;liang&quot;),@MyTag(name=&quot;huan&quot;,age=18)&#125;)</span><br><span class="line">public void info()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>原理：系统依然还是将两个MyTag注解作为DupMyTag的value成员变量的数组元素，只是书写形式多了一种而已</strong></li>
+<li><strong>获取注解方法</strong><br>  上面代码通过getDeclaredAnnotationsByType(MyTag.class)和getDeclaredAnnotation(DupMyTag.class)两个方法都能获取到值，只是结果不一样如下：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@annotation.MyTag(age=25, name=liang)</span><br><span class="line">@annotation.MyTag(age=18, name=huan)</span><br><span class="line">@annotation.DupMyTag(value=[@annotation.MyTag(age=25, name=liang), @annotation.MyTag(age=18, name=huan)])</span><br></pre></td></tr></table></figure>
+<h1 id="8-Java8新增的Type-Annotation注解"><a href="#8-Java8新增的Type-Annotation注解" class="headerlink" title="8. Java8新增的Type Annotation注解"></a>8. Java8新增的Type Annotation注解</h1><h2 id="8-1-介绍"><a href="#8-1-介绍" class="headerlink" title="8.1 介绍"></a>8.1 介绍</h2><ul>
+<li><strong>目的</strong>：以前的注解只能用在包、类、构造器、方法、成员变量、参数、局部变量。如果想在：创建对象（通过new创建）、类型转换、使用implements实现接口、使用throws声明抛出异常的位置使用注解就不行了。而Type Annotation注解就为了这个而来。</li>
+<li>  <strong>抽象表述：</strong> java_为ElementType枚举增加了TYPE_PARAMETER、TYPE_USE两个枚举值。@Target(TYPE_USE)修饰的注解称为Type Annotation(类型注解），_<em>Type Annotation可用在任何用到类型的地方。</em>*</li>
+</ul>
+<h2 id="8-2-案例"><a href="#8-2-案例" class="headerlink" title="8.2 案例"></a>8.2 案例</h2><ul>
+<li>  定义一个类型注解NotNull</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Target(ElementType.TYPE_USE)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface NotNull &#123;</span><br><span class="line">    String value() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  使用</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//implements实现接口中使用Type Annotation</span><br><span class="line">public class Test implements @NotNull(value=&quot;Serializable&quot;) Serializable&#123;</span><br><span class="line">        //泛型中使用Type Annotation  、   抛出异常中使用Type Annotation</span><br><span class="line">    public  void foo(List&lt;@NotNull String&gt; list) throws @NotNull(value=&quot;ClassNotFoundException&quot;) ClassNotFoundException &#123;</span><br><span class="line">        //创建对象中使用Type Annotation</span><br><span class="line">        Object obj =new @NotNull String(&quot;annotation.Test&quot;);</span><br><span class="line">        //强制类型转换中使用Type Annotation</span><br><span class="line">        String str = (@NotNull String) obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编写处理注解的处理器。</li>
+<li>java8提供AnnotatedType接口，该接口用来代表被注解修饰的类型。该接口继承AnnotatedElement接口。同时多了一个public Type getType()方法，用于返回注解修饰的类型。</li>
+<li>  以下处理器只处理了类实现接口处的注解和throws声明抛出异常处的注解。</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">类说明 NotNull注解处理器，只处理了implements实现接口出注解、throws声明抛出异常出的注解。</span><br><span class="line">*/</span><br><span class="line">public class NotNullAnnotationProcessor &#123;</span><br><span class="line">    public static void process(String className) throws ClassNotFoundException&#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class clazz =Class.forName(className);</span><br><span class="line">            //获取类继承的、带注解的接口</span><br><span class="line">            AnnotatedType[] aInterfaces =clazz.getAnnotatedInterfaces();</span><br><span class="line">            print(aInterfaces);</span><br><span class="line">            Method method = clazz.getMethod(&quot;foo&quot;);</span><br><span class="line">            //获取方法上抛出的带注解的异常</span><br><span class="line">            AnnotatedType[] aExceptions =method.getAnnotatedExceptionTypes();</span><br><span class="line">            print(aExceptions);</span><br><span class="line">        &#125; catch (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (SecurityException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 打印带注解类型</span><br><span class="line">     * @param array</span><br><span class="line">     */</span><br><span class="line">    public static void print(AnnotatedType[] array)&#123;</span><br><span class="line">        for( AnnotatedType at : array)&#123;</span><br><span class="line">            Type type =at.getType();//获取基础类型</span><br><span class="line">            Annotation[] ans =at.getAnnotations();//获取注解</span><br><span class="line">            //打印类型</span><br><span class="line">            System.out.println(type);</span><br><span class="line">            //打印注解</span><br><span class="line">            for( Annotation an : ans)&#123;</span><br><span class="line">                System.out.println(an);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(&quot;------------&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  打印结果  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface java.io.Serializable</span><br><span class="line">@annotation.NotNull(value=Serializable)</span><br><span class="line">------------</span><br><span class="line">class java.lang.ClassNotFoundException</span><br><span class="line">@annotation.NotNull(value=ClassNotFoundException)</span><br><span class="line">------------</span><br></pre></td></tr></table></figure>
+<h1 id="9-编译时处理Annotation"><a href="#9-编译时处理Annotation" class="headerlink" title="9. 编译时处理Annotation"></a>9. 编译时处理Annotation</h1><h2 id="9-1-需求"><a href="#9-1-需求" class="headerlink" title="9.1 需求"></a>9.1 <strong>需求</strong></h2><ul>
+<li>  有过Hibernate开发经验的朋友可能知道每写一个Java文件，还必须额外地维护一个Hibernate映射文件(一个名为*.hbm.xml的文件,当然可以有一些工具可以自动生成)下面将使用Annotation来简化这步操作。思路：自定义修饰类的注解，在实体类上使用注解，编写注解处理器：根据源文件中的类上的注解，生成*.hbm.xml文件，使用java提供的编译命令javac执行注解处理器。关键：编写注解处理器。</li>
+</ul>
+<h2 id="9-2可用api"><a href="#9-2可用api" class="headerlink" title="9.2可用api"></a>9.2<strong>可用api</strong></h2><ul>
+<li>  我们知道前面的注解处理器处理的都是@Retention(RetentionPolicy.RUNTIME)的注解，使用的是反射技术。而生成的*hbm.xml文件是需要在编译阶段完成。为此java在java7之前提供了apt工具及api，在java7及之后提供了JSR269 api。</li>
+</ul>
+<h2 id="9-3-apt和jsr269的作用"><a href="#9-3-apt和jsr269的作用" class="headerlink" title="9.3 apt和jsr269的作用"></a>9.3 apt和jsr269的作用</h2><ul>
+<li>  APT是一种处理注释的工具,它对源代码文件进行检测，并找出源文件中所包含的Annotation信息，然后针对Annotation信息进行额外的处理。</li>
+<li>  APT处理器在处理Annotation时可以根据源文件中的Annotation生成额外的源文件和其它的文件(文件具体内容由Annotation处理器的编写者决定),APT还会编译生成的源文件和原来的源文件，将它们一起生成class文件.使用APT主要的目的是简化开发者的工作量。</li>
+<li>  因为APT可以编译程序源代码的同时，生成一些附属文件(比如源文件、类文件、程序发布描述文件等)，这些附属文件的内容也都是与源代码相关的，换句话说，使用APT可以代替传统的对代码信息和附属文件的维护工作。</li>
+<li>APT的相关api都在com.sun.mirror 包下，在jdk7及之后，apt的相关api就被废除了，代替的是<a target="_blank" rel="noopener" href="https://www.jcp.org/en/jsr/platform?listBy=2&listByType=platform">JSR</a>269。JSR269<a target="_blank" rel="noopener" href="http://download.oracle.com/otndocs/jcp/pluggable_annotation_processing-1_8-mrel2-eval-spec/index.html">API文档下载</a>。JSR269的api在 <a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/7/docs/api/javax/annotation/processing/package-summary.html">javax.annotation.processing</a> and <a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/7/docs/api/javax/lang/model/package-summary.html">javax.lang.model</a>包下。<br>  所以以后开发注解处理器使用jsr269提供的api就可以了。 <img src="//upload-images.jianshu.io/upload_images/3458176-743496641f19c61b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">JSR269描述</li>
+</ul>
+<h2 id="9-4实现"><a href="#9-4实现" class="headerlink" title="9.4实现"></a>9.4实现</h2><h3 id="9-5-使用apt实现"><a href="#9-5-使用apt实现" class="headerlink" title="9.5 使用apt实现"></a>9.5 使用apt实现</h3>  <a target="_blank" rel="noopener" href="http://www.javacui.com/Theory/367.html">使用apt实现编译时处理Annotation</a><h3 id="9-6-使用JSR269实现"><a href="#9-6-使用JSR269实现" class="headerlink" title="9.6 使用JSR269实现"></a>9.6 使用JSR269实现</h3><ul>
+<li>运行环境jdk1.8</li>
+<li>Java提供的javac.exe工具有一个-processor选项，该选项可指定一个Annotation处理器，如果在编译java源文件的时候通过该选项指定了Annotation处理器，那么这个Annotation处理器，将会在编译时提取并处理Java源文件中的Annotation。</li>
+<li>每个Annotation处理器都需要实现javax.annotation.processing包下的Processor接口。不过实现该接口必须实现它里面所有方法，因此通常采用继承AbstractProcessor的方式来实现Annotation处理器，一个Annotation处理器可以处理一种或多种Annotation类型。</li>
+<li><strong>之前的错误认识</strong>：之前以为-processor选项需要指定注解处理器是一个*.java文件，其实是一个.class文件，既然是.class文件，那么肯定是编译过后的，所以需要单独写一个处理器程序annotation-processor，打成一个jar包，然后在使用注解的程序annotation中加入注解处理器依赖包annotation-processor.jar，在编译的时候指定处理器类即可。下面我会分别演示通过javac 命令和maven命令如何进行操作。</li>
+<li>下面的项目会使用maven来构建，如果不是使用maven也可以，因为我也会演示如何通过javac 命令来执行注解处理器。</li>
+</ul>
+<hr>
+<h4 id="9-6-1-注解处理器程序annotation-processor"><a href="#9-6-1-注解处理器程序annotation-processor" class="headerlink" title="9.6.1 注解处理器程序annotation-processor"></a>9.6.1 注解处理器程序annotation-processor</h4><ul>
+<li>  下面将定义三个Annotation类型，分别用于修饰持久化类，标识属性和普通属性。</li>
+</ul>
+  修饰id注解  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.zlcook.processor.annotation;</span><br><span class="line">import java.lang.annotation.Documented;</span><br><span class="line">import java.lang.annotation.ElementType;</span><br><span class="line">import java.lang.annotation.Retention;</span><br><span class="line">import java.lang.annotation.RetentionPolicy;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line">//修饰id注解</span><br><span class="line">@Target(ElementType.FIELD)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface Id &#123;</span><br><span class="line">    String column();    //该id属性对应表中的列名</span><br><span class="line">    String type();      //id属性类型</span><br><span class="line">    String generator(); //使用的策略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  修饰属性注解  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package com.zlcook.processor.annotation;</span><br><span class="line">import java.lang.annotation.Documented;</span><br><span class="line">import java.lang.annotation.ElementType;</span><br><span class="line">import java.lang.annotation.Retention;</span><br><span class="line">import java.lang.annotation.RetentionPolicy;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line">//修饰属性注解</span><br><span class="line">@Target(ElementType.FIELD)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface Property &#123;</span><br><span class="line">    String column();    //该属性对应表中的列名</span><br><span class="line">    String type();      //id属性类型</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  修饰实体类注解  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.zlcook.processor.annotation;</span><br><span class="line">import java.lang.annotation.Documented;</span><br><span class="line">import java.lang.annotation.ElementType;</span><br><span class="line">import java.lang.annotation.Retention;</span><br><span class="line">import java.lang.annotation.RetentionPolicy;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line">//修饰实体类注解</span><br><span class="line">@Target(ElementType.TYPE)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface Persistent &#123;</span><br><span class="line">    String table();       //数据库中表名</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  处理上面三个注解的处理器HibernateAnnotationProcessor，根据注解生成对应的*.hbm.xml文件</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">package com.zlcook.processor;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.PrintStream;</span><br><span class="line">import java.util.LinkedHashSet;</span><br><span class="line">import java.util.Set;</span><br><span class="line">import javax.annotation.processing.AbstractProcessor;</span><br><span class="line">import javax.annotation.processing.ProcessingEnvironment;</span><br><span class="line">import javax.annotation.processing.RoundEnvironment;</span><br><span class="line">import javax.lang.model.SourceVersion;</span><br><span class="line">import javax.lang.model.element.Element;</span><br><span class="line">import javax.lang.model.element.ElementKind;</span><br><span class="line">import javax.lang.model.element.Name;</span><br><span class="line">import javax.lang.model.element.TypeElement;</span><br><span class="line">import com.zlcook.processor.annotation.Id;</span><br><span class="line">import com.zlcook.processor.annotation.Persistent;</span><br><span class="line">import com.zlcook.processor.annotation.Property;</span><br><span class="line">/**</span><br><span class="line">* 类说明:hiberante注解处理器，用于根据实体bean的注解生成*.hbm.xml文件，在编译阶段执行。</span><br><span class="line">*/</span><br><span class="line">public class HibernateAnnotationProcessor extends AbstractProcessor &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public synchronized void init(ProcessingEnvironment processingEnv) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        super.init(processingEnv);</span><br><span class="line">        System.out.println(&quot;HibernateAnnotationProcessor注解处理器初始化完成..............&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public boolean process(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv) &#123;</span><br><span class="line">        //定义一个文件输出流，用于生成额外的文件</span><br><span class="line">        PrintStream ps = null;</span><br><span class="line">        try&#123;</span><br><span class="line">            //遍历每个被@Persistent修饰的class文件,使用RoundEnvironment来获取Annotation信息</span><br><span class="line">            for( Element t : roundEnv.getElementsAnnotatedWith(Persistent.class))&#123;</span><br><span class="line">                //获取正在处理的类名</span><br><span class="line">                Name clazzName = t.getSimpleName();</span><br><span class="line">                //获取类定义前的@Persistent Annotation</span><br><span class="line">                Persistent per = t.getAnnotation(Persistent.class);</span><br><span class="line">                //创建文件输出流</span><br><span class="line">                String fileName =clazzName+&quot;.hbm.xml&quot;;</span><br><span class="line">                ps = new PrintStream(new FileOutputStream(fileName));</span><br><span class="line">                 // 执行输出</span><br><span class="line">                 ps.println(&quot;&lt;?xml version=&quot;1.0&quot;?&gt;&quot;);</span><br><span class="line">                 ps.println(&quot;&lt;!DOCTYPE hibernate-mapping&quot;);</span><br><span class="line">                 ps.println(&quot; PUBLIC &quot;-// Hibernate/Hibernate Ma  pping DTD 3.0//EN&quot;&quot;);</span><br><span class="line">                 ps.println(&quot; &quot;http:// hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;&quot;);</span><br><span class="line">                 ps.println(&quot;&lt;hibernate-mapping&gt;&quot;);</span><br><span class="line">                 ps.print(&quot; &lt;class name=&quot;&quot; + t);</span><br><span class="line">                 // 输出per的table()的值</span><br><span class="line">                 ps.println(&quot;&quot; table=&quot;&quot; + per.table() + &quot;&quot;&gt;&quot;);</span><br><span class="line">                 //获取@Persistent修改类的各个属性字段。t.getEnclosedElements()获取该Elemet里定义的所有程序单元</span><br><span class="line">                 for(Element ele : t.getEnclosedElements())&#123;</span><br><span class="line">                     //只处理成员变量上的Annotation，ele.getKind()返回所代表的的程序单元</span><br><span class="line">                     if( ele.getKind() == ElementKind.FIELD)&#123;</span><br><span class="line">                        //被id注解修饰的字段</span><br><span class="line">                         Id idAno= ele.getAnnotation(Id.class);</span><br><span class="line">                         if( idAno != null)&#123;</span><br><span class="line">                             String column =idAno.column();</span><br><span class="line">                             String type =idAno.type();</span><br><span class="line">                             String generator = idAno.generator();</span><br><span class="line">                             // 执行输出</span><br><span class="line">                               ps.println(&quot; &lt;id name=&quot;&quot; + ele.getSimpleName() + &quot;&quot; column=&quot;&quot; + column + &quot;&quot; type=&quot;&quot; + type + &quot;&quot;&gt;&quot;);</span><br><span class="line">                               ps.println(&quot; &lt;generator class=&quot;&quot; + generator + &quot;&quot;/&gt;&quot;);</span><br><span class="line">                               ps.println(&quot; &lt;/id&gt;&quot;);</span><br><span class="line">                         &#125;</span><br><span class="line">                         //被Property注解修饰的字段</span><br><span class="line">                         Property p = ele.getAnnotation(Property.class);</span><br><span class="line">                         if( p !=null)&#123;</span><br><span class="line">                             // 执行输出</span><br><span class="line">                             ps.println(&quot; &lt;property name=&quot;&quot; + ele.getSimpleName() + &quot;&quot; column=&quot;&quot; + p.column() + &quot;&quot;type=&quot;&quot; + p.type() + &quot;&quot;/&gt;&quot;);</span><br><span class="line">                         &#125;</span><br><span class="line">                     &#125;</span><br><span class="line">                 &#125;// end for</span><br><span class="line">                 ps.println(&quot; &lt;/class&gt;&quot;);</span><br><span class="line">                 ps.println(&quot;&lt;/hibernate-mapping&gt;&quot;);</span><br><span class="line">            &#125;// end for </span><br><span class="line">        &#125;catch(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            if(ps!=null)&#123;</span><br><span class="line">                try&#123;</span><br><span class="line">                    ps.close();</span><br><span class="line">                &#125;catch(Exception e)&#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    /** </span><br><span class="line">     * 这里必须指定，这个注解处理器是注册给哪个注解的。注意，它的返回值是一个字符串的集合，包含本处理器想要处理的注解类型的合法全称 </span><br><span class="line">     * @return  注解器所支持的注解类型集合，如果没有这样的类型，则返回一个空集合 </span><br><span class="line">     */  </span><br><span class="line">    @Override  </span><br><span class="line">    public Set&lt;String&gt; getSupportedAnnotationTypes() &#123;  </span><br><span class="line">        Set&lt;String&gt; annotataions = new LinkedHashSet&lt;String&gt;();  </span><br><span class="line">        annotataions.add(Id.class.getCanonicalName());  </span><br><span class="line">        annotataions.add(Property.class.getCanonicalName());  </span><br><span class="line">        annotataions.add(Persistent.class.getCanonicalName());  </span><br><span class="line">        return annotataions;  </span><br><span class="line">    &#125;  </span><br><span class="line">    /** </span><br><span class="line">     * 指定使用的Java版本，通常这里返回SourceVersion.latestSupported()，默认返回SourceVersion.RELEASE_6 </span><br><span class="line">     * @return  使用的Java版本 </span><br><span class="line">     */</span><br><span class="line">    @Override  </span><br><span class="line">    public SourceVersion getSupportedSourceVersion() &#123;  </span><br><span class="line">        return SourceVersion.latestSupported();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>注解程序写完打包成jar文件。</strong></li>
+<li>打包成jar文件为使用注解处理器的程序提供依赖。</li>
+<li>使用maven构建直接使用mvn install，这样就将项目打包成jar依赖到本地仓库中了。</li>
+<li>使用java命令打包成jar文件：先用javac编译成.class文件，在使用jar命令打包成jar文件。</li>
+<li><strong>使用java命令打包成jar文件</strong></li>
+<li>源文件位置：E:EclipseWorkspaceCnuannotation-processorsrcmainjava，编译后*.class文件存放到classes文件夹下，使用javac命令编译源代码需要指定*.java文件，为了避免在命令行中敲太多代码，所以将要编译的源代码文件都列在了sources.list文件中。 <img src="//upload-images.jianshu.io/upload_images/3458176-ffbecd706295b740.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/619/format/webp">源代码文件及编译后文件存放位置 <img src="//upload-images.jianshu.io/upload_images/3458176-40073127e22f416b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/530/format/webp">source.list文件内容</li>
+<li>执行编译命令javac<br>  javac命令中指定UTF-8编码、编译后文件存放位置、需要编译的源文件</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E:EclipseWorkspaceCnuannotation-processorsrcmainjava&gt;javac -encoding UTF-8</span><br><span class="line"> -d classes @sources.list</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行打包命令jar<br>  将classes中的编译文件，打包成annotation-processor.jar文件。进入到<strong>classes目录中</strong>执行如下jar命令</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:EclipseWorkspaceCnuannotation-processorsrcmainjavaclasses&gt;jar -cvf annotation-processor.jar com</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="9-6-2-注解使用程序annotation"><a href="#9-6-2-注解使用程序annotation" class="headerlink" title="9.6.2 注解使用程序annotation"></a>9.6.2 注解使用程序annotation</h4><ul>
+<li>  <strong>添加annotation-processor.jar依赖</strong></li>
+<li>  注解处理程序写完并打成了jar包，将jar引入到annotation中使用。</li>
+<li>  使用maven则在pom.xml中声明一个依赖。因为该依赖只在编译阶段才使用所以范围采用provied。更多<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/79cf4423281a">maven依赖范围</a></li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.zlcook.processor&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;annotation-processor&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;0.0.5-SNAPSHOT&lt;/version&gt;</span><br><span class="line">          &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>没有使用maven构建，只要保证运行项目时annotation-processor.jar在classpath路径中就行。根据你是用的开发工具而定，使用eclipse则将jar添加到编译路径中。</li>
+<li><strong>编写项目annotation</strong></li>
+<li>  为了演示自定义注解和注解处理的作用：在编译时根据注解生成*.hbm.xml文件。所以写一个类Person就可以了。代码如下：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.zlcook.annotation.bean;</span><br><span class="line">import com.zlcook.processor.annotation.Id;</span><br><span class="line">import com.zlcook.processor.annotation.Persistent;</span><br><span class="line">import com.zlcook.processor.annotation.Property;</span><br><span class="line">/**</span><br><span class="line">* @author 周亮 </span><br><span class="line">* @version 创建时间：2017年2月19日 下午10:05:05</span><br><span class="line">* 类说明:使用注解完成映射的实体类</span><br><span class="line">*/</span><br><span class="line">@Persistent(table=&quot;person_inf&quot;)</span><br><span class="line">public class Person &#123;</span><br><span class="line">     @Id(column = &quot;person_id&quot;, type = &quot;integer&quot;, generator = &quot;identity&quot;)</span><br><span class="line">     private int id;</span><br><span class="line">     @Property(column = &quot;person_name&quot;, type = &quot;string&quot;)</span><br><span class="line">     private String name;</span><br><span class="line">     @Property(column = &quot;person_age&quot;, type = &quot;integer&quot;)</span><br><span class="line">     private int age;</span><br><span class="line">     public int getId() &#123;</span><br><span class="line">      return id;</span><br><span class="line">     &#125;</span><br><span class="line">     public void setId(int id) &#123;</span><br><span class="line">      this.id = id;</span><br><span class="line">     &#125;</span><br><span class="line">     public String getName() &#123;</span><br><span class="line">      return name;</span><br><span class="line">     &#125;</span><br><span class="line">     public void setName(String name) &#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">     &#125;</span><br><span class="line">     public int getAge() &#123;</span><br><span class="line">      return age;</span><br><span class="line">     &#125;</span><br><span class="line">     public void setAge(int age) &#123;</span><br><span class="line">      this.age = age;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9-6-3-运行效果演示"><a href="#9-6-3-运行效果演示" class="headerlink" title="9.6.3 运行效果演示"></a>9.6.3 运行效果演示</h4><ul>
+<li>下面就使用javac命令和maven命令编译annotation项目，来演示HibernateAnnotationProcessor处理器的效果。看能不能在编译期生成Person.hbm.xml文件。</li>
+<li><strong>javac编译</strong><ul>
+<li>将annotation-processor.jar拷贝到annotaion的源代码位置，当然你也可以拷贝到其它地方，主要为了引用方便。再新建一个存放编译文件的文件夹classes。如下：   <img src="//upload-images.jianshu.io/upload_images/3458176-13ba4e03c5981291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/675/format/webp">编译器文件情况</li>
+</ul>
+</li>
+<li>在该目录下执行javac 命令<br>  javac命令中指定UTF-8编码、编译后文件存放位置、编译过程中依赖的文件、注解处理器类、需要编译的源文件</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:EclipseWorkspaceCnuannotationsrcmainjava&gt;javac -encoding UTF-8 -d classes -classpath annotation-processor.jar -processor com.zlcook.processor.HibernateAnnotationProcessor com/zlcook/annotation/bean/Person.java</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行后效果<br>  当前目录下出现了一个Person.hbm.xml文件   <img src="//upload-images.jianshu.io/upload_images/3458176-160654766bed3104.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/627/format/webp">Paste_Image.png</li>
+<li><strong>Maven编译</strong></li>
+<li>使用maven编译，唯一需要动的的就是指明编译过程中需要的注解处理程序HibernateAnnotationProcessor。为此需要设置maven-compiler-plugin插件中compiler目标的参数。</li>
+<li>  在pom.xml中设置如下：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">   &lt;plugins&gt;</span><br><span class="line">    &lt;plugin&gt;</span><br><span class="line">        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.1&lt;/version&gt;</span><br><span class="line">        &lt;executions&gt;</span><br><span class="line">          &lt;execution&gt;</span><br><span class="line">            &lt;id&gt;default-compile&lt;/id&gt;</span><br><span class="line">            &lt;phase&gt;compile&lt;/phase&gt;</span><br><span class="line">            &lt;goals&gt;</span><br><span class="line">              &lt;goal&gt;compile&lt;/goal&gt;</span><br><span class="line">            &lt;/goals&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">             &lt;source&gt;1.8&lt;/source&gt;</span><br><span class="line">             &lt;target&gt;1.8&lt;/target&gt;</span><br><span class="line">              &lt;annotationProcessors&gt;</span><br><span class="line">                &lt;annotationProcessor&gt;com.zlcook.processor.HibernateAnnotationProcessor&lt;/annotationProcessor&gt;</span><br><span class="line">             &lt;/annotationProcessors&gt; </span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">          &lt;/execution&gt;</span><br><span class="line">        &lt;/executions&gt;</span><br><span class="line">      &lt;/plugin&gt;</span><br><span class="line">   &lt;/plugins&gt;</span><br><span class="line">  &lt;/build&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>  执行maven命令</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean compile</span><br></pre></td></tr></table></figure>
+  执行完成后在项目根目录下就出现了Person.hbm.xml文件。<ul>
+<li>  Person.hbm.xml内容如下：</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE hibernate-mapping</span><br><span class="line"> PUBLIC &quot;-// Hibernate/Hibernate Ma  pping DTD 3.0//EN&quot;</span><br><span class="line"> &quot;http:// hibernate.sourceforge.net/hibernate-mapping-3.0.dtd&quot;&gt;</span><br><span class="line">&lt;hibernate-mapping&gt;</span><br><span class="line"> &lt;class name=&quot;com.zlcook.annotation.bean.Person&quot; table=&quot;person_inf&quot;&gt;</span><br><span class="line"> &lt;id name=&quot;id&quot; column=&quot;person_id&quot; type=&quot;integer&quot;&gt;</span><br><span class="line"> &lt;generator/&gt;</span><br><span class="line"> &lt;/id&gt;</span><br><span class="line"> &lt;property name=&quot;name&quot; column=&quot;person_name&quot;type=&quot;string&quot;/&gt;</span><br><span class="line"> &lt;property name=&quot;age&quot; column=&quot;person_age&quot;type=&quot;integer&quot;/&gt;</span><br><span class="line"> &lt;/class&gt;</span><br><span class="line">&lt;/hibernate-mapping&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/03/24/javaannotation%E6%B3%A8%E8%A7%A3-%E5%8E%9F%E7%90%86%E5%88%B0%E6%A1%88%E4%BE%8B/" data-id="cksy3fx5900jepnv95oau92xs" data-title="Java:Annotation(注解)--原理到案例" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-kylin使用异常处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/03/21/kylin%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2019-03-21T07:14:10.000Z" itemprop="datePublished">2019-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/03/21/kylin%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">KYLIN使用异常处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、点击加载hive表出现如下异常：</p>
+<p>java.lang.NoClassDefFoundError: org/apache/hadoop/hive/cli/CliSessionState</p>
+<p>java.lang.NoClassDefFoundError: org/apache/hadoop/hive/ql/session/SessionState</p>
+<p>解决：将hive lib文件夹下的lib拷贝到kylin lib文件夹下。</p>
+<p>查看了下bin里的find-hive-dependency.sh，有设置hive_dependency 包含了所有hive lib下的jar包，但不知道为啥没起作用。所以只好拷贝操作了</p>
+<p>在网上看到一个人说，修改bin目录下的kylin.sh</p>
+<p>在HBASE_CLASSPATH_PREFIX把hive_dependency 加上。经测可用。</p>
+<p>二、解决jar问题，hive表依然加载不出来（点击加载树，一直在转圈）</p>
+<p>查看log，如：tail -f -n200 /opt/app/apache-kylin-2.0.0-bin/logs/kylin.log</p>
+<p>发现没有异常，弄得我直挠头。尝试点了下reload table按钮，终于报出了异常，但是后台log依然没打出来，报出异常提示连接不上元数据。</p>
+<p>hive不知道什么时候挂了，输入： hive –service metastore &amp; 启动一下元数据。终于看到加载的hive表了</p>
+<p>为了配置kylin，/etc/profile文件加入如下：</p>
+<p>export JAVA_HOME=/opt/app/jdk1.8.0_131<br>PATH=$PATH:/$JAVA_HOME/bin<br>CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar<br>JRE_HOME=$JAVA_HOME/jre<br>export HADOOP_HOME=/opt/app/hadoop-2.8.0<br>PATH=$PATH:$HADOOP_HOME/bin:$PATH<br>export HIVE_HOME=/opt/app/apache-hive-2.1.1-bin<br>export HCAT_HOME=$HIVE_HOME/hcatalog<br>export HIVE_CONF=$HIVE_HOME/conf<br>PATH=$PATH:$HIVE_HOME/bin:$PATH<br>export HBASE_HOME=/opt/app/hbase-1.3.1<br>PATH=$PATH:$HBASE_HOME/bin:$PATH</p>
+<p>export HIVE_CONF=/opt/app/apache-hive-2.1.1-bin/conf PATH=$PATH:$HIVE_HOME/bin:$PATH export KYLIN_HOME=/opt/app/apache-kylin-2.0.0-bin<br>PATH=$PATH:$KYLIN_HOME/bin:$PATH export KYLIN_HOME=/opt/app/kylin/</p>
+<p>export ZOOKEEPER_HOME=/opt/app/zookeeper-3.4.6<br>export PATH=$ZOOKEEPER_HOME/bin:$PATH</p>
+<hr>
+<p>问题：将hadoop format，重新搭建环境，报异常： org.apache.hadoop.hbase.TableExistsException: kylin_metadata_user</p>
+<p>解决：</p>
+<p>1.如果是独立的zookeeper</p>
+<p>在zookeeper的bin目录下有一个zkCli.sh ,运行进入；<br>进入后运行 rmr  /hbase , 然后quit退出；</p>
+<p>2.如果是用hbase自带的zookeeper</p>
+<p>用 hbase zkcli进入</p>
+<p>进入后运行 rmr  /hbase , 然后quit退出；</p>
+<hr>
+<p>问题：File does not exist: hdfs://localhost:9000/home/hadoop/data/mapred/staging/root1629090427/.staging/job_local1629090427_0006/libjars/hive-metastore-1.2.1.jar</p>
+<p>是由于mapred-site.xml、yarn没有配置正确造成的。</p>
+<p>mapred-site.xml</p>
+<p>    mapreduce.reduce.java.opts     -Xms2000m -Xmx4600m     mapreduce.map.memory.mb     5120     mapreduce.reduce.input.buffer.percent     0.5      mapreduce.reduce.memory.mb    2048       mapred.tasktracker.reduce.tasks.maximum     2     mapreduce.framework.name     yarn      mapreduce.jobhistory.address      localhost:10020          yarn.app.mapreduce.am.staging-dir      /home/hadoop/data/mapred/staging          mapreduce.jobhistory.intermediate-done-dir      ${yarn.app.mapreduce.am.staging-dir}/history/done_intermediate          mapreduce.jobhistory.done-dir      ${yarn.app.mapreduce.am.staging-dir}/history/done  </p>
+<p>yarn-site.xml  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;property&gt;</span><br><span class="line">&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">&lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br></pre></td></tr></table></figure>
+
+<p>yarn.nodemanager.aux-services.mapreduce_shuffle.class org.apache.hadoop.mapred.ShuffleHandler<br>mapreduce.jobtracker.staging.root.dir /home/hadoop/data/mapred/staging<br>yarn.app.mapreduce.am.staging-dir /home/hadoop/data/mapred/staging<br>yarn.resourcemanager.hostname localhost  </p>
+<p>记得启动 /hadoop-2.8.0/sbin/mr-jobhistory-daemon.sh start historyserver</p>
+<hr>
+<p>问题：build cube没有成功，得到如下log</p>
+<p>Counters: 41<br>File System Counters<br>FILE: Number of bytes read=0<br>FILE: Number of bytes written=310413<br>FILE: Number of read operations=0<br>FILE: Number of large read operations=0<br>FILE: Number of write operations=0<br>HDFS: Number of bytes read=1700<br>HDFS: Number of bytes written=0<br>HDFS: Number of read operations=4<br>HDFS: Number of large read operations=0<br>HDFS: Number of write operations=0<br>Job Counters<br>Failed map tasks=1<br>Failed reduce tasks=6<br>Killed reduce tasks=3<br>Launched map tasks=2<br>Launched reduce tasks=9<br>Other local map tasks=1<br>Data-local map tasks=1<br>Total time spent by all maps in occupied slots (ms)=10602<br>Total time spent by all reduces in occupied slots (ms)=76818<br>Total time spent by all map tasks (ms)=10602<br>Total time spent by all reduce tasks (ms)=76818<br>Total vcore-seconds taken by all map tasks=10602<br>Total vcore-seconds taken by all reduce tasks=76818<br>Total megabyte-seconds taken by all map tasks=10856448<br>Total megabyte-seconds taken by all reduce tasks=78661632<br>Map-Reduce Framework<br>Map input records=0<br>Map output records=3<br>Map output bytes=42<br>Map output materialized bytes=104<br>Input split bytes=1570<br>Combine input records=3<br>Combine output records=3<br>Spilled Records=3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    Failed Shuffles=0</span><br><span class="line">    Merged Map outputs=0</span><br><span class="line">    GC time elapsed (ms)=168</span><br><span class="line">    CPU time spent (ms)=3790</span><br><span class="line">    Physical memory (bytes) snapshot=356413440</span><br><span class="line">    Virtual memory (bytes) snapshot=2139308032</span><br><span class="line">    Total committed heap usage (bytes)=195035136</span><br><span class="line">File Input Format Counters </span><br><span class="line">    Bytes Read=0</span><br></pre></td></tr></table></figure>
+
+<p>在mapred-site.xml中加上如下配置：<br>    mapreduce.reduce.java.opts     -Xms2000m -Xmx4600m<br>    mapreduce.map.memory.mb     5120<br>    mapreduce.reduce.input.buffer.percent     0.5<br>     mapreduce.reduce.memory.mb    2048  </p>
+<hr>
+<p>转自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/dirful/article/details/74012473">https://blog.csdn.net/dirful/article/details/74012473</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/03/21/kylin%E4%BD%BF%E7%94%A8%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" data-id="cksy3fx0c004bpnv97h1r1huf" data-title="KYLIN使用异常处理" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/program/JAVA/">JAVA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/SPRING/">SPRING</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">问题求解</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/">research</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLDialects/" rel="tag">SQLDialects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDF/" rel="tag">UDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airflow/" rel="tag">airflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atlas/" rel="tag">atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/" rel="tag">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blob/" rel="tag">blob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/" rel="tag">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs/" rel="tag">hdfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parquet/" rel="tag">parquet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/password/" rel="tag">password</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ppa/" rel="tag">ppa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/presto/" rel="tag">presto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sink/" rel="tag">sink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/" rel="tag">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/streaming/" rel="tag">streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-with-resources/" rel="tag">try-with-resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E7%BD%91/" rel="tag">公网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" rel="tag">分位数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" rel="tag">前端搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" rel="tag">可见性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" rel="tag">名词解释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" rel="tag">多数据源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" rel="tag">奇门秘籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" rel="tag">容器云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" rel="tag">常用软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" rel="tag">异常分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" rel="tag">数据血缘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E6%9C%9F/" rel="tag">日期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" rel="tag">源码编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag">源码解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="tag">版本切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" rel="tag">系统服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag">腾讯云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQLDialects/" style="font-size: 10px;">SQLDialects</a> <a href="/tags/UDF/" style="font-size: 10px;">UDF</a> <a href="/tags/airflow/" style="font-size: 10px;">airflow</a> <a href="/tags/atlas/" style="font-size: 10px;">atlas</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/blob/" style="font-size: 10px;">blob</a> <a href="/tags/centos/" style="font-size: 13.33px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/elasticsearch/" style="font-size: 11.11px;">elasticsearch</a> <a href="/tags/element-ui/" style="font-size: 12.22px;">element-ui</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/federation/" style="font-size: 10px;">federation</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flink/" style="font-size: 13.33px;">flink</a> <a href="/tags/flink-sql/" style="font-size: 10px;">flink-sql</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/footer/" style="font-size: 10px;">footer</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/guava/" style="font-size: 10px;">guava</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 12.22px;">hdfs</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/hive/" style="font-size: 16.67px;">hive</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/json/" style="font-size: 11.11px;">json</a> <a href="/tags/k8s/" style="font-size: 12.22px;">k8s</a> <a href="/tags/kylin/" style="font-size: 13.33px;">kylin</a> <a href="/tags/mac/" style="font-size: 15.56px;">mac</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 17.78px;">mysql</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/parquet/" style="font-size: 10px;">parquet</a> <a href="/tags/password/" style="font-size: 10px;">password</a> <a href="/tags/ppa/" style="font-size: 10px;">ppa</a> <a href="/tags/presto/" style="font-size: 11.11px;">presto</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/scala/" style="font-size: 11.11px;">scala</a> <a href="/tags/scrapy/" style="font-size: 10px;">scrapy</a> <a href="/tags/shell/" style="font-size: 11.11px;">shell</a> <a href="/tags/sink/" style="font-size: 10px;">sink</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/spark/" style="font-size: 11.11px;">spark</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/streaming/" style="font-size: 10px;">streaming</a> <a href="/tags/try-with-resources/" style="font-size: 10px;">try-with-resources</a> <a href="/tags/ubuntu/" style="font-size: 11.11px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 14.44px;">vue</a> <a href="/tags/webflux/" style="font-size: 10px;">webflux</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/wordpress/" style="font-size: 12.22px;">wordpress</a> <a href="/tags/wtf/" style="font-size: 10px;">wtf</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">中间件</a> <a href="/tags/%E5%85%AC%E7%BD%91/" style="font-size: 10px;">公网</a> <a href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" style="font-size: 10px;">分位数</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" style="font-size: 10px;">分布式锁</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.22px;">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">前端搭建</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 10px;">原理</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" style="font-size: 10px;">可见性</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 17.78px;">基础</a> <a href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">备案信息</a> <a href="/tags/%E5%A4%87%E6%B3%A8/" style="font-size: 10px;">备注</a> <a href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size: 10px;">多数据源</a> <a href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" style="font-size: 10px;">奇门秘籍</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" style="font-size: 12.22px;">容器云</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">常用软件</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 10px;">异常分析</a> <a href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" style="font-size: 10px;">异步读取</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 18.89px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14.44px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">数据类型</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" style="font-size: 10px;">数据血缘</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 10px;">日期</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" style="font-size: 10px;">源码编译</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">源码解析</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" style="font-size: 10px;">版本切换</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" style="font-size: 10px;">目录修改</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" style="font-size: 10px;">窗口函数</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">系统服务</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 10px;">腾讯云</a> <a href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" style="font-size: 10px;">行政区划</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E8%B0%83%E4%BC%98/" style="font-size: 10px;">调优</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">高德地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/wp-footer/">wp_footer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

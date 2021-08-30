@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/11/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-springboot-bcryptpasswordencoder-使用记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/02/04/springboot-bcryptpasswordencoder-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2019-02-04T12:57:54.000Z" itemprop="datePublished">2019-02-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/SPRING/">SPRING</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/02/04/springboot-bcryptpasswordencoder-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">SpringBoot BCryptPasswordEncoder 使用记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在spring的项目中使用BCryptPasswordEncoder 加密用户密码</p>
+<p><strong>passwordEncoder</strong>.encode(userEntity.getPassword())</p>
+<p><strong>passwordEncoder</strong>.matches(password, user.getPassword()) 耗时超过5s</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/02/04/springboot-bcryptpasswordencoder-%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" data-id="cksy3fx1s006gpnv9hnbb89m2" data-title="SpringBoot BCryptPasswordEncoder 使用记录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/password/" rel="tag">password</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-spring-webflux快速上手-响应式spring的道法术器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/01/13/spring-webflux%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-%E5%93%8D%E5%BA%94%E5%BC%8Fspring%E7%9A%84%E9%81%93%E6%B3%95%E6%9C%AF%E5%99%A8/" class="article-date">
+  <time class="dt-published" datetime="2019-01-13T07:01:16.000Z" itemprop="datePublished">2019-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/SPRING/">SPRING</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/01/13/spring-webflux%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-%E5%93%8D%E5%BA%94%E5%BC%8Fspring%E7%9A%84%E9%81%93%E6%B3%95%E6%9C%AF%E5%99%A8/">Spring WebFlux快速上手——响应式Spring的道法术器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/get/_set/article/details/79480233">https://blog.csdn.net/get\_set/article/details/79480233</a></p>
+<blockquote>
+<p>本系列其他文章见：<a target="_blank" rel="noopener" href="http://blog.csdn.net/get_set/article/details/79466657">《响应式Spring的道法术器》</a>。<br>前情提要：<a target="_blank" rel="noopener" href="http://blog.csdn.net/get_set/article/details/79466402">响应式流</a> <a target="_blank" rel="noopener" href="http://blog.csdn.net/get_set/article/details/79480121">lambda与函数式</a> <a target="_blank" rel="noopener" href="http://blog.csdn.net/get_set/article/details/79480172">Reactor快速上手</a></p>
+</blockquote>
+<h3 id="1-3-3-Spring-WebFlux"><a href="#1-3-3-Spring-WebFlux" class="headerlink" title="1.3.3 Spring WebFlux"></a>1.3.3 Spring WebFlux</h3><p>Spring WebFlux是随Spring 5推出的响应式Web框架。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a929813ab644121e3000f8c"></p>
+<p><strong>1）服务端技术栈</strong></p>
+<p>Spring提供了完整的支持响应式的服务端技术栈。</p>
+<p>如上图所示，左侧为基于spring-webmvc的技术栈，右侧为基于spring-webflux的技术栈，</p>
+<ul>
+<li>  Spring WebFlux是基于响应式流的，因此可以用来建立异步的、非阻塞的、事件驱动的服务。它采用Reactor作为首选的响应式流的实现库，不过也提供了对RxJava的支持。</li>
+<li>  由于响应式编程的特性，Spring WebFlux和Reactor底层需要支持异步的运行环境，比如Netty和Undertow；也可以运行在支持异步I/O的Servlet 3.1的容器之上，比如Tomcat（8.0.23及以上）和Jetty（9.0.4及以上）。</li>
+<li>从图的纵向上看，spring-webflux上层支持两种开发模式：  <ul>
+<li>  类似于Spring WebMVC的基于注解（<code>@Controller</code>、<code>@RequestMapping</code>）的开发模式；</li>
+<li>  Java 8 lambda 风格的函数式开发模式。</li>
+</ul>
+</li>
+<li>  Spring WebFlux也支持响应式的Websocket服务端开发。</li>
+</ul>
+<blockquote>
+<p>由此看来，Spring WebFlux与Vert.x有一些相通之处，都是建立在非阻塞的异步I/O和事件驱动的基础之上的。</p>
+</blockquote>
+<p><strong>2）响应式Http客户端</strong></p>
+<p>此外，Spring WebFlux也提供了一个响应式的Http客户端API <code>WebClient</code>。它可以用函数式的方式异步非阻塞地发起Http请求并处理响应。其底层也是由Netty提供的异步支持。</p>
+<p>我们可以把<code>WebClient</code>看做是响应式的<code>RestTemplate</code>，与后者相比，前者：</p>
+<ul>
+<li>  是非阻塞的，可以基于少量的线程处理更高的并发；</li>
+<li>  可以使用Java 8 lambda表达式；</li>
+<li>  支持异步的同时也可以支持同步的使用方式；</li>
+<li>  可以通过数据流的方式与服务端进行双向通信。</li>
+</ul>
+<p>当然，与服务端对应的，Spring WebFlux也提供了响应式的Websocket客户端API。</p>
+<p>简单介绍这些，让我们来Coding吧（本文<a target="_blank" rel="noopener" href="https://github.com/get-set/get-reactive/tree/master/webflux-demo">源码</a>）~</p>
+<p>本节，我们仍然是本着“Hello，world！”的精神来上手熟悉WebFlux，因此暂时不会像手册一样面面俱到地谈到WebFlux的各个细节，我们通过以下几个例子来了解它：</p>
+<ol>
+<li> 先介绍一下使用Spring WebMVC风格的基于注解的方式如何编写响应式的Web服务，这几乎没有学习成本，非常赞。虽然这种方式在开发上与Spring WebMVC变化不大，但是框架底层已经是完全的响应式技术栈了；</li>
+<li> 再进一步介绍函数式的开发模式；</li>
+<li> 简单几行代码实现服务端推送（Server Send Event，SSE）；</li>
+<li> 然后我们再加入响应式数据库的支持（使用Reactive Spring Data for MongoDB）；</li>
+<li> 使用<code>WebClient</code>与前几步做好的服务端进行通信；</li>
+<li> 最后我们看一下如何通过“流”的方式在Http上进行通信。</li>
+</ol>
+<p>Spring Boot 2是基于Spring 5的，其中一个比较大的更新就在于支持包括spring-webflux和响应式的spring-data在内的响应式模块。Spring Boot 2即将发布正式版，不过目前的版本从功能上已经完备，下边的例子我们就用Spring Boot 2在进行搭建。</p>
+<h4 id="1-3-3-1-基于WebMVC注解的方式"><a href="#1-3-3-1-基于WebMVC注解的方式" class="headerlink" title="1.3.3.1 基于WebMVC注解的方式"></a>1.3.3.1 基于WebMVC注解的方式</h4><p>我们首先用Spring WebMVC开发一个只有Controller层的简单的Web服务，然后仅仅做一点点调整就可切换为基于Spring WebFlux的具有同样功能的Web服务。</p>
+<p>我们使用Spring Boot 2搭建项目框架。</p>
+<blockquote>
+<p>以下截图来自IntelliJ IDEA，不过其他IDE也都是类似的。</p>
+</blockquote>
+<p><strong>1）基于Spring Initializr创建项目</strong></p>
+<p>本节的例子很简单，不涉及Service层和Dao层，因此只选择spring-webmvc即可，也就是“Web”的starter。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9d1906ab64417d9f0017b7"></p>
+<p>也可以使用网页版的<a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io</a>来创建项目：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9d193aab64417d9f0017c1"></p>
+<p>创建后的项目POM中，包含下边的依赖，即表示基于Spring WebMVC：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2）创建Controller和Endpoint</strong></p>
+<p>创建Controller类<code>HelloController</code>，仅提供一个Endpoint：<code>/hello</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;/hello&quot;)</span><br><span class="line">    public String hello() &#123;</span><br><span class="line">        return &quot;Welcome to reactive world ~&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）启动应用</strong></p>
+<p>OK了，一个简单的基于Spring WebMVC的Web服务。我们新增了<code>HelloController.java</code>，修改了<code>application.properties</code>。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9d388aab64417b7a0018c5"></p>
+<p>使用IDE启动应用，或使用maven命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn spring-boot:run</span><br></pre></td></tr></table></figure>
+
+<p>通过打印的log可以看到，服务运行于Tomcat的8080端口：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9d391dab64417b7a0018dc" alt="spring-webmvc"></p>
+<p>测试Endpoint。在浏览器中访问<code>http://localhost:8080/hello</code>，或运行命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8080/hello</span><br></pre></td></tr></table></figure>
+
+<p>返回<code>Welcome to reactive world ~</code>。</p>
+<p>基于Spring WebFlux的项目与上边的步骤一致，仅有两点不同。我们这次偷个懒，就不从新建项目了，修改一下上边的项目：</p>
+<p><strong>4）依赖“Reactive Web”的starter而不是“Web”</strong></p>
+<p>修改项目POM，调整依赖使其基于Spring WebFlux：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-webflux&lt;/artifactId&gt;    &lt;!--【改】增加“flux”四个字符--&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5）Controller中处理请求的返回类型采用响应式类型</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;/hello&quot;)</span><br><span class="line">    public Mono&lt;String&gt; hello() &#123;   // 【改】返回类型为Mono&lt;String&gt;</span><br><span class="line">        return Mono.just(&quot;Welcome to reactive world ~&quot;);     // 【改】使用Mono.just生成响应式数据</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>6）启动应用</strong></p>
+<p>仅需要上边两步就改完了，是不是很简单，同样的方法启动应用。启动后发现应用运行于Netty上：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9d3947ab64417d9f001bc7" alt="spring-webflux"></p>
+<p>访问<code>http://localhost:8080/hello</code>，结果与Spring WebMVC的相同。</p>
+<p><strong>7）总结</strong></p>
+<p>从上边这个非常非常简单的例子中可以看出，Spring真是用心良苦，WebFlux提供了与之前WebMVC相同的一套注解来定义请求的处理，使得Spring使用者迁移到响应式开发方式的过程变得异常轻松。</p>
+<p>虽然我们只修改了少量的代码，但是其实这个简单的项目已经<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E8%84%B1%E8%83%8E%E6%8D%A2%E9%AA%A8&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd">脱胎换骨</a>了。整个技术栈从命令式的、同步阻塞的【spring-webmvc + servlet + Tomcat】变成了响应式的、异步非阻塞的【spring-webflux + Reactor + Netty】。</p>
+<p>Netty是一套异步的、事件驱动的网络应用程序框架和工具，能够开发高性能、高可靠性的网络服务器和客户端程序，因此与同样是异步的、事件驱动的响应式编程范式<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E4%B8%80%E6%8B%8D%E5%8D%B3%E5%90%88&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd">一拍即合</a>。</p>
+<blockquote>
+<p>下边的内容了解即可，就不实战了。<br>在Java 7推出异步I/O库，以及Servlet3.1增加了对异步I/O的支持之后，Tomcat等Servlet容器也随后开始支持异步I/O，然后Spring WebMVC也增加了对Reactor库的支持，所以上边第4）步如果不是将<code>spring-boot-starter-web</code>替换为<code>spring-boot-starter-WebFlux</code>，而是增加<code>reactor-core</code>的依赖的话，仍然可以用注解的方式开发基于Tomcat的响应式应用。</p>
+</blockquote>
+<h4 id="1-3-3-2-WebFlux的函数式开发模式"><a href="#1-3-3-2-WebFlux的函数式开发模式" class="headerlink" title="1.3.3.2 WebFlux的函数式开发模式"></a>1.3.3.2 WebFlux的函数式开发模式</h4><p>既然是响应式编程了，有些朋友可能会想统一用函数式的编程风格，WebFlux满足你。WebFlux提供了一套函数式接口，可以用来实现类似MVC的效果。我们先接触两个常用的。</p>
+<p>再回头瞧一眼上边例子中我们用<code>Controller</code>定义定义对Request的处理逻辑的方式，主要有两个点：</p>
+<ol>
+<li> 方法定义处理逻辑；</li>
+<li> 然后用<code>@RequestMapping</code>注解定义好这个方法对什么样url进行响应。</li>
+</ol>
+<p>在WebFlux的函数式开发模式中，我们用<code>HandlerFunction</code>和<code>RouterFunction</code>来实现上边这两点。</p>
+<ul>
+<li>  <code>HandlerFunction</code>相当于<code>Controller</code>中的具体处理方法，输入为请求，输出为装在<code>Mono</code>中的响应：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mono&lt;T extends ServerResponse&gt; handle(ServerRequest request);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>RouterFunction</code>，顾名思义，路由，相当于<code>@RequestMapping</code>，用来判断什么样的url映射到那个具体的<code>HandlerFunction</code>，输入为请求，输出为装在Mono里边的<code>Handlerfunction</code>：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Mono&lt;HandlerFunction&lt;T&gt;&gt; route(ServerRequest request);</span><br></pre></td></tr></table></figure>
+
+<p>我们看到，在WebFlux中，请求和响应不再是WebMVC中的<code>ServletRequest</code>和<code>ServletResponse</code>，而是<code>ServerRequest</code>和<code>ServerResponse</code>。后者是在响应式编程中使用的接口，它们提供了对非阻塞和回压特性的支持，以及Http消息体与响应式类型Mono和Flux的转换方法。</p>
+<p>下面我们用函数式的方式开发两个Endpoint：</p>
+<ol>
+<li> <code>/time</code>返回当前的时间；</li>
+<li> <code>/date</code>返回当前的日期。</li>
+</ol>
+<p>对于这两个需求，HandlerFunction很容易写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 返回包含时间字符串的ServerResponse</span><br><span class="line">HandlerFunction&lt;ServerResponse&gt; timeFunction = </span><br><span class="line">    request -&gt; ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).body(</span><br><span class="line">        Mono.just(&quot;Now is &quot; + new SimpleDateFormat(&quot;HH:mm:ss&quot;).format(new Date())), String.class);</span><br><span class="line"></span><br><span class="line">// 返回包含日期字符串的ServerResponse</span><br><span class="line">HandlerFunction&lt;ServerResponse&gt; dateFunction = </span><br><span class="line">    request -&gt; ServerResponse.ok().contentType(MediaType.TEXT_PLAIN).body(</span><br><span class="line">        Mono.just(&quot;Today is &quot; + new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(new Date())), String.class);</span><br></pre></td></tr></table></figure>
+
+<p>那么RouterFunction为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RouterFunction&lt;ServerResponse&gt; router = </span><br><span class="line">    RouterFunctions.route(GET(&quot;/time&quot;), timeFunction)</span><br><span class="line">        .andRoute(GET(&quot;/date&quot;), dateFunction);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>按照常见的套路，<code>RouterFunctions</code>是工具类。</p>
+</blockquote>
+<p>不过这么写在业务逻辑复杂的时候不太好组织，我们通常采用跟MVC类似的代码组织方式，将同类业务的HandlerFunction放在一个类中，然后在Java Config中将RouterFunction配置为Spring容器的Bean。我们继续在第一个例子的代码上开发：</p>
+<p><strong>1）创建统一存放处理时间的Handler类</strong></p>
+<p>创建<code>TimeHandler.java</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import static org.springframework.web.reactive.function.server.ServerResponse.ok;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">public class TimeHandler &#123;</span><br><span class="line">    public Mono&lt;ServerResponse&gt; getTime(ServerRequest serverRequest) &#123;</span><br><span class="line">        return ok().contentType(MediaType.TEXT_PLAIN).body(Mono.just(&quot;Now is &quot; + new SimpleDateFormat(&quot;HH:mm:ss&quot;).format(new Date())), String.class);</span><br><span class="line">    &#125;</span><br><span class="line">    public Mono&lt;ServerResponse&gt; getDate(ServerRequest serverRequest) &#123;</span><br><span class="line">        return ok().contentType(MediaType.TEXT_PLAIN).body(Mono.just(&quot;Today is &quot; + new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(new Date())), String.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于出现次数通常比较多，这里静态引入<code>ServerResponse.ok()</code>方法。</p>
+</blockquote>
+<p><strong>2）在Spring容器配置RouterFunction</strong></p>
+<p>我们采用Spring现在比较推荐的Java Config的配置Bean的方式，创建用于存放Router的配置类<code>RouterConfig.java</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import static org.springframework.web.reactive.function.server.RequestPredicates.GET;</span><br><span class="line">import static org.springframework.web.reactive.function.server.RouterFunctions.route;</span><br><span class="line"></span><br><span class="line">@Configuration</span><br><span class="line">public class RouterConfig &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private TimeHandler timeHandler;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public RouterFunction&lt;ServerResponse&gt; timerRouter() &#123;</span><br><span class="line">        return route(GET(&quot;/time&quot;), req -&gt; timeHandler.getTime(req))</span><br><span class="line">                .andRoute(GET(&quot;/date&quot;), timeHandler::getDate);  // 这种方式相对于上一行更加简洁</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）重启服务试一试</strong></p>
+<p>重启服务测试一下吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl http://localhost:8080/date</span><br><span class="line">Today is 2018-02-26</span><br><span class="line"></span><br><span class="line">$ curl http://localhost:8080/time</span><br><span class="line">Now is 21:12:53</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-3-3-服务器推送"><a href="#1-3-3-3-服务器推送" class="headerlink" title="1.3.3.3 服务器推送"></a>1.3.3.3 服务器推送</h4><p>我们可能会遇到一些需要网页与服务器端保持连接（起码看上去是保持连接）的需求，比如类似微信网页版的聊天类应用，比如需要频繁更新页面数据的监控系统页面或股票看盘页面。我们通常采用如下几种技术：</p>
+<ul>
+<li>  短轮询：利用ajax定期向服务器请求，无论数据是否更新立马返回数据，高并发情况下可能会对服务器和带宽造成压力；</li>
+<li>  长轮询：利用comet不断向服务器发起请求，服务器将请求暂时挂起，直到有新的数据的时候才返回，相对短轮询减少了请求次数；</li>
+<li>  SSE：服务端推送（Server Send Event），在客户端发起一次请求后会保持该连接，服务器端基于该连接持续向客户端发送数据，从HTML5开始加入。</li>
+<li>  Websocket：这是也是一种保持连接的技术，并且是双向的，从HTML5开始加入，并非完全基于HTTP，适合于频繁和较大流量的双向通讯场景。</li>
+</ul>
+<p>既然响应式编程是一种基于数据流的编程范式，自然在服务器推送方面<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E5%BE%97%E5%BF%83%E5%BA%94%E6%89%8B&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd">得心应手</a>，我们基于函数式方式再增加一个Endpoint <code>/times</code>，可以每秒推送一次时间。</p>
+<p><strong>1）增加Handler方法</strong></p>
+<p><code>TimeHandler.java</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public Mono&lt;ServerResponse&gt; sendTimePerSec(ServerRequest serverRequest) &#123;</span><br><span class="line">    return ok().contentType(MediaType.TEXT_EVENT_STREAM).body(  // 1</span><br><span class="line">            Flux.interval(Duration.ofSeconds(1)).   // 2</span><br><span class="line">                    map(l -&gt; new SimpleDateFormat(&quot;HH:mm:ss&quot;).format(new Date())), </span><br><span class="line">            String.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> <code>MediaType.TEXT_EVENT_STREAM</code>表示<code>Content-Type</code>为<code>text/event-stream</code>，即SSE；</li>
+<li> 利用interval生成每秒一个数据的流。</li>
+</ol>
+<p><strong>2）配置router</strong></p>
+<p><code>RouterConfig.java</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public RouterFunction&lt;ServerResponse&gt; timerRouter() &#123;</span><br><span class="line">    return route(GET(&quot;/time&quot;), timeHandler::getTime)</span><br><span class="line">            .andRoute(GET(&quot;/date&quot;), timeHandler::getDate)</span><br><span class="line">            .andRoute(GET(&quot;/times&quot;), timeHandler::sendTimePerSec);  // 增加这一行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）重启服务试一下</strong></p>
+<p>重启服务后，测试一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:8080/times</span><br><span class="line">data:21:32:22</span><br><span class="line">data:21:32:23</span><br><span class="line">data:21:32:24</span><br><span class="line">data:21:32:25</span><br><span class="line">data:21:32:26</span><br><span class="line">&lt;Ctrl+C&gt;</span><br></pre></td></tr></table></figure>
+
+<p>就酱，访问这个url会收到持续不断的报时数据（时间数据是在<code>data</code>中的）。</p>
+<p>那么用注解的方式如何进行服务端推送呢，这个演示就融到下一个例子中吧~</p>
+<h4 id="1-3-3-3-响应式Spring-Data"><a href="#1-3-3-3-响应式Spring-Data" class="headerlink" title="1.3.3.3 响应式Spring Data"></a>1.3.3.3 响应式Spring Data</h4><p>开发基于响应式流的应用，就像是在搭建数据流流动的管道，从而异步的数据能够顺畅流过每个环节。前边的例子主要聚焦于应用层，然而绝大多数系统免不了要与数据库进行交互，所以我们也需要响应式的持久层API和支持异步的数据库驱动。就像从自来水厂到家里水龙头这个管道中，如果任何一个环节发生了阻塞，那就可能造成整体吞吐量的下降。</p>
+<p>各个数据库都开始陆续推出异步驱动，目前Spring Data支持的可以进行响应式数据访问的数据库有MongoDB、Redis、Apache Cassandra和CouchDB。今天我们用MongoDB来写一个响应式demo。</p>
+<p>我们这个例子很简单，就是关于<code>User</code>的增删改查，以及基于注解的服务端推送。</p>
+<p><strong>1）编写<code>User</code></strong></p>
+<p>既然是举例，我们随便定义几个属性吧~</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class User &#123;</span><br><span class="line">    private String id;</span><br><span class="line">    private String username;</span><br><span class="line">    private String phone;</span><br><span class="line">    private String email;</span><br><span class="line">    private String name;</span><br><span class="line">    private Date birthday;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后为了方便开发，我们引入lombok库，它能够通过注解的方式为我们添加必要的Getter/Setter/hashCode()/equals()/toString()/构造方法等，添加依赖（版本可自行到<a target="_blank" rel="noopener" href="http://search.maven.org/">http://search.maven.org</a>搜索最新）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.16.20&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后为<code>User</code>添加注解：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Data   // 生成无参构造方法/getter/setter/hashCode/equals/toString</span><br><span class="line">@AllArgsConstructor // 生成所有参数构造方法</span><br><span class="line">@NoArgsConstructor  // @AllArgsConstructor会导致@Data不生成无参构造方法，需要手动添加@NoArgsConstructor，如果没有无参构造方法，可能会导致比如com.fasterxml.jackson在序列化处理时报错</span><br><span class="line">public class User &#123;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>我们可以利用IDE看一下生成的方法（如下图黄框所示）：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a94c32aab64415b37000523"></p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a94c412ab64415b3700054b"></p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a94c46aab64415b37000550"></p>
+<p>可能需要先在IDE中进行少量配置以便支持lombok的注解，比如IntelliJ IDEA：<br>1. 安装“lombok plugin”：  </p>
+<p>2. 开启对注解编译的支持：  </p>
+<p>lombok对于Java开发者来说绝对算是个福音了，希望使用Kotlin的朋友不要笑话我们土哦~</p>
+<p><strong>2）增加Spring Data的依赖</strong></p>
+<p>在POM中增加Spring Data Reactive Mongo的依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-data-mongodb-reactive&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>MongoDB是文档型的NoSQL数据库，因此，我们使用<code>@Document</code>注解<code>User</code>类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">@Document</span><br><span class="line">public class User &#123;</span><br><span class="line">    @Id</span><br><span class="line">    private String id;      // 注解属性id为ID</span><br><span class="line">    @Indexed(unique = true) // 注解属性username为索引，并且不能重复</span><br><span class="line">    private String username;</span><br><span class="line">    private String name;</span><br><span class="line">    private String phone;</span><br><span class="line">    private Date birthday;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>OK，这样我们的模型就准备好了。MongoDB会自动创建collection，默认为类名首字母小写，也就是<code>user</code>。</p>
+<p><strong>3）配置数据源</strong></p>
+<p>Spring Boot为我们搞定了几乎所有的<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html">配置</a>，太赞了，下边是MongoDB的默认配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># MONGODB (MongoProperties)</span><br><span class="line">spring.data.mongodb.authentication-database= # Authentication database name.</span><br><span class="line">spring.data.mongodb.database=test # Database name.</span><br><span class="line">spring.data.mongodb.field-naming-strategy= # Fully qualified name of the FieldNamingStrategy to use.</span><br><span class="line">spring.data.mongodb.grid-fs-database= # GridFS database name.</span><br><span class="line">spring.data.mongodb.host=localhost # Mongo server host. Cannot be set with uri.</span><br><span class="line">spring.data.mongodb.password= # Login password of the mongo server. Cannot be set with uri.</span><br><span class="line">spring.data.mongodb.port=27017 # Mongo server port. Cannot be set with uri.</span><br><span class="line">spring.data.mongodb.repositories.enabled=true # Enable Mongo repositories.</span><br><span class="line">spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. Cannot be set with host, port and credentials.</span><br><span class="line">spring.data.mongodb.username= # Login user of the mongo server. Cannot be set with uri.</span><br></pre></td></tr></table></figure>
+
+<p>请根据需要添加自定义的配置，比如我的MongoDB是跑在IP为192.168.0.101的虚拟机的Docker中的，就可在<code>application.properties</code>中增加一条：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.data.mongodb.host=192.168.0.101</span><br></pre></td></tr></table></figure>
+
+<p><strong>4）增加DAO层repository</strong></p>
+<p>与非响应式Spring Data的<code>CrudReposity</code>对应的，响应式的Spring Data也提供了相应的Repository库：<code>ReactiveCrudReposity</code>，当然，我们也可以使用它的子接口<code>ReactiveMongoRepository</code>。</p>
+<p>我们增加<code>UserRepository</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface UserRepository extends ReactiveCrudRepository&lt;User, String&gt; &#123;  // 1</span><br><span class="line">    Mono&lt;User&gt; findByUsername(String username);     // 2</span><br><span class="line">    Mono&lt;Long&gt; deleteByUsername(String username);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 同样的，<code>ReactiveCrudRepository</code>的泛型分别是<code>User</code>和<code>ID</code>的类型；</li>
+<li> <code>ReactiveCrudRepository</code>已经提供了基本的增删改查的方法，根据业务需要，我们增加四个方法（在此膜拜一下Spring团队的牛人们，使得我们仅需按照规则定义接口方法名即可完成DAO层逻辑的开发，牛~）</li>
+</ol>
+<p><strong>5）Service层</strong></p>
+<p>由于业务逻辑几乎为零，只是简单调用了DAO层，直接贴代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class UserService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 保存或更新。</span><br><span class="line">     * 如果传入的user没有id属性，由于username是unique的，在重复的情况下有可能报错，</span><br><span class="line">     * 这时找到以保存的user记录用传入的user更新它。</span><br><span class="line">     */</span><br><span class="line">    public Mono&lt;User&gt; save(User user) &#123;</span><br><span class="line">        return userRepository.save(user)</span><br><span class="line">                .onErrorResume(e -&gt;     // 1</span><br><span class="line">                        userRepository.findByUsername(user.getUsername())   // 2</span><br><span class="line">                                .flatMap(originalUser -&gt; &#123;      // 4</span><br><span class="line">                                    user.setId(originalUser.getId());</span><br><span class="line">                                    return userRepository.save(user);   // 3</span><br><span class="line">                                &#125;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Mono&lt;Long&gt; deleteByUsername(String username) &#123;</span><br><span class="line">        return userRepository.deleteByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Mono&lt;User&gt; findByUsername(String username) &#123;</span><br><span class="line">        return userRepository.findByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Flux&lt;User&gt; findAll() &#123;</span><br><span class="line">        return userRepository.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> <code>onErrorResume</code>进行错误处理；</li>
+<li> 找到username重复的记录；</li>
+<li> 拿到ID从而进行更新而不是创建；</li>
+<li> 由于函数式为<code>User -&gt; Publisher</code>，所以用<code>flatMap</code>。</li>
+</ol>
+<p><strong>6）Controller层</strong></p>
+<p>直接贴代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    @PostMapping(&quot;&quot;)</span><br><span class="line">    public Mono&lt;User&gt; save(User user) &#123;</span><br><span class="line">        return this.userService.save(user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @DeleteMapping(&quot;/&#123;username&#125;&quot;)</span><br><span class="line">    public Mono&lt;Long&gt; deleteByUsername(@PathVariable String username) &#123;</span><br><span class="line">        return this.userService.deleteByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;/&#123;username&#125;&quot;)</span><br><span class="line">    public Mono&lt;User&gt; findByUsername(@PathVariable String username) &#123;</span><br><span class="line">        return this.userService.findByUsername(username);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;&quot;)</span><br><span class="line">    public Flux&lt;User&gt; findAll() &#123;</span><br><span class="line">        return this.userService.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>7）启动应用测试一下</strong></p>
+<p>由于涉及到POST和DELETE方法的请求，建议用支持RESTful的client来测试，比如“Restlet client”：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a95091cab64415d3400134a" alt="title"></p>
+<p>如图，增加操作是成功的，只要username不变，再次发送请求会更新该记录。</p>
+<blockquote>
+<p>图中birthday的时间差8小时，不去管它。</p>
+</blockquote>
+<p>用同样的方法增加一个李四，之后我们再来测试一下查询。</p>
+<ol>
+<li>根据用户名查询（METHOD:GET URL:<a target="_blank" rel="noopener" href="http://localhost:8080/user/zhangsan">http://localhost:8080/user/zhangsan</a>），下边输出是格式化的JSON：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: &quot;5a9504a167646d057051e229&quot;,</span><br><span class="line">    &quot;username&quot;: &quot;zhangsan&quot;,</span><br><span class="line">    &quot;name&quot;: &quot;张三&quot;,</span><br><span class="line">    &quot;phone&quot;: &quot;18610861861&quot;,</span><br><span class="line">    &quot;birthday&quot;: &quot;1989-12-31T16:00:00.000+0000&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查询全部（METHOD:GET URL:<a target="_blank" rel="noopener" href="http://localhost:8080/user">http://localhost:8080/user</a>）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&quot;id&quot;:&quot;5a9504a167646d057051e229&quot;,&quot;username&quot;:&quot;zhangsan&quot;,&quot;name&quot;:&quot;张三&quot;,&quot;phone&quot;:&quot;18610861861&quot;,&quot;birthday&quot;:&quot;1989-12-31T16:00:00.000+0000&quot;&#125;,&#123;&quot;id&quot;:&quot;5a9511db67646d3c782f2e7f&quot;,&quot;username&quot;:&quot;lisi&quot;,&quot;name&quot;:&quot;李四&quot;,&quot;phone&quot;:&quot;18610861862&quot;,&quot;birthday&quot;:&quot;1992-02-01T16:00:00.000+0000&quot;&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>测试一下删除（METHOD:DELETE URL:<a target="_blank" rel="noopener" href="http://localhost:8080/user/zhangsan">http://localhost:8080/user/zhangsan</a>），返回值为1，再查询全部，发现张三已经被删除了，OK。</p>
+<p><strong>8）stream+json</strong></p>
+<p>看到这里细心的朋友可能会有点嘀咕，怎么看是不是异步的呢？毕竟查询全部的时候，结果都用中括号括起来了，这和原来返回<code>List&lt;User&gt;</code>的效果似乎没多大区别。假设一下查询100个数据，如果是异步的话，以我们对“异步响应式流”的印象似乎应该是一个一个至少是一批一批的到达客户端的嘛。我们加个延迟验证一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;&quot;)</span><br><span class="line">public Flux&lt;User&gt; findAll() &#123;</span><br><span class="line">    return this.userService.findAll().delayElements(Duration.ofSeconds(1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每个元素都延迟1秒，现在我们在数据库里弄三条记录，然后请求查询全部的那个URL，发现并不是像<code>/times</code>一样一秒一个地出来，而是3秒之后一块儿出来的。果然如此，这一点都不响应式啊！</p>
+<p>与<code>/times</code>类似，我们也加一个MediaType，不过由于这里返回的是JSON，因此不能使用<code>TEXT_EVENT_STREAM</code>，而是使用<code>APPLICATION_STREAM_JSON</code>，即<code>application/stream+json</code>格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(value = &quot;&quot;, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)</span><br><span class="line">public Flux&lt;User&gt; findAll() &#123;</span><br><span class="line">    return this.userService.findAll().delayElements(Duration.ofSeconds(2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> <code>produces</code>后边的值应该是<code>application/stream+json</code>字符串，因此用<code>APPLICATION_STREAM_JSON_VALUE</code>。</li>
+</ol>
+<p>重启服务再次请求，发现三个user是一秒一个的速度出来的，中括号也没有了，而是一个一个独立的JSON值构成的json stream：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;id&quot;:&quot;5a9504a167646d057051e229&quot;,&quot;username&quot;:&quot;zhangsan&quot;,&quot;name&quot;:&quot;张三&quot;,&quot;phone&quot;:&quot;18610861861&quot;,&quot;birthday&quot;:&quot;1989-12-31T16:00:00.000+0000&quot;&#125;</span><br><span class="line">&#123;&quot;id&quot;:&quot;5a9511db67646d3c782f2e7f&quot;,&quot;username&quot;:&quot;lisi&quot;,&quot;name&quot;:&quot;李四&quot;,&quot;phone&quot;:&quot;18610861862&quot;,&quot;birthday&quot;:&quot;1992-02-01T16:00:00.000+0000&quot;&#125;</span><br><span class="line">&#123;&quot;id&quot;:&quot;5a955f08fa10b93ec48df37f&quot;,&quot;username&quot;:&quot;wangwu&quot;,&quot;name&quot;:&quot;王五&quot;,&quot;phone&quot;:&quot;18610861865&quot;,&quot;birthday&quot;:&quot;1995-05-04T16:00:00.000+0000&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>9）总结</strong></p>
+<p>如果有Spring Data开发经验的话，切换到Spring Data Reactive的难度并不高。跟Spring WebFlux类似：原来返回<code>User</code>的话，那现在就返回<code>Mono&lt;User&gt;</code>；原来返回<code>List&lt;User&gt;</code>的话，那现在就返回<code>Flux&lt;User&gt;</code>。</p>
+<p>对于稍微复杂的业务逻辑或一些必要的异常处理，比如上边的save方法，请一定采用响应式的编程方式来定义，从而一切都是异步非阻塞的。如下图所示，从HttpServer（如Netty或Servlet3.1以上的Servlet容器）到ServerAdapter（Spring WebFlux框架提供的针对不同server的适配器），到我们编写的Controller和DAO，以及异步数据库驱动，构成了一个完整的异步非阻塞的管道，里边流动的就是响应式流。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a93885bab64417fd90007c1" alt="title"></p>
+<h4 id="1-3-3-4-使用WebClient开发响应式Http客户端"><a href="#1-3-3-4-使用WebClient开发响应式Http客户端" class="headerlink" title="1.3.3.4 使用WebClient开发响应式Http客户端"></a>1.3.3.4 使用<code>WebClient</code>开发响应式Http客户端</h4><p>下面，我们用WebClient测试一下前边几个例子的成果。</p>
+<p><strong>1) /hello，返回Mono</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void webClientTest1() throws InterruptedException &#123;</span><br><span class="line">    WebClient webClient = WebClient.create(&quot;http://localhost:8080&quot;);   // 1</span><br><span class="line">    Mono&lt;String&gt; resp = webClient</span><br><span class="line">            .get().uri(&quot;/hello&quot;) // 2</span><br><span class="line">            .retrieve() // 3</span><br><span class="line">            .bodyToMono(String.class);  // 4</span><br><span class="line">    resp.subscribe(System.out::println);    // 5</span><br><span class="line">    TimeUnit.SECONDS.sleep(1);  // 6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 创建<code>WebClient</code>对象并指定baseUrl；</li>
+<li> HTTP GET；</li>
+<li> 异步地获取response信息；</li>
+<li> 将response body解析为字符串；</li>
+<li> 打印出来；</li>
+<li> 由于是异步的，我们将测试线程sleep 1秒确保拿到response，也可以像前边的例子一样用<code>CountDownLatch</code>。</li>
+</ol>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9513e7ab64415d34003abd" alt="title"></p>
+<p>运行效果如下：  </p>
+<p><strong>2） /user，返回Flux</strong></p>
+<p>为了多演示一些不同的实现方式，下边的例子我们调整几个地方，但是效果跟上边是一样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void webClientTest2() throws InterruptedException &#123;</span><br><span class="line">    WebClient webClient = WebClient.builder().baseUrl(&quot;http://localhost:8080&quot;).build(); // 1</span><br><span class="line">    webClient</span><br><span class="line">            .get().uri(&quot;/user&quot;)</span><br><span class="line">            .accept(MediaType.APPLICATION_STREAM_JSON) // 2</span><br><span class="line">            .exchange() // 3</span><br><span class="line">            .flatMapMany(response -&gt; response.bodyToFlux(User.class))   // 4</span><br><span class="line">            .doOnNext(System.out::println)  // 5</span><br><span class="line">            .blockLast();   // 6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 这次我们使用WebClientBuilder来构建WebClient对象；</li>
+<li> 配置请求Header：<code>Content-Type: application/stream+json</code>；</li>
+<li> 获取response信息，返回值为<code>ClientResponse</code>，<code>retrive()</code>可以看做是<code>exchange()</code>方法的“快捷版”；</li>
+<li> 使用<code>flatMap</code>来将ClientResponse映射为Flux；</li>
+<li> 只读地peek每个元素，然后打印出来，它并不是subscribe，所以不会触发流；</li>
+<li> 上个例子中sleep的方式有点low，<code>blockLast</code>方法，顾名思义，在收到最后一个元素前会阻塞，响应式业务场景中慎用。</li>
+</ol>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9570d6ab64415d3400b4f0" alt="title"></p>
+<p>运行效果如下：  </p>
+<p><strong>3） /times，服务端推送</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void webClientTest3() throws InterruptedException &#123;</span><br><span class="line">    WebClient webClient = WebClient.create(&quot;http://localhost:8080&quot;);</span><br><span class="line">    webClient</span><br><span class="line">            .get().uri(&quot;/times&quot;)</span><br><span class="line">            .accept(MediaType.TEXT_EVENT_STREAM)    // 1</span><br><span class="line">            .retrieve()</span><br><span class="line">            .bodyToFlux(String.class)</span><br><span class="line">            .log()  // 2</span><br><span class="line">            .take(10)   // 3</span><br><span class="line">            .blockLast();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 配置请求Header：<code>Content-Type: text/event-stream</code>，即SSE；</li>
+<li> 这次用<code>log()</code>代替<code>doOnNext(System.out::println)</code>来查看每个元素；</li>
+<li> 由于<code>/times</code>是一个无限流，这里取前10个，会导致流<strong>被取消</strong>；</li>
+</ol>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a956ffeab64415d3400b4e4" alt="title"></p>
+<p>运行效果如下：  </p>
+<h4 id="1-3-3-5-让数据在Http上双向无限流动起来"><a href="#1-3-3-5-让数据在Http上双向无限流动起来" class="headerlink" title="1.3.3.5 让数据在Http上双向无限流动起来"></a>1.3.3.5 让数据在Http上双向无限流动起来</h4><p>许多朋友看到这个题目会想到Websocket，的确，Websocket确实可以实现全双工通信，但它的数据传输并非是完全基于HTTP协议的，关于Websocket我们后边再聊。</p>
+<p>下面我们实现一个这样两个Endpoint：<br>* POST方法的<code>/events</code>，“<a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=%E6%BA%90%E6%BA%90%E4%B8%8D%E6%96%AD&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd">源源不断</a>”地收集数据，并存入数据库；<br>* GET方法的<code>/events</code>，“源源不断”将数据库中的记录发出来。</p>
+<p><strong>0）准备</strong></p>
+<p>一、数据模型<code>MyEvent</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">@NoArgsConstructor</span><br><span class="line">@Document(collection = &quot;event&quot;) // 1</span><br><span class="line">public class MyEvent &#123;</span><br><span class="line">    @Id</span><br><span class="line">    private Long id;    // 2</span><br><span class="line">    private String message;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 指定collection名为<code>event</code>；</li>
+<li> 这次我们使用表示时间的long型数据作为ID。</li>
+</ol>
+<p>二、DAO层：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface MyEventRepository extends ReactiveMongoRepository&lt;MyEvent, Long&gt; &#123; // 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 下边用到了可以保存Flux的<code>insert(Flux)</code>方法，这个方法是在<code>ReactiveMongoRepository</code>中定义的。</li>
+</ol>
+<p>三、简单起见就不要Service层了，直接Controller：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/events&quot;)</span><br><span class="line">public class MyEventController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyEventRepository myEventRepository;</span><br><span class="line"></span><br><span class="line">    @PostMapping(path = &quot;&quot;)</span><br><span class="line">    public Mono&lt;Void&gt; loadEvents(@RequestBody Flux&lt;MyEvent&gt; events) &#123;   // 1</span><br><span class="line">        // TODO</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @GetMapping(path = &quot;&quot;, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)</span><br><span class="line">    public Flux&lt;MyEvent&gt; getEvents() &#123;  // 2</span><br><span class="line">        // TODO</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> POST方法的接收数据流的Endpoint，所以传入的参数是一个Flux，返回结果其实就看需要了，我们用一个<code>Mono&lt;Void&gt;</code>作为方法返回值，表示如果传输完的话只给一个“完成信号”就OK了；</li>
+<li> GET方法的无限发出数据流的Endpoint，所以返回结果是一个<code>Flux&lt;MyEvent&gt;</code>，不要忘了注解上<code>produces = MediaType.APPLICATION_STREAM_JSON_VALUE</code>。</li>
+</ol>
+<p>准备到此为止，类如下。我们来完成上边的两个TODO吧。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a961530ab64413755002ce2"></p>
+<p><strong>1）接收数据流的Endpoint</strong></p>
+<p>在客户端，<code>WebClient</code>可以接收<code>text/event-stream</code>和<code>application/stream+json</code>格式的数据流，也可以在请求的时候上传一个数据流到服务器；<br>在服务端，WebFlux也支持接收一个数据流作为请求参数，从而实现一个接收数据流的Endpoint。</p>
+<p>我们先看服务端。Controller中的<code>loadEvents</code>方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping(path = &quot;&quot;, consumes = MediaType.APPLICATION_STREAM_JSON_VALUE) // 1</span><br><span class="line">public Mono&lt;Void&gt; loadEvents(@RequestBody Flux&lt;MyEvent&gt; events) &#123;</span><br><span class="line">    return this.myEventRepository.insert(events).then();    // 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 指定传入的数据是<code>application/stream+json</code>，与<code>getEvents</code>方法的区别在于这个方法是<code>consume</code>这个数据流；</li>
+<li> <code>insert</code>返回的是保存成功的记录的Flux，但我们不需要，使用<code>then</code>方法表示“忽略数据元素，只返回一个完成信号”。</li>
+</ol>
+<p>服务端写好后，启动之，再看一下客户端怎么写（还是放在<code>src/test</code>下）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void webClientTest4() &#123;</span><br><span class="line">    Flux&lt;MyEvent&gt; eventFlux = Flux.interval(Duration.ofSeconds(1))</span><br><span class="line">            .map(l -&gt; new MyEvent(System.currentTimeMillis(), &quot;message-&quot; + l)).take(5); // 1</span><br><span class="line">    WebClient webClient = WebClient.create(&quot;http://localhost:8080&quot;);</span><br><span class="line">    webClient</span><br><span class="line">            .post().uri(&quot;/events&quot;)</span><br><span class="line">            .contentType(MediaType.APPLICATION_STREAM_JSON) // 2</span><br><span class="line">            .body(eventFlux, MyEvent.class) // 3</span><br><span class="line">            .retrieve()</span><br><span class="line">            .bodyToMono(Void.class)</span><br><span class="line">            .block();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 声明速度为每秒一个MyEvent元素的数据流，不加<code>take</code>的话表示无限个元素的数据流；</li>
+<li> 声明请求体的数据格式为<code>application/stream+json</code>；</li>
+<li> <code>body</code>方法设置请求体的数据。</li>
+</ol>
+<p>运行一下这个测试，根据控制台数据可以看到是一条一条将数据发到<code>/events</code>的，看一下MongoDB中的数据：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a961b73ab64413755002dcc"></p>
+<p><strong>2）发出无限流的Endpoint</strong></p>
+<p>回想一下前边<code>/user</code>的例子，当数据库中所有的内容都查询出来之后，这个流就结束了，因为其后跟了一个“完成信号”，我们可以通过在<code>UserService</code>的<code>findAll()</code>方法的流上增加<code>log()</code>操作符来观察更详细的日志：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a95642fab64415d3400b3e8" alt="title"></p>
+<p>我们可以看到在三个<code>onNext</code>信号后是一个<code>onComplete</code>信号。</p>
+<p>这样的流是有限流，这个时候如果在数据库中再新增一个User的话，已经结束的请求也不会再有新的内容出现了。</p>
+<p>反观<code>/times</code>请求，它会无限地发出SSE，而不会有“完成信号”出现，这是无限流。</p>
+<p>我们希望的情况是无论是请求GET的<code>/events</code>之后，当所有数据都发完之后，不要结束，而是挂起等待新的数据。如果我们用上边的POST的<code>/events</code>传入新的数据到数据库后，新的数据会自动地流到客户端。</p>
+<p>这可以在DAO层配置实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface MyEventRepository extends ReactiveMongoRepository&lt;MyEvent, Long&gt; &#123;</span><br><span class="line">    @Tailable   // 1</span><br><span class="line">    Flux&lt;MyEvent&gt; findBy(); // 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> <code>@Tailable</code>注解的作用类似于linux的<code>tail</code>命令，被注解的方法将发送无限流，需要注解在返回值为Flux这样的多个元素的Publisher的方法上；</li>
+<li> <code>findAll()</code>是想要的方法，但是在<code>ReactiveMongoRepository</code>中我们够不着，所以使用<code>findBy()</code>代替。</li>
+</ol>
+<p>然后完成Controller中的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(path = &quot;&quot;, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)</span><br><span class="line">public Flux&lt;MyEvent&gt; getEvents() &#123;</span><br><span class="line">    return this.myEventRepository.findBy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过，这还不够，<code>@Tailable</code>仅支持有大小限制的（“capped”）collection，而自动创建的collection是不限制大小的，因此我们需要先手动创建。Spring Boot提供的<code>CommandLineRunner</code>可以帮助我们实现这一点。</p>
+<p>Spring Boot应用程序在启动后，会遍历CommandLineRunner接口的实例并运行它们的run方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Bean   // 1</span><br><span class="line">public CommandLineRunner initData(MongoOperations mongo) &#123;  // 2</span><br><span class="line">    return (String... args) -&gt; &#123;    // 3</span><br><span class="line">        mongo.dropCollection(MyEvent.class);    // 4</span><br><span class="line">        mongo.createCollection(MyEvent.class, CollectionOptions.empty().size(200).capped()); // 5</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li> 对于复杂的Bean只能通过Java Config的方式配置，这也是为什么Spring3之后官方推荐这种配置方式的原因，这段代码可以放到配置类中，本例我们就直接放到启动类<code>WebFluxDemoApplication</code>了；</li>
+<li> <code>MongoOperations</code>提供对MongoDB的操作方法，由Spring注入的mongo实例已经配置好，直接使用即可；</li>
+<li> <code>CommandLineRunner</code>也是一个函数式接口，其实例可以用lambda表达；</li>
+<li> 如果有，先删除collection，生产环境慎用这种操作；</li>
+<li> 创建一个记录个数为10的capped的collection，容量满了之后，新增的记录会覆盖最旧的。</li>
+</ol>
+<p>启动应用，我们检查一下<code>event</code> collection：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9623faab64413973002502"></p>
+<p>OK，这个时候我们请求一下<code>http://localhost:8080/events</code>，发现立马返回了，并没有挂起。原因在于collection中一条记录都没有，而<code>@Tailable</code>起作用的前提是至少有一条记录。</p>
+<p>跑一下WebClient测试程序插入5条数据，然后再次请求：</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a9627edab64413973002d60"></p>
+<p>请求是挂起的，这没错，但是只有两条数据，看WebClient测试程序的控制台明明发出了5个请求啊。</p>
+<p>原因定义的<code>CollectionOptions.empty().size(200).capped()</code>中，<code>size</code>指的是以字节为单位的大小，并且会向上取到256的整倍数，所以我们刚才定义的是256byte大小的collection，所以最多容纳两条记录。我们可以这样改一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CollectionOptions.empty().maxDocuments(200).size(100000).capped()</span><br></pre></td></tr></table></figure>
+
+<p><code>maxDocuments</code>限制了记录条数，<code>size</code>限制容量且是必须定义的，因为MongoDB不像关系型数据库有严格的列和字段大小定义，鬼知道会存多大的数据进来，所以容量限制是必要的。</p>
+<p>好了，再次启动应用，先插入5条数据，然后请求<code>/events</code>，收到5条记录后请求仍然挂起，在插入5条数据，curl客户端又会陆续收到新的数据。</p>
+<p><img src="https://leanote.com/api/file/getImage?fileId=5a963481ab64413973002e01" alt="title"></p>
+<p>我们用代码搭建了图中箭头所表示的“管道”，看效果还是很畅通的嘛。现在再回想我们最初的那个Excel的例子，是不是感觉这个demo很有响应式的“范儿”了呢？</p>
+<h4 id="1-3-3-6-总结"><a href="#1-3-3-6-总结" class="headerlink" title="1.3.3.6 总结"></a>1.3.3.6 总结</h4><p>这一节，我们对WebFlux做了一个简单的基于实例的介绍，相信你对响应式编程及其在WEB应用中如何发挥作用有了更多的体会，本章的实战是比较基础的，初衷是希望能够通过上手编写代码体会响应式编程的感觉，因为切换到响应式思维方式并非易事。</p>
+<p>这一章的核心关键词其实翻来覆去就是：“异步非阻塞的响应式流”。我们了解了异步非阻塞的好处，也知道如何让数据流动起来，下面我们就通过对实例的性能测试，借助实实在在的数据，真切感受一下异步非阻塞的“丝滑”。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/01/13/spring-webflux%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B-%E5%93%8D%E5%BA%94%E5%BC%8Fspring%E7%9A%84%E9%81%93%E6%B3%95%E6%9C%AF%E5%99%A8/" data-id="cksy3fx5900jfpnv92n1icpg0" data-title="Spring WebFlux快速上手——响应式Spring的道法术器" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mybatis查询返回异常返回代理对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/01/03/mybatis%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9E%E5%BC%82%E5%B8%B8%E8%BF%94%E5%9B%9E%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2019-01-03T11:42:46.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/01/03/mybatis%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9E%E5%BC%82%E5%B8%B8%E8%BF%94%E5%9B%9E%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1/">Mybatis查询返回异常(返回代理对象)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>使用嵌套子查询分页查询时,错误的返回了代理对象没有返回实际的bean</p>
+<p>在collection 指定fetchType = “lazy”导致 ,修改为 <strong>fetchType=”eager” 解决</strong></p>
+<p>在使用**ListPage分页工具类进行分页操作时，如果使用一对多查询，会造成查询出来每一页数据数量不等于实际规定的每一个数据数量。原因在于，一对多查询的结果是包含了与子表链接的数据，例如在查询10个订单(order_header)数据时，假如有两个订单均包含2条订单条目(order_detail)数据，那么最终查询的10条数据只有8条order_header表的数据。</p>
+<p>通常，我们为了解决这种问题，首先会先获取到10条order_header数据，然后在遍历订单数据分别获取每一条订单数据的订单条目数据，这样会浪费数据库的执行时间，下面使用collection进行查询的方法，可以避开普通collection查询造成的问题，也能达到其效果。</p>
+<p>Mapper：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace=&quot;OrderHeaderMapper&quot;&gt;</span><br><span class="line">    &lt;resultMap id=&quot;OrderView_M&quot; type=&quot;OrderView_M&quot;&gt;</span><br><span class="line">        &lt;id column=&quot;order_id&quot; property=&quot;orderID&quot; jdbcType=&quot;INTEGER&quot;/&gt;</span><br><span class="line">        &lt;result column=&quot;order_number&quot; property=&quot;orderNumber&quot; jdbcType=&quot;VARCHAR&quot;/&gt;</span><br><span class="line">        &lt;result column=&quot;total_amount&quot; property=&quot;totalAmount&quot; jdbcType=&quot;DECIMAL&quot;/&gt;</span><br><span class="line">&lt;result column=&quot;pay_status_id&quot; property=&quot;payStatusID&quot;/&gt;</span><br><span class="line">        &lt;result column=&quot;order_status_id&quot; property=&quot;orderStatusID&quot;/&gt;</span><br><span class="line">        &lt;collection property=&quot;orderDetail&quot; column=&quot;order_id&quot; ofType=&quot;OrderDetailView_M&quot; javaType=&quot;ArrayList&quot; select=&quot;getOrderDetailByOrderID&quot;&gt;</span><br><span class="line"> </span><br><span class="line">        &lt;/collection&gt;</span><br><span class="line">    &lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line">&lt;resultMap id=&quot;OrderDetailView_M&quot; type=&quot;OrderDetailView_M&quot;&gt;</span><br><span class="line">    &lt;id column=&quot;order_detail_id&quot; property=&quot;orderDetailID&quot; jdbcType=&quot;INTEGER&quot;/&gt;</span><br><span class="line">    &lt;result column=&quot;product_name&quot; property=&quot;productName&quot; jdbcType=&quot;VARCHAR&quot;/&gt;</span><br><span class="line">    &lt;result column=&quot;photo_path&quot; property=&quot;photoPath&quot; jdbcType=&quot;VARCHAR&quot;/&gt;</span><br><span class="line">&lt;/resultMap&gt;</span><br><span class="line">&lt;!-- page为一个自定义分页类，其中包括一个pd的map --&gt;</span><br><span class="line">&lt;select id=&quot;getOrderByCustomerListPage&quot; parameterType=&quot;page&quot; resultMap=&quot;OrderView_M&quot;&gt;</span><br><span class="line">        SELECT</span><br><span class="line">        oh.order_id,</span><br><span class="line">        oh.order_number,</span><br><span class="line">        oh.total_amount,</span><br><span class="line">        oh.pay_status_id,</span><br><span class="line">                oh.order_status_id</span><br><span class="line">    FROM</span><br><span class="line">        order_header oh</span><br><span class="line">    WHERE oh.pay_status_id = #&#123;pd.orderStatusID&#125;</span><br><span class="line">    ORDER BY oh.order_date DESC</span><br><span class="line">    &lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;select id=&quot;getOrderDetailByOrderID&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;OrderDetailView_M&quot;&gt;</span><br><span class="line">    SELECT</span><br><span class="line">    od.order_detail_id,</span><br><span class="line">    od.product_name,</span><br><span class="line">    od.photo_path,</span><br><span class="line">    od.order_id</span><br><span class="line">    FROM</span><br><span class="line">    order_detail od</span><br><span class="line">    LEFT JOIN product p ON p.product_id = od.product_id</span><br><span class="line">    WHERE od.order_id = #&#123;order_id&#125;</span><br><span class="line">    ORDER BY p.sku</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">public class OrderView_M &#123;</span><br><span class="line">     private Integer orderID;</span><br><span class="line">     private String orderNumber;</span><br><span class="line">     private BigDecimal totalAmount;</span><br><span class="line">     private Integer payStatusID;</span><br><span class="line">     private Integer orderStatusID;</span><br><span class="line">     private List orderDetail;</span><br><span class="line">public Integer getPayStatusID() &#123;</span><br><span class="line">    return payStatusID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Integer getOrderStatusID() &#123;</span><br><span class="line">    return orderStatusID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setOrderStatusID(Integer orderStatusID) &#123;</span><br><span class="line">    this.orderStatusID = orderStatusID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setPayStatusID(Integer payStatusID) &#123;</span><br><span class="line">    this.payStatusID = payStatusID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Integer getOrderID() &#123;</span><br><span class="line">    return orderID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setOrderID(Integer orderID) &#123;</span><br><span class="line">    this.orderID = orderID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String getOrderNumber() &#123;</span><br><span class="line">    return orderNumber;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setOrderNumber(String orderNumber) &#123;</span><br><span class="line">    this.orderNumber = orderNumber;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public BigDecimal getTotalAmount() &#123;</span><br><span class="line">    return totalAmount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setTotalAmount(BigDecimal totalAmount) &#123;</span><br><span class="line">    this.totalAmount = totalAmount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public List&lt;OrderDetailView_M&gt; getOrderDetail() &#123;</span><br><span class="line">    return orderDetail;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setOrderDetail(List&lt;OrderDetailView_M&gt; orderDetail) &#123;</span><br><span class="line">    this.orderDetail = orderDetail;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class OrderDetailView_M &#123;</span><br><span class="line">     private Integer orderDetailID;</span><br><span class="line">     private String productName;</span><br><span class="line">     private String photoPath;</span><br><span class="line">public String getProductName() &#123;</span><br><span class="line">    return productName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setProductName(String productName) &#123;</span><br><span class="line">    this.productName = productName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String getPhotoPath() &#123;</span><br><span class="line">    return photoPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setPhotoPath(String photoPath) &#123;</span><br><span class="line">    this.photoPath = photoPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Integer getOrderDetailID() &#123;</span><br><span class="line">    return orderDetailID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void setOrderDetailID(Integer orderDetailID) &#123;</span><br><span class="line">    this.orderDetailID = orderDetailID;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/01/03/mybatis%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9E%E5%BC%82%E5%B8%B8%E8%BF%94%E5%9B%9E%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1/" data-id="cksy3fx0z0050pnv9aggr14pu" data-title="Mybatis查询返回异常(返回代理对象)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-vue中elementui样式无法修改的问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/01/03/vue%E4%B8%ADelementui%E6%A0%B7%E5%BC%8F%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2019-01-03T02:59:18.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2019/01/03/vue%E4%B8%ADelementui%E6%A0%B7%E5%BC%8F%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/">vue中elementUI样式无法修改的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>最近在开发中发现了修改elementUI样式的时候，添加了scoped的组件无法修改的样式，去掉scoped就可以了。这里我们就先看一下scoped这个属性的作用以及原理。</p>
+<p>一：scoped的作用和原理</p>
+<p>scoped的作用：当</p>
+<style scoped>   
+.example {  
+   color: red;   
+}   
+</style>   
+<template>  
+   <div class="example">hi</div>   
+</template>   
+  
+
+<p>转换成  </p>
+<style>  
+. demo \[ data-v-67e8010c \] {  
+color: red;  
+}  
+</style>  
+<template>  
+<div class="demo" data-v-67e8010c >Hello</div>  
+</template>  
+scoped的原理：从上面代码中，我们可以看到，在编译后多了个自定义属性data-XXXXXXXXXX，这是个随机生成的属性。
+
+  
+<p> 二：解决方法<br> 这里我们先看一下为什么无法修改样式，elementUI的样式是定义在全局中，我们使用scoped时，局部样式会被全局样式所覆盖（vue默认全局样式覆盖局部样式）。那么，我们可以通过如下方法来解决：<br> 1：将样式定义到全局中<br> 可以在一个组件中同时使用有作用域和无作用域的样式（或者在主页面定义样式）：  </p>
+<style> _/\* 全局样式 \*/_ </style>   
+<style scoped> _/\* 本地样式 \*/_ </style>   
+<p> 这里我们就要增加权重来解决样式覆盖问题，此时我们可以给父级定义一个类名或者Id来增加命名空间，达到不影响组件样式的目的。  </p>
+<p>.aritle-page{ //你的命名空间<br>     .el-tag { //element-ui 元素<br>       margin-right: 0px;<br>     }<br> }  </p>
+<p> 2：使用深度作用选择器<br> 如果你希望 scoped 样式中的一个选择器能够作用得“更深”，例如影响子组件，你可以使用 &gt;&gt;&gt; 操作符：<br>  <style scoped><br>     .a &gt;&gt;&gt; .b {<br>        /* … */<br>     }<br>  </style><br> 上述代码将会编译成：<br>  .a[data-v- 67e8010c ] .b {<br>       /* … */<br>  }<br>  Sass 之类的预处理器无法正确解析 &gt;&gt;&gt;。这种情况下你可以使用 /deep/ 操作符取而代之——这是一个 &gt;&gt;&gt; 的别名，同样可以正常工作。<br> 写法为：父组件cssName+ /deep/+第三方库需要更改的cssName<br> 例如 .parentCssName /deep/ .libCssName{}<br>      .a &gt;&gt;&gt; .b {<br>          /* … */<br>      } </style><br> 上述代码将会编译成：<br>      .a[data-v- 67e8010c ] .b {<br>         /* … */<br>      }<br>  Sass 之类的预处理器无法正确解析 &gt;&gt;&gt;。这种情况下你可以使用 /deep/ 操作符取而代之——这是一个 &gt;&gt;&gt; 的别名，同样可以正常工作。<br> 写法为：父组件cssName+ /deep/+第三方库需要更改的cssName<br> 例如 .parentCssName /deep/ .libCssName{}</p>
+<p>#table-role /deep/ .el-table ::-webkit-scrollbar {<br>    width: 8px;<br>    height: 8px;<br> }   </p>
+<p> 三：动态生成的内容<br> 通过 v-html 创建的 DOM 内容不受作用域内的样式影响，但是你仍然可以通过深度作用选择器来为他们设置样式。    </p>
+<p>四：注意事项CSS<br>作用域不能代替 class。考虑到浏览器渲染各种 CSS 选择器的方式，当 p { color: red } 设置了作用域时 (即与特性选择器组合使用时) 会慢很多倍。如果你使用 class 或者 id 取而代之，比如 .example { color: red }，性能影响就会消除。你可以在这块试验田中测试它们的不同。</p>
+<h3 id="在递归组件中小心使用后代选择器-对选择器-a-b-中的-CSS-规则来说，如果匹配-a-的元素包含一个递归子组件，则所有的子组件中的-b-都将被这个规则匹配。"><a href="#在递归组件中小心使用后代选择器-对选择器-a-b-中的-CSS-规则来说，如果匹配-a-的元素包含一个递归子组件，则所有的子组件中的-b-都将被这个规则匹配。" class="headerlink" title="在递归组件中小心使用后代选择器! 对选择器 .a .b 中的 CSS 规则来说，如果匹配 .a 的元素包含一个递归子组件，则所有的子组件中的 .b 都将被这个规则匹配。"></a>在递归组件中小心使用后代选择器! 对选择器 .a .b 中的 CSS 规则来说，如果匹配 .a 的元素包含一个递归子组件，则所有的子组件中的 .b 都将被这个规则匹配。</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2019/01/03/vue%E4%B8%ADelementui%E6%A0%B7%E5%BC%8F%E6%97%A0%E6%B3%95%E4%BF%AE%E6%94%B9%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="cksy3fx200073pnv927x76yht" data-title="vue中elementUI样式无法修改的问题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wtf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/12/16/wtf/" class="article-date">
+  <time class="dt-published" datetime="2018-12-16T12:29:07.000Z" itemprop="datePublished">2018-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2018/12/16/wtf/">WTF</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>-- phpMyAdmin SQL Dump<br>-- version 4.5.4.1deb2ubuntu2</p>
+<h2 id="http-www-phpmyadmin-net"><a href="#http-www-phpmyadmin-net" class="headerlink" title="-- http://www.phpmyadmin.net"></a>-- <a target="_blank" rel="noopener" href="http://www.phpmyadmin.net/">http://www.phpmyadmin.net</a></h2><p>-- Host: localhost<br>-- Generation Time: 2018-12-16 12:26:05<br>-- 服务器版本： 5.7.21-0ubuntu0.16.04.1<br>-- PHP Version: 7.0.28-0ubuntu0.16.04.1</p>
+<p>SET SQL_MODE = “NO_AUTO_VALUE_ON_ZERO”;<br>SET time_zone = “+00:00”;</p>
+<p>/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;<br>/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;<br>/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;<br>/*!40101 SET NAMES utf8mb4 */;</p>
+<p>--</p>
+<h2 id="Database-PLEASE-READ-ME-XYZ"><a href="#Database-PLEASE-READ-ME-XYZ" class="headerlink" title="-- Database: PLEASE_READ_ME_XYZ"></a>-- Database: <code>PLEASE_READ_ME_XYZ</code></h2><hr>
+<p>--</p>
+<h2 id="表的结构-WARNING"><a href="#表的结构-WARNING" class="headerlink" title="-- 表的结构 WARNING"></a>-- 表的结构 <code>WARNING</code></h2><p>CREATE TABLE <code>WARNING</code> (<br><code>id</code> int(11) NOT NULL,<br><code>warning</code> text COLLATE utf8mb4_unicode_ci,<br><code>Bitcoin_Address</code> text COLLATE utf8mb4_unicode_ci,<br><code>Email</code> text COLLATE utf8mb4_unicode_ci<br>) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</p>
+<p>--</p>
+<h2 id="转存表中的数据-WARNING"><a href="#转存表中的数据-WARNING" class="headerlink" title="-- 转存表中的数据 WARNING"></a>-- 转存表中的数据 <code>WARNING</code></h2><p>INSERT INTO <code>WARNING</code> (<code>id</code>, <code>warning</code>, <code>Bitcoin_Address</code>, <code>Email</code>) VALUES<br>(1, ‘To recover your lost data : Send 0.04 BTC to our BitCoin Address and Contact us by eMail with your server IP Address or Domain Name and a Proof of Payment. Any eMail without your server IP Address or Domain Name and a Proof of Payment together will be ignored. Your File and DataBase is downloaded and backed up on our secured servers$.If we dont receive your payment,we will leak your database.’, ‘1MuHsTiKnUWBo8tnkJoooUZhD3cn5GZEqM’, ‘<a href="mailto:&#x64;&#98;&#x72;&#101;&#99;&#x6f;&#118;&#x65;&#114;&#x79;&#x40;&#x70;&#x6d;&#x2e;&#x6d;&#x65;">&#x64;&#98;&#x72;&#101;&#99;&#x6f;&#118;&#x65;&#114;&#x79;&#x40;&#x70;&#x6d;&#x2e;&#x6d;&#x65;</a>‘);</p>
+<p>--</p>
+<h2 id="Indexes-for-dumped-tables"><a href="#Indexes-for-dumped-tables" class="headerlink" title="-- Indexes for dumped tables"></a>-- Indexes for dumped tables</h2><p>--</p>
+<h2 id="Indexes-for-table-WARNING"><a href="#Indexes-for-table-WARNING" class="headerlink" title="-- Indexes for table WARNING"></a>-- Indexes for table <code>WARNING</code></h2><p>ALTER TABLE <code>WARNING</code><br>ADD PRIMARY KEY (<code>id</code>);</p>
+<p>/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;<br>/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;<br>/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/12/16/wtf/" data-id="cksy3fx24007gpnv99v1mhqdu" data-title="WTF" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/program/JAVA/">JAVA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/SPRING/">SPRING</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">问题求解</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/">research</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLDialects/" rel="tag">SQLDialects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDF/" rel="tag">UDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airflow/" rel="tag">airflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atlas/" rel="tag">atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/" rel="tag">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blob/" rel="tag">blob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/" rel="tag">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs/" rel="tag">hdfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parquet/" rel="tag">parquet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/password/" rel="tag">password</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ppa/" rel="tag">ppa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/presto/" rel="tag">presto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sink/" rel="tag">sink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/" rel="tag">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/streaming/" rel="tag">streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-with-resources/" rel="tag">try-with-resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E7%BD%91/" rel="tag">公网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" rel="tag">分位数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" rel="tag">前端搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" rel="tag">可见性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" rel="tag">名词解释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" rel="tag">多数据源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" rel="tag">奇门秘籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" rel="tag">容器云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" rel="tag">常用软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" rel="tag">异常分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" rel="tag">数据血缘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E6%9C%9F/" rel="tag">日期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" rel="tag">源码编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag">源码解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="tag">版本切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" rel="tag">系统服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag">腾讯云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQLDialects/" style="font-size: 10px;">SQLDialects</a> <a href="/tags/UDF/" style="font-size: 10px;">UDF</a> <a href="/tags/airflow/" style="font-size: 10px;">airflow</a> <a href="/tags/atlas/" style="font-size: 10px;">atlas</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/blob/" style="font-size: 10px;">blob</a> <a href="/tags/centos/" style="font-size: 13.33px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/elasticsearch/" style="font-size: 11.11px;">elasticsearch</a> <a href="/tags/element-ui/" style="font-size: 12.22px;">element-ui</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/federation/" style="font-size: 10px;">federation</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flink/" style="font-size: 13.33px;">flink</a> <a href="/tags/flink-sql/" style="font-size: 10px;">flink-sql</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/footer/" style="font-size: 10px;">footer</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/guava/" style="font-size: 10px;">guava</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 12.22px;">hdfs</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/hive/" style="font-size: 16.67px;">hive</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/json/" style="font-size: 11.11px;">json</a> <a href="/tags/k8s/" style="font-size: 12.22px;">k8s</a> <a href="/tags/kylin/" style="font-size: 13.33px;">kylin</a> <a href="/tags/mac/" style="font-size: 15.56px;">mac</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 17.78px;">mysql</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/parquet/" style="font-size: 10px;">parquet</a> <a href="/tags/password/" style="font-size: 10px;">password</a> <a href="/tags/ppa/" style="font-size: 10px;">ppa</a> <a href="/tags/presto/" style="font-size: 11.11px;">presto</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/scala/" style="font-size: 11.11px;">scala</a> <a href="/tags/scrapy/" style="font-size: 10px;">scrapy</a> <a href="/tags/shell/" style="font-size: 11.11px;">shell</a> <a href="/tags/sink/" style="font-size: 10px;">sink</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/spark/" style="font-size: 11.11px;">spark</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/streaming/" style="font-size: 10px;">streaming</a> <a href="/tags/try-with-resources/" style="font-size: 10px;">try-with-resources</a> <a href="/tags/ubuntu/" style="font-size: 11.11px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 14.44px;">vue</a> <a href="/tags/webflux/" style="font-size: 10px;">webflux</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/wordpress/" style="font-size: 12.22px;">wordpress</a> <a href="/tags/wtf/" style="font-size: 10px;">wtf</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">中间件</a> <a href="/tags/%E5%85%AC%E7%BD%91/" style="font-size: 10px;">公网</a> <a href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" style="font-size: 10px;">分位数</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" style="font-size: 10px;">分布式锁</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.22px;">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">前端搭建</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 10px;">原理</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" style="font-size: 10px;">可见性</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 17.78px;">基础</a> <a href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">备案信息</a> <a href="/tags/%E5%A4%87%E6%B3%A8/" style="font-size: 10px;">备注</a> <a href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size: 10px;">多数据源</a> <a href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" style="font-size: 10px;">奇门秘籍</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" style="font-size: 12.22px;">容器云</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">常用软件</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 10px;">异常分析</a> <a href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" style="font-size: 10px;">异步读取</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 18.89px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14.44px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">数据类型</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" style="font-size: 10px;">数据血缘</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 10px;">日期</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" style="font-size: 10px;">源码编译</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">源码解析</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" style="font-size: 10px;">版本切换</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" style="font-size: 10px;">目录修改</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" style="font-size: 10px;">窗口函数</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">系统服务</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 10px;">腾讯云</a> <a href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" style="font-size: 10px;">行政区划</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E8%B0%83%E4%BC%98/" style="font-size: 10px;">调优</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">高德地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/wp-footer/">wp_footer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

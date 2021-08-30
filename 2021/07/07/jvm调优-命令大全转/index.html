@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JVM调优-命令大全(转) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JVM调优-命令大全（jps jstat jmap jhat jstack jinfo常用命令导航 Arnold_zhao：Jps -v 【查看当前进程启动时显示指定的参数】Jinfo：【查看所有非显示指定的参数】jinfo -flags 17996 【显示JVM参数等信息】jinfo -sysprops 17996【 输出系统属性】 jmap -heap 17996【显示Java堆详细信息（堆中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM调优-命令大全(转)">
+<meta property="og:url" content="http://example.com/2021/07/07/jvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E8%BD%AC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JVM调优-命令大全（jps jstat jmap jhat jstack jinfo常用命令导航 Arnold_zhao：Jps -v 【查看当前进程启动时显示指定的参数】Jinfo：【查看所有非显示指定的参数】jinfo -flags 17996 【显示JVM参数等信息】jinfo -sysprops 17996【 输出系统属性】 jmap -heap 17996【显示Java堆详细信息（堆中">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-07T08:44:19.000Z">
+<meta property="article:modified_time" content="2021-08-30T03:39:57.239Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="调优">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-jvm调优-命令大全转" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/07/jvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E8%BD%AC/" class="article-date">
+  <time class="dt-published" datetime="2021-07-07T08:44:19.000Z" itemprop="datePublished">2021-07-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JVM调优-命令大全(转)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="JVM调优-命令大全（jps-jstat-jmap-jhat-jstack-jinfo"><a href="#JVM调优-命令大全（jps-jstat-jmap-jhat-jstack-jinfo" class="headerlink" title="JVM调优-命令大全（jps jstat jmap jhat jstack jinfo"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zh94/p/12789556.html">JVM调优-命令大全（jps jstat jmap jhat jstack jinfo</a></h1><p>常用命令导航 Arnold_zhao：Jps -v 【查看当前进程启动时显示指定的参数】<br>Jinfo：【查看所有非显示指定的参数】<br>jinfo -flags 17996 【显示JVM参数等信息】<br>jinfo -sysprops 17996【 输出系统属性】</p>
+<p>jmap -heap 17996【显示Java堆详细信息（堆中Eden区，FromSpace，Old区等已用空间大小）】<br>jmap -dump:live,format=b,file=C:\JAVADUMP\dump.hprof 17996【输出dump快照】<br>jhat C:\JAVADUMP\dump.hprof 【使用jhat分析当前的本地dump文件，分析完成后可以通过浏览器：localhost:7000访问结果（jhat分析更加占用内存，优先推荐使用Mat进行分析）】</p>
+<p>jstat -gc 17996（PID） 1000（连续输出的时间间隔） 100000（连续输出的次数） 【监视当前进程的GC状态信息】<br>运用jvm自带的命令可以方便的在生产监控和打印堆栈的日志信息帮忙我们来定位问题！虽然jvm调优成熟的工具已经有很多：jconsole、大名鼎鼎的VisualVM，IBM的Memory Analyzer等等，但是在生产环境出现问题的时候，一方面工具的使用会有所限制，另一方面喜欢装X的我们，总喜欢在出现问题的时候在终端输入一些命令来解决。所有的工具几乎都是依赖于jdk的接口和底层的这些命令，研究这些命令的使用也让我们更能了解jvm构成和特性。Sun JDK监控和故障处理命令有jps jstat jmap jhat jstack jinfo下面做一一介绍</p>
+<h2 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h2><p>JVM Process Status Tool,显示指定系统内所有的HotSpot虚拟机进程。</p>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><p>jps [options] [hostid]</p>
+<h3 id="option参数"><a href="#option参数" class="headerlink" title="option参数"></a>option参数</h3><ul>
+<li>  -l : 输出主类全名或jar路径</li>
+<li>  -q : 只输出LVMID</li>
+<li>  -m : 输出JVM启动时传递给main()的参数</li>
+<li>  -v : 输出JVM启动时显示指定的JVM参数</li>
+</ul>
+<p>其中[option]、[hostid]参数也可以不写。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>$ jps -l -m28920 org.apache.catalina.startup.Bootstrap start11589 org.apache.catalina.startup.Bootstrap start25816 sun.tools.jps.Jps -l -m</p>
+<h2 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h2><p>jstat(JVM statistics Monitoring)是用于监视虚拟机运行时状态信息的命令，它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据。</p>
+<h3 id="命令格式-1"><a href="#命令格式-1" class="headerlink" title="命令格式"></a>命令格式</h3><p>jstat [option] LVMID [interval] [count]</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>  [option] : 操作参数</li>
+<li>  LVMID : 本地虚拟机进程ID</li>
+<li>  [interval] : 连续输出的时间间隔</li>
+<li>  [count] : 连续输出的次数</li>
+</ul>
+<h4 id="option-参数总览"><a href="#option-参数总览" class="headerlink" title="option 参数总览"></a>option 参数总览</h4><p>Option</p>
+<p>Displays…</p>
+<p>class</p>
+<p>class loader的行为统计。Statistics on the behavior of the class loader.</p>
+<p>compiler</p>
+<p>HotSpt JIT编译器行为统计。Statistics of the behavior of the HotSpot Just-in-Time compiler.</p>
+<p>gc</p>
+<p>垃圾回收堆的行为统计。Statistics of the behavior of the garbage collected heap.</p>
+<p>gccapacity</p>
+<p>各个垃圾回收代容量(young,old,perm)和他们相应的空间统计。Statistics of the capacities of the generations and their corresponding spaces.</p>
+<p>gcutil</p>
+<p>垃圾回收统计概述。Summary of garbage collection statistics.</p>
+<p>gccause</p>
+<p>垃圾收集统计概述（同-gcutil），附加最近两次垃圾回收事件的原因。Summary of garbage collection statistics (same as -gcutil), with the cause of the last and</p>
+<p>gcnew</p>
+<p>新生代行为统计。Statistics of the behavior of the new generation.</p>
+<p>gcnewcapacity</p>
+<p>新生代与其相应的内存空间的统计。Statistics of the sizes of the new generations and its corresponding spaces.</p>
+<p>gcold</p>
+<p>年老代和永生代行为统计。Statistics of the behavior of the old and permanent generations.</p>
+<p>gcoldcapacity</p>
+<p>年老代行为统计。Statistics of the sizes of the old generation.</p>
+<p>gcpermcapacity</p>
+<p>永生代行为统计。Statistics of the sizes of the permanent generation.</p>
+<p>printcompilation</p>
+<p>HotSpot编译方法统计。HotSpot compilation method statistics.</p>
+<h4 id="option-参数详解"><a href="#option-参数详解" class="headerlink" title="option 参数详解"></a>option 参数详解</h4><h5 id="class"><a href="#class" class="headerlink" title="-class"></a><strong>-class</strong></h5><p>监视类装载、卸载数量、总空间以及耗费的时间$ jstat -class 11589Loaded Bytes Unloaded Bytes Time7035 14506.3 0 0.0 3.67</p>
+<ul>
+<li>  Loaded : 加载class的数量</li>
+<li>  Bytes : class字节大小</li>
+<li>  Unloaded : 未加载class的数量</li>
+<li>  Bytes : 未加载class的字节大小</li>
+<li>  Time : 加载时间</li>
+</ul>
+<h5 id="compiler"><a href="#compiler" class="headerlink" title="-compiler"></a><strong>-compiler</strong></h5><p>输出JIT编译过的方法数量耗时等$ jstat -compiler 1262Compiled Failed Invalid Time FailedType FailedMethod2573 1 0 47.60 1 org/apache/catalina/loader/WebappClassLoader findResourceInternal</p>
+<ul>
+<li>  Compiled : 编译数量</li>
+<li>  Failed : 编译失败数量</li>
+<li>  Invalid : 无效数量</li>
+<li>  Time : 编译耗时</li>
+<li>  FailedType : 失败类型</li>
+<li>  FailedMethod : 失败方法的全限定名</li>
+</ul>
+<h5 id="gc"><a href="#gc" class="headerlink" title="-gc"></a><strong>-gc</strong></h5><p>垃圾回收堆的行为统计，常用命令$ jstat -gc 1262S0C S1C S0U S1U EC EU OC OU PC PU YGC YGCT FGC FGCT GCT26112.0 24064.0 6562.5 0.0 564224.0 76274.5 434176.0 388518.3 524288.0 42724.7 320 6.417 1 0.398 6.815C即Capacity 总容量，U即Used 已使用的容量</p>
+<ul>
+<li>  S0C : survivor0区的总容量</li>
+<li>  S1C : survivor1区的总容量</li>
+<li>  S0U : survivor0区已使用的容量</li>
+<li>  S1C : survivor1区已使用的容量</li>
+<li>  EC : Eden区的总容量</li>
+<li>  EU : Eden区已使用的容量</li>
+<li>  OC : Old区的总容量</li>
+<li>  OU : Old区已使用的容量</li>
+<li>  PC 当前perm的容量 (KB)</li>
+<li>  PU perm的使用 (KB)</li>
+<li>  YGC : 新生代垃圾回收次数</li>
+<li>  YGCT : 新生代垃圾回收时间</li>
+<li>  FGC : 老年代垃圾回收次数</li>
+<li>  FGCT : 老年代垃圾回收时间</li>
+<li>  GCT : 垃圾回收总消耗时间</li>
+</ul>
+<p>$ jstat -gc 1262 2000 20这个命令意思就是每隔2000ms输出1262的gc情况，一共输出20次</p>
+<h5 id="gccapacity"><a href="#gccapacity" class="headerlink" title="-gccapacity"></a><strong>-gccapacity</strong></h5><p>同-gc，不过还会输出Java堆各区域使用到的最大、最小空间$ jstat -gccapacity 1262NGCMN NGCMX NGC S0C S1C EC OGCMN OGCMX OGC OC PGCMN PGCMX PGC PC YGC FGC614400.0 614400.0 614400.0 26112.0 24064.0 564224.0 434176.0 434176.0 434176.0 434176.0 524288.0 1048576.0 524288.0 524288.0 320 1</p>
+<ul>
+<li>  NGCMN : 新生代占用的最小空间</li>
+<li>  NGCMX : 新生代占用的最大空间</li>
+<li>  OGCMN : 老年代占用的最小空间</li>
+<li>  OGCMX : 老年代占用的最大空间</li>
+<li>  OGC：当前年老代的容量 (KB)</li>
+<li>  OC：当前年老代的空间 (KB)</li>
+<li>  PGCMN : perm占用的最小空间</li>
+<li>  PGCMX : perm占用的最大空间</li>
+</ul>
+<h5 id="gcutil"><a href="#gcutil" class="headerlink" title="-gcutil"></a><strong>-gcutil</strong></h5><p>同-gc，不过输出的是已使用空间占总空间的百分比$ jstat -gcutil 28920S0 S1 E O P YGC YGCT FGC FGCT GCT12.45 0.00 33.85 0.00 4.44 4 0.242 0 0.000 0.242</p>
+<h5 id="gccause"><a href="#gccause" class="headerlink" title="-gccause"></a><strong>-gccause</strong></h5><p>垃圾收集统计概述（同-gcutil），附加最近两次垃圾回收事件的原因$ jstat -gccause 28920S0 S1 E O P YGC YGCT FGC FGCT GCT LGCC GCC12.45 0.00 33.85 0.00 4.44 4 0.242 0 0.000 0.242 Allocation Failure No GC</p>
+<ul>
+<li>  LGCC：最近垃圾回收的原因</li>
+<li>  GCC：当前垃圾回收的原因</li>
+</ul>
+<h5 id="gcnew"><a href="#gcnew" class="headerlink" title="-gcnew"></a><strong>-gcnew</strong></h5><p>统计新生代的行为$ jstat -gcnew 28920S0C S1C S0U S1U TT MTT DSS EC EU YGC YGCT419392.0 419392.0 52231.8 0.0 6 6 209696.0 3355520.0 1172246.0 4 0.242</p>
+<ul>
+<li>  TT：Tenuring threshold(提升阈值)</li>
+<li>  MTT：最大的tenuring threshold</li>
+<li>  DSS：survivor区域大小 (KB)</li>
+</ul>
+<h5 id="gcnewcapacity"><a href="#gcnewcapacity" class="headerlink" title="-gcnewcapacity"></a><strong>-gcnewcapacity</strong></h5><p>新生代与其相应的内存空间的统计$ jstat -gcnewcapacity 28920NGCMN NGCMX NGC S0CMX S0C S1CMX S1C ECMX EC YGC FGC4194304.0 4194304.0 4194304.0 419392.0 419392.0 419392.0 419392.0 3355520.0 3355520.0 4 0</p>
+<ul>
+<li>  NGC:当前年轻代的容量 (KB)</li>
+<li>  S0CMX:最大的S0空间 (KB)</li>
+<li>  S0C:当前S0空间 (KB)</li>
+<li>  ECMX:最大eden空间 (KB)</li>
+<li>  EC:当前eden空间 (KB)</li>
+</ul>
+<h5 id="gcold"><a href="#gcold" class="headerlink" title="-gcold"></a><strong>-gcold</strong></h5><p>统计旧生代的行为$ jstat -gcold 28920PC PU OC OU YGC FGC FGCT GCT1048576.0 46561.7 6291456.0 0.0 4 0 0.000 0.242</p>
+<h5 id="gcoldcapacity"><a href="#gcoldcapacity" class="headerlink" title="-gcoldcapacity"></a><strong>-gcoldcapacity</strong></h5><p>统计旧生代的大小和空间$ jstat -gcoldcapacity 28920OGCMN OGCMX OGC OC YGC FGC FGCT GCT6291456.0 6291456.0 6291456.0 6291456.0 4 0 0.000 0.242</p>
+<h5 id="gcpermcapacity"><a href="#gcpermcapacity" class="headerlink" title="-gcpermcapacity"></a><strong>-gcpermcapacity</strong></h5><p>永生代行为统计$ jstat -gcpermcapacity 28920PGCMN PGCMX PGC PC YGC FGC FGCT GCT1048576.0 2097152.0 1048576.0 1048576.0 4 0 0.000 0.242</p>
+<h5 id="printcompilation"><a href="#printcompilation" class="headerlink" title="-printcompilation"></a><strong>-printcompilation</strong></h5><p>hotspot编译方法统计$ jstat -printcompilation 28920Compiled Size Type Method1291 78 1 java/util/ArrayList indexOf</p>
+<ul>
+<li>  Compiled：被执行的编译任务的数量</li>
+<li>  Size：方法字节码的字节数</li>
+<li>  Type：编译类型</li>
+<li>  Method：编译方法的类名和方法名。类名使用”/“ 代替 “.” 作为空间分隔符. 方法名是给出类的方法名. 格式是一致于HotSpot - XX:+PrintComplation 选项</li>
+</ul>
+<h2 id="jmap"><a href="#jmap" class="headerlink" title="jmap"></a>jmap</h2><p>jmap(JVM Memory Map)命令用于生成heap dump文件，如果不使用这个命令，还阔以使用-XX:+HeapDumpOnOutOfMemoryError参数来让虚拟机出现OOM的时候·自动生成dump文件。jmap不仅能生成dump文件，还阔以查询finalize执行队列、Java堆和永久代的详细信息，如当前使用率、当前使用的是哪种收集器等。</p>
+<h3 id="命令格式-2"><a href="#命令格式-2" class="headerlink" title="命令格式"></a>命令格式</h3><p>jmap [option] LVMID</p>
+<h3 id="option参数-1"><a href="#option参数-1" class="headerlink" title="option参数"></a>option参数</h3><ul>
+<li>  dump : 生成堆转储快照</li>
+<li>  finalizerinfo : 显示在F-Queue队列等待Finalizer线程执行finalizer方法的对象</li>
+<li>  heap : 显示Java堆详细信息</li>
+<li>  histo : 显示堆中对象的统计信息</li>
+<li>  permstat : to print permanent generation statistics</li>
+<li>  F : 当-dump没有响应时，强制生成dump快照</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><h5 id="dump"><a href="#dump" class="headerlink" title="-dump"></a><strong>-dump</strong></h5><p>常用格式-dump::live,format=b,file=<filename> piddump堆到文件,format指定输出格式，live指明是活着的对象,file指定文件名$ jmap -dump:live,format=b,file=dump.hprof 28920Dumping heap to /home/xxx/dump.hprof …Heap dump file createddump.hprof这个后缀是为了后续可以直接用MAT(Memory Anlysis Tool)打开。</p>
+<h5 id="finalizerinfo"><a href="#finalizerinfo" class="headerlink" title="-finalizerinfo"></a><strong>-finalizerinfo</strong></h5><p>打印等待回收对象的信息$ jmap -finalizerinfo 28920Attaching to process ID 28920, please wait…Debugger attached successfully.Server compiler detected.JVM version is 24.71-b01Number of objects pending for finalization: 0可以看到当前F-QUEUE队列中并没有等待Finalizer线程执行finalizer方法的对象。</p>
+<h5 id="heap"><a href="#heap" class="headerlink" title="-heap"></a><strong>-heap</strong></h5><p>打印heap的概要信息，GC使用的算法，heap的配置及wise heap的使用情况,可以用此来判断内存目前的使用情况以及垃圾回收情况$ jmap -heap 28920Attaching to process ID 28920, please wait…Debugger attached successfully.Server compiler detected.JVM version is 24.71-b01 using thread-local object allocation.Parallel GC with 4 thread(s)//GC 方式 Heap Configuration: //堆内存初始化配置MinHeapFreeRatio = 0 //对应jvm启动参数-XX:MinHeapFreeRatio设置JVM堆最小空闲比率(default 40)MaxHeapFreeRatio = 100 //对应jvm启动参数 -XX:MaxHeapFreeRatio设置JVM堆最大空闲比率(default 70)MaxHeapSize = 2082471936 (1986.0MB) //对应jvm启动参数-XX:MaxHeapSize=设置JVM堆的最大大小NewSize = 1310720 (1.25MB)//对应jvm启动参数-XX:NewSize=设置JVM堆的‘新生代’的默认大小MaxNewSize = 17592186044415 MB//对应jvm启动参数-XX:MaxNewSize=设置JVM堆的‘新生代’的最大大小OldSize = 5439488 (5.1875MB)//对应jvm启动参数-XX:OldSize=<value>:设置JVM堆的‘老生代’的大小NewRatio = 2 //对应jvm启动参数-XX:NewRatio=:‘新生代’和‘老生代’的大小比率SurvivorRatio = 8 //对应jvm启动参数-XX:SurvivorRatio=设置年轻代中Eden区与Survivor区的大小比值PermSize = 21757952 (20.75MB) //对应jvm启动参数-XX:PermSize=<value>:设置JVM堆的‘永生代’的初始大小MaxPermSize = 85983232 (82.0MB)//对应jvm启动参数-XX:MaxPermSize=<value>:设置JVM堆的‘永生代’的最大大小G1HeapRegionSize = 0 (0.0MB) Heap Usage://堆内存使用情况PS Young GenerationEden Space://Eden区内存分布capacity = 33030144 (31.5MB)//Eden区总容量used = 1524040 (1.4534378051757812MB) //Eden区已使用free = 31506104 (30.04656219482422MB) //Eden区剩余容量4.614088270399305% used //Eden区使用比率From Space: //其中一个Survivor区的内存分布capacity = 5242880 (5.0MB)used = 0 (0.0MB)free = 5242880 (5.0MB)0.0% usedTo Space: //另一个Survivor区的内存分布capacity = 5242880 (5.0MB)used = 0 (0.0MB)free = 5242880 (5.0MB)0.0% usedPS Old Generation //当前的Old区内存分布capacity = 86507520 (82.5MB)used = 0 (0.0MB)free = 86507520 (82.5MB)0.0% usedPS Perm Generation//当前的 “永生代” 内存分布capacity = 22020096 (21.0MB)used = 2496528 (2.3808746337890625MB)free = 19523568 (18.619125366210938MB)11.337498256138392% used 670 interned Strings occupying 43720 bytes.可以很清楚的看到Java堆中各个区域目前的情况。</p>
+<h5 id="histo"><a href="#histo" class="headerlink" title="-histo"></a><strong>-histo</strong></h5><p>打印堆的对象统计，包括对象数、内存大小等等 （因为在dump:live前会进行full gc，如果带上live则只统计活对象，因此不加live的堆大小要大于加live堆的大小 ）$ jmap -histo:live 28920 morenum #instances #bytes class name———————————————-1: 83613 12012248 <constMethodKlass>2: 23868 11450280 [B3: 83613 10716064 <methodKlass>4: 76287 10412128 [C5: 8227 9021176 <constantPoolKlass>6: 8227 5830256 <instanceKlassKlass>7: 7031 5156480 <constantPoolCacheKlass>8: 73627 1767048 java.lang.String9: 2260 1348848 <methodDataKlass>10: 8856 849296 java.lang.Class….仅仅打印了前10行xml class name是对象类型，说明如下：B byteC charD doubleF floatI intJ longZ boolean[ 数组，如[I表示int[][L+类名 其他对象</p>
+<h5 id="permstat"><a href="#permstat" class="headerlink" title="-permstat"></a><strong>-permstat</strong></h5><p>打印Java堆内存的永久保存区域的类加载器的智能统计信息。对于每个类加载器而言，它的名称、活跃度、地址、父类加载器、它所加载的类的数量和大小都会被打印。此外，包含的字符串数量和大小也会被打印。$ jmap -permstat 28920Attaching to process ID 28920, please wait…Debugger attached successfully.Server compiler detected.JVM version is 24.71-b01finding class loader instances ..done.computing per loader stat ..done.please wait.. computing liveness.liveness analysis may be inaccurate …class_loader classes bytes parent_loader alive? type<bootstrap> 3111 18154296 null live <internal>0x0000000600905cf8 1 1888 0x0000000600087f08 dead sun/reflect/DelegatingClassLoader@0x00000007800500a00x00000006008fcb48 1 1888 0x0000000600087f08 dead sun/reflect/DelegatingClassLoader@0x00000007800500a00x00000006016db798 0 0 0x00000006008d3fc0 dead java/util/ResourceBundle$RBClassLoader@0x0000000780626ec00x00000006008d6810 1 3056 null dead sun/reflect/DelegatingClassLoader@0x00000007800500a0</p>
+<h5 id="F"><a href="#F" class="headerlink" title="-F"></a><strong>-F</strong></h5><p>强制模式。如果指定的pid没有响应，请使用jmap -dump或jmap -histo选项。此模式下，不支持live子选项。</p>
+<h2 id="jhat"><a href="#jhat" class="headerlink" title="jhat"></a>jhat</h2><p>jhat(JVM Heap Analysis Tool)命令是与jmap搭配使用，用来分析jmap生成的dump，jhat内置了一个微型的HTTP/HTML服务器，生成dump的分析结果后，可以在浏览器中查看。在此要注意，一般不会直接在服务器上进行分析，因为jhat是一个耗时并且耗费硬件资源的过程，一般把服务器生成的dump文件复制到本地或其他机器上进行分析。</p>
+<h3 id="命令格式-3"><a href="#命令格式-3" class="headerlink" title="命令格式"></a>命令格式</h3><p>jhat [dumpfile]</p>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>  -stack falsetrue关闭对象分配调用栈跟踪(tracking object allocation call stack)。 如果分配位置信息在堆转储中不可用. 则必须将此标志设置为 false. 默认值为 true.&gt;</li>
+<li>  -refs falsetrue关闭对象引用跟踪(tracking of references to objects)。 默认值为 true. 默认情况下, 返回的指针是指向其他特定对象的对象,如反向链接或输入引用(referrers or incoming references), 会统计/计算堆中的所有对象。&gt;</li>
+<li>  -port port-number设置 jhat HTTP server 的端口号. 默认值 7000.&gt;</li>
+<li>  -exclude exclude-file指定对象查询时需要排除的数据成员列表文件(a file that lists data members that should be excluded from the reachable objects query)。 例如, 如果文件列列出了 java.lang.String.value , 那么当从某个特定对象 Object o 计算可达的对象列表时, 引用路径涉及 java.lang.String.value 的都会被排除。&gt;</li>
+<li>  -baseline exclude-file指定一个基准堆转储(baseline heap dump)。 在两个 heap dumps 中有相同 object ID 的对象会被标记为不是新的(marked as not being new). 其他对象被标记为新的(new). 在比较两个不同的堆转储时很有用.&gt;</li>
+<li>  -debug int设置 debug 级别. 0 表示不输出调试信息。 值越大则表示输出更详细的 debug 信息.&gt;</li>
+<li>  -version启动后只显示版本信息就退出&gt;</li>
+<li>  -J&lt; flag &gt;因为 jhat 命令实际上会启动一个JVM来执行, 通过 -J 可以在启动JVM时传入一些启动参数. 例如, -J-Xmx512m 则指定运行 jhat 的Java虚拟机使用的最大堆内存为 512 MB. 如果需要使用多个JVM启动参数,则传入多个 -Jxxxxxx.</li>
+</ul>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>$ jhat -J-Xmx512m dump.hprofeading from dump.hprof…Dump file created Fri Mar 11 17:13:42 CST 2016Snapshot read, resolving…Resolving 271678 objects…Chasing references, expect 54 dots………………………………………………Eliminating duplicate references………………………………………………Snapshot resolved.Started HTTP server on port 7000Server is ready.中间的-J-Xmx512m是在dump快照很大的情况下分配512M内存去启动HTTP服务器，运行完之后就可在浏览器打开Http://localhost:7000进行快照分析堆快照分析主要在最后面的Heap Histogram里，里面根据class列出了dump的时候所有存活对象。分析同样一个dump快照，MAT需要的额外内存比jhat要小的多的多，所以建议使用MAT来进行分析，当然也看个人偏好。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>打开浏览器Http://localhost:7000，该页面提供了几个查询功能可供使用：All classes including platformShow all members of the rootsetShow instance counts for all classes (including platform)Show instance counts for all classes (excluding platform)Show heap histogramShow finalizer summaryExecute Object Query Language (OQL) query一般查看堆异常情况主要看这个两个部分：Show instance counts for all classes (excluding platform)，平台外的所有对象信息。如下图：</p>
+<p><a href="file://C:\Users\ZHAOQI~1\AppData\Local\Temp\enhtmlclip\7f32f8469cc634a9c9a344ee905f9654-41006"></a></p>
+<p> Show heap histogram 以树状图形式展示堆情况。如下图：</p>
+<p><a href="file://C:\Users\ZHAOQI~1\AppData\Local\Temp\enhtmlclip\80be25d2f1c6b019c28d96c42842fac6-117429"></a></p>
+<p> 具体排查时需要结合代码，观察是否大量应该被回收的对象在一直被引用或者是否有占用内存特别大的对象无法被回收。 一般情况，会down到客户端用工具来分析</p>
+<h2 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h2><p>jstack用于生成java虚拟机当前时刻的线程快照。线程快照是当前java虚拟机内每一条线程正在执行的方法堆栈的集合，生成线程快照的主要目的是定位线程出现长时间停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等。 线程出现停顿的时候通过jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做什么事情，或者等待什么资源。 如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息, 如果现在运行的java程序呈现hung的状态，jstack是非常有用的。</p>
+<h3 id="命令格式-4"><a href="#命令格式-4" class="headerlink" title="命令格式"></a>命令格式</h3><p>jstack [option] LVMID</p>
+<h3 id="option参数-2"><a href="#option参数-2" class="headerlink" title="option参数"></a>option参数</h3><ul>
+<li>  -F : 当正常输出请求不被响应时，强制输出线程堆栈</li>
+<li>  -l : 除堆栈外，显示关于锁的附加信息</li>
+<li>  -m : 如果调用到本地方法的话，可以显示C/C++的堆栈</li>
+</ul>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><p>$ jstack -l 11494more2016-07-28 13:40:04Full thread dump Java HotSpot(TM) 64-Bit Server VM (24.71-b01 mixed mode): “Attach Listener” daemon prio=10 tid=0x00007febb0002000 nid=0x6b6f waiting on condition [0x0000000000000000]java.lang.Thread.State: RUNNABLE Locked ownable synchronizers:- None “http-bio-8005-exec-2” daemon prio=10 tid=0x00007feb94028000 nid=0x7b8c waiting on condition [0x00007fea8f56e000]java.lang.Thread.State: WAITING (parking)at sun.misc.Unsafe.park(Native Method)- parking to wait for &lt;0x00000000cae09b80&gt; (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2043)at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:104)at org.apache.tomcat.util.threads.TaskQueue.take(TaskQueue.java:32)at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1068)at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)at java.lang.Thread.run(Thread.java:745) Locked ownable synchronizers:- None…..</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>这里有一篇文章解释的很好<a target="_blank" rel="noopener" href="http://www.hollischuang.com/archives/110">分析打印出的文件内容</a></p>
+<h2 id="jinfo"><a href="#jinfo" class="headerlink" title="jinfo"></a>jinfo</h2><p>jinfo(JVM Configuration info)这个命令作用是实时查看和调整虚拟机运行参数。之前的jps -v口令只能查看到显示指定的参数，如果想要查看未被显示指定的参数的值就要使用jinfo口令</p>
+<h3 id="命令格式-5"><a href="#命令格式-5" class="headerlink" title="命令格式"></a>命令格式</h3><p>jinfo [option] [args] LVMID</p>
+<h3 id="option参数-3"><a href="#option参数-3" class="headerlink" title="option参数"></a>option参数</h3><ul>
+<li>  -flag : 输出指定args参数的值</li>
+<li>  -flags : 不需要args参数，输出所有JVM参数的值</li>
+<li>  -sysprops : 输出系统属性，等同于System.getProperties()</li>
+</ul>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><p>$ jinfo -flag 11494-XX:CMSInitiatingOccupancyFraction=80</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/07/jvm%E8%B0%83%E4%BC%98-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E8%BD%AC/" data-id="cksy3fx5300j7pnv91ck4ahub" data-title="JVM调优-命令大全(转)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/07/16/minikube%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MiniKube安装使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/07/01/vscode%E4%B8%8B%E8%BD%BD%E6%85%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vscode下载慢解决方案</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/program/JAVA/">JAVA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/SPRING/">SPRING</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">问题求解</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/">research</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLDialects/" rel="tag">SQLDialects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDF/" rel="tag">UDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airflow/" rel="tag">airflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atlas/" rel="tag">atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/" rel="tag">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blob/" rel="tag">blob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/" rel="tag">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs/" rel="tag">hdfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parquet/" rel="tag">parquet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/password/" rel="tag">password</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ppa/" rel="tag">ppa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/presto/" rel="tag">presto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sink/" rel="tag">sink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/" rel="tag">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/streaming/" rel="tag">streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-with-resources/" rel="tag">try-with-resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E7%BD%91/" rel="tag">公网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" rel="tag">分位数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" rel="tag">前端搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" rel="tag">可见性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" rel="tag">名词解释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" rel="tag">多数据源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" rel="tag">奇门秘籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" rel="tag">容器云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" rel="tag">常用软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" rel="tag">异常分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" rel="tag">数据血缘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E6%9C%9F/" rel="tag">日期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" rel="tag">源码编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag">源码解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="tag">版本切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" rel="tag">系统服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag">腾讯云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQLDialects/" style="font-size: 10px;">SQLDialects</a> <a href="/tags/UDF/" style="font-size: 10px;">UDF</a> <a href="/tags/airflow/" style="font-size: 10px;">airflow</a> <a href="/tags/atlas/" style="font-size: 10px;">atlas</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/blob/" style="font-size: 10px;">blob</a> <a href="/tags/centos/" style="font-size: 13.33px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/elasticsearch/" style="font-size: 11.11px;">elasticsearch</a> <a href="/tags/element-ui/" style="font-size: 12.22px;">element-ui</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/federation/" style="font-size: 10px;">federation</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flink/" style="font-size: 13.33px;">flink</a> <a href="/tags/flink-sql/" style="font-size: 10px;">flink-sql</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/footer/" style="font-size: 10px;">footer</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/guava/" style="font-size: 10px;">guava</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 12.22px;">hdfs</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/hive/" style="font-size: 16.67px;">hive</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/json/" style="font-size: 11.11px;">json</a> <a href="/tags/k8s/" style="font-size: 12.22px;">k8s</a> <a href="/tags/kylin/" style="font-size: 13.33px;">kylin</a> <a href="/tags/mac/" style="font-size: 15.56px;">mac</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 17.78px;">mysql</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/parquet/" style="font-size: 10px;">parquet</a> <a href="/tags/password/" style="font-size: 10px;">password</a> <a href="/tags/ppa/" style="font-size: 10px;">ppa</a> <a href="/tags/presto/" style="font-size: 11.11px;">presto</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/scala/" style="font-size: 11.11px;">scala</a> <a href="/tags/scrapy/" style="font-size: 10px;">scrapy</a> <a href="/tags/shell/" style="font-size: 11.11px;">shell</a> <a href="/tags/sink/" style="font-size: 10px;">sink</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/spark/" style="font-size: 11.11px;">spark</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/streaming/" style="font-size: 10px;">streaming</a> <a href="/tags/try-with-resources/" style="font-size: 10px;">try-with-resources</a> <a href="/tags/ubuntu/" style="font-size: 11.11px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 14.44px;">vue</a> <a href="/tags/webflux/" style="font-size: 10px;">webflux</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/wordpress/" style="font-size: 12.22px;">wordpress</a> <a href="/tags/wtf/" style="font-size: 10px;">wtf</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">中间件</a> <a href="/tags/%E5%85%AC%E7%BD%91/" style="font-size: 10px;">公网</a> <a href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" style="font-size: 10px;">分位数</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" style="font-size: 10px;">分布式锁</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.22px;">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">前端搭建</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 10px;">原理</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" style="font-size: 10px;">可见性</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 17.78px;">基础</a> <a href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">备案信息</a> <a href="/tags/%E5%A4%87%E6%B3%A8/" style="font-size: 10px;">备注</a> <a href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size: 10px;">多数据源</a> <a href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" style="font-size: 10px;">奇门秘籍</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" style="font-size: 12.22px;">容器云</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">常用软件</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 10px;">异常分析</a> <a href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" style="font-size: 10px;">异步读取</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 18.89px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14.44px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">数据类型</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" style="font-size: 10px;">数据血缘</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 10px;">日期</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" style="font-size: 10px;">源码编译</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">源码解析</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" style="font-size: 10px;">版本切换</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" style="font-size: 10px;">目录修改</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" style="font-size: 10px;">窗口函数</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">系统服务</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 10px;">腾讯云</a> <a href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" style="font-size: 10px;">行政区划</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E8%B0%83%E4%BC%98/" style="font-size: 10px;">调优</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">高德地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/wp-footer/">wp_footer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

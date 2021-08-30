@@ -110,7 +110,517 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/30/hello-world/" data-id="cksy20vtp0000xiv93h8d5o3c" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/30/hello-world/" data-id="cksy3fwzn002zpnv9566tdgt0" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-nginxwordpressphp-fpmhttps安装配置指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" class="article-date">
+  <time class="dt-published" datetime="2021-08-27T08:28:53.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="安装相关软件"><a href="#安装相关软件" class="headerlink" title="安装相关软件"></a>安装相关软件</h2><ul>
+<li>  系统环境 ubuntu18.04</li>
+<li>  安装nginx php php-fpm php-mysql</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx php7.2 php7.2-fpm php7.2-mysql</span><br><span class="line"></span><br><span class="line">#可能存在端口占用,如apache2则先关闭服务</span><br><span class="line"># systemctl stop apache2</span><br><span class="line">systemctl start nginx.service</span><br><span class="line"></span><br><span class="line"># 查看socket文件</span><br><span class="line">cat /etc/php/7.2/fpm/pool.d/www.conf grep  &#x27;listen = &#x27;</span><br><span class="line"># 默认 listen = /run/php/php7.2-fpm.sock</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装wordpress"><a href="#安装wordpress" class="headerlink" title="安装wordpress"></a>安装wordpress</h3><p><a target="_blank" rel="noopener" href="https://cn.wordpress.org/latest-zh_CN.tar.gz">https://cn.wordpress.org/latest-zh_CN.tar.gz</a></p>
+<p>下载</p>
+<p>tar zxvf latest-zh_CN.tar.gz -C /var/html www</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/sites-available/www.sczhaoqi.com</span><br><span class="line"></span><br><span class="line">## 开始</span><br><span class="line">server &#123;</span><br><span class="line">          listen 80;</span><br><span class="line">          server_name sczhaoqi.com www.sczhaoqi.com;</span><br><span class="line">          rewrite ^(.*)$ https://$host$1 permanent;</span><br><span class="line">        &#125;</span><br><span class="line">server &#123;</span><br><span class="line">listen 443;</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        server_name sczhaoqi.com www.sczhaoqi.com; #填写绑定证书的域名</span><br><span class="line">ssl on;</span><br><span class="line">ssl_certificate 1_sczhaoqi.com_bundle.crt;</span><br><span class="line">ssl_certificate_key 2_sczhaoqi.com.key;</span><br><span class="line">ssl_session_timeout 5m;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">        location /loc &#123;</span><br><span class="line">          proxy_pass http://localhost:8080/loc;</span><br><span class="line">        &#125;</span><br><span class="line">        location = /favicon.ico &#123;</span><br><span class="line">                log_not_found off;</span><br><span class="line">                access_log off;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        location = /robots.txt &#123;</span><br><span class="line">                allow all;</span><br><span class="line">                log_not_found off;</span><br><span class="line">                access_log off;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        location / &#123;</span><br><span class="line">                # This is cool because no php is touched for static content.</span><br><span class="line">                # include the &quot;?$args&quot; part so non-default permalinks doesn&#x27;t break when using query string</span><br><span class="line">                try_files $uri $uri/ /index.php?$args;</span><br><span class="line">            if (-f $request_filename/index.html)&#123;</span><br><span class="line">                rewrite (.*) $1/index.html break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (-f $request_filename/index.php)&#123;</span><br><span class="line">                rewrite (.*) $1/index.php;</span><br><span class="line">            &#125;</span><br><span class="line">            if (!-f $request_filename)&#123;</span><br><span class="line">                rewrite (.*) /index.php;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">                #NOTE: You should have &quot;cgi.fix_pathinfo = 0;&quot; in php.ini</span><br><span class="line">                include fastcgi.conf;</span><br><span class="line">                fastcgi_intercept_errors on;</span><br><span class="line">                include snippets/fastcgi-php.conf;</span><br><span class="line">                include fastcgi.conf;</span><br><span class="line">                include fastcgi_params;</span><br><span class="line">                fastcgi_pass unix:/run/php/php7.2-fpm.sock;</span><br><span class="line">                fastcgi_param HTTPS on; </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        location ~* \.(jscsspngjpgjpeggifico)$ &#123;</span><br><span class="line">                expires max;</span><br><span class="line">                log_not_found off;</span><br><span class="line">        &#125;</span><br><span class="line">        rewrite /wp-admin$ $scheme://$host$uri/ permanent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 结束</span><br><span class="line"></span><br><span class="line">ln -s /etc/nginx/sites-available/www.sczhaoqi.com www.sczhaoqi.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h2><p>nginx -s reload</p>
+<p>访问安装</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" data-id="cksy3fx1b005jpnv9d07wc8cy" data-title="nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-nimble-skp-post-page-2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/27/nimble-skp-post-page-2/" class="article-date">
+  <time class="dt-published" datetime="2021-08-27T05:58:15.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>a:4:{s:10:”collection”;a:9:{i:0;a:5:{s:2:”id”;s:10:”loop_start”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:1;a:5:{s:2:”id”;s:14:”before_content”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:2;a:5:{s:2:”id”;s:13:”after_content”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:3;a:5:{s:2:”id”;s:8:”loop_end”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:4;a:5:{s:2:”id”;s:19:”nimble_local_header”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:5;a:5:{s:2:”id”;s:19:”nimble_local_footer”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:6;a:5:{s:2:”id”;s:14:”__after_header”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:7;a:5:{s:2:”id”;s:21:”__before_main_wrapper”;s:5:”level”;s:8:”location”;s:10:”collection”;a:0:{}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}i:8;a:5:{s:2:”id”;s:15:”__before_footer”;s:5:”level”;s:8:”location”;s:10:”collection”;a:1:{i:0;a:4:{s:2:”id”;s:22:”__nimble__903e2c2a9d57”;s:5:”level”;s:7:”section”;s:10:”collection”;a:1:{i:0;a:4:{s:2:”id”;s:22:”__nimble__7c9977be6b18”;s:5:”level”;s:6:”column”;s:10:”collection”;a:1:{i:0;a:5:{s:2:”id”;s:22:”__nimble__fc09909f8c2d”;s:5:”level”;s:6:”module”;s:11:”module_type”;s:22:”czr_simple_html_module”;s:7:”ver_ini”;s:6:”3.1.21”;s:5:”value”;a:1:{s:12:”html_content”;s:339:””<div style="text-align:center;">\n<a target="_blank" rel="noopener" href="http:\\/\\/www.beian.gov.cn\\/portal\\/registerSystemInfo?recordcode=44030502001921">\u516c\u5b89\u5907\u6848\u53f744030502001921\n&lt;\/a&gt;\n&amp;\n<a target="_blank" rel="noopener" href="http:\\/\\/www.miitbeian.gov.cn">\u7ca4ICP\u590718057738\u53f7-1\n&lt;\/a&gt;\n&lt;\/div&gt;””;}}}s:7:”ver_ini”;s:6:”3.1.21”;}}s:7:”ver_ini”;s:6:”3.1.21”;}}s:7:”options”;a:0:{}s:7:”ver_ini”;s:6:”3.1.21”;}}s:13:”local_options”;a:0:{}s:5:”fonts”;a:0:{}s:41:”__inherits_group_skope_tmpl_when_exists__“;b:0;}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/nimble-skp-post-page-2/" data-id="cksy3fx1c005npnv932wee7ke" data-title="nimble___skp__post_page_2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-如何实现web接口提交flinksql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/" class="article-date">
+  <time class="dt-published" datetime="2021-08-27T02:32:22.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/program/">program</a>►<a class="article-category-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="开发思路"><a href="#开发思路" class="headerlink" title="开发思路"></a>开发思路</h2><p><em>Schema信息</em></p>
+<p><em>hive的catalog保存管理已有schema信息</em></p>
+<p>任务模式</p>
+<p>yarn的资源管理，并且每个SQL任务独立，任务失败后Application自动结束</p>
+<p>优先思考的问题</p>
+<p>Table of Contents</p>
+<ul>
+<li><p>  <a href="#%E5%BC%80%E5%8F%91%E6%80%9D%E8%B7%AF">开发思路</a></p>
+</li>
+<li><p>  <a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-hivecatalog">如何使用 HiveCatalog</a></p>
+</li>
+<li><p>  <a href="#catalog%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B">catalog配置示例</a></p>
+</li>
+<li><p>  <a href="#%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90">配置完成</a></p>
+</li>
+<li><p>  <a href="#sql-client%E5%8A%9F%E8%83%BD%E9%A1%B9">SQL-Client功能项</a></p>
+</li>
+<li><p>  <a href="#%E6%80%9D%E8%B7%AF">思路</a></p>
+</li>
+<li><p>  <a href="#%E7%94%A8%E6%88%B7%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%AD%A5%E9%AA%A4">用户请求处理步骤</a></p>
+</li>
+<li><p>  <a href="#%E5%BC%80%E5%8F%91%E5%A4%87%E5%BF%98">开发备忘</a></p>
+</li>
+</ul>
+<h2 id="如何使用-HiveCatalog"><a href="#如何使用-HiveCatalog" class="headerlink" title="如何使用 HiveCatalog"></a>如何使用 HiveCatalog</h2><h3 id="catalog配置示例"><a href="#catalog配置示例" class="headerlink" title="catalog配置示例"></a>catalog配置示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#/opt/flink/conf/sql-client-defaults.yaml </span><br><span class="line"></span><br><span class="line">execution:</span><br><span class="line">    planner: blink</span><br><span class="line">    current-catalog: hive  # set the HiveCatalog as the current catalog of the session</span><br><span class="line">    current-database: default</span><br><span class="line">catalogs:</span><br><span class="line">   - name: hive</span><br><span class="line">     type: hive</span><br><span class="line">     default-database: default</span><br><span class="line">     hive-conf-dir: /opt/hive/conf # hive.metastore.uris代码中可以直接使用HiveConf创建Catalog注册到TableEnv</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置完成"><a href="#配置完成" class="headerlink" title="配置完成"></a>配置完成</h3><ul>
+<li>  一旦配置正确，就HiveCatalog应该开箱即用。用户可以使用 DDL 创建 Flink 元对象，应该立即看到它们。</li>
+<li>  is_generic=true 通用表 hive中不可用，is_generic=false 非通用表 hive中可用</li>
+<li>  重启flink-SQL-Client后，已经创建的表可见</li>
+<li>  使用hive的metastore读取元数据信息，权限控制 (RetryingMetaStoreClient proxy=class org.apache.hadoop.hive.metastore.HiveMetaStoreClient ugi=admin(auth:SIMPLE))</li>
+<li>  <strong>风险点: 集群依赖jar的安装下载,兼容性问题</strong></li>
+</ul>
+<h2 id="SQL-Client功能项"><a href="#SQL-Client功能项" class="headerlink" title="SQL-Client功能项"></a>SQL-Client功能项</h2><ol>
+<li> source与sink的创建，编辑，管理</li>
+<li> 开发功能 示例数据 source/sink</li>
+<li> 调试功能 debug运行时的输入输出</li>
+<li> 线上运行 提交运行，获取jobId，状态监控，日志获取，启动停止/恢复</li>
+<li> catalog的管理</li>
+</ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>flink-sql-client中SqlClient用于提交SQL任务cli.executeInNonInteractiveMode(readExecutionContent()); // 1.13.x<br> Operation operation = executor.parseStatement(sessionId, stmt);<br> // 最终调用<br> org.apache.flink.table.client.gateway.local.LocalExecutor#executeOperation   @Override<br>    public TableResult executeOperation(String sessionId, Operation operation)<br>            throws SqlExecutionException {<br>        final ExecutionContext context = getExecutionContext(sessionId);<br>        final TableEnvironmentInternal tEnv =<br>               (TableEnvironmentInternal) context.getTableEnvironment();<br>        try {<br>            return context.wrapClassLoader(() -&gt; tEnv.executeInternal(operation));<br>       } catch (Exception e) {<br>            throw new SqlExecutionException(MESSAGE_SQL_EXECUTION_ERROR, e);<br>       }<br>   }默认情况下,读取FLINK_CONF_DIR下的flink_cluster集群配置(job_manager地址,提交任务)</li>
+<li> flink jar 提交有 集群模式 和 独立模式, 对应SQL都是提交到相同集群上运行？</li>
+<li> flink-sql的资源队列控制与用户权限</li>
+<li> 网络与账户权限问题，（后续如kafka2kafka，kafka2mysql，kafka2es，网络互通与账户权限）</li>
+<li>sql-client 多个用户提交同一个集群,无法满足资源隔离需求<ol>
+<li> 自定义封装SQL-client之后是否能控制实现指定集群/拉起新集群,从而限制资源/完成隔离</li>
+</ol>
+</li>
+<li> 用户自定义函数 udf的需求</li>
+</ol>
+<p><img src="https://www.sczhaoqi.com/wp-content/uploads/2021/08/20210210152056645.png"></p>
+<p>flink yarn-per-job</p>
+<p>flink yarn-cluster 提交流程</p>
+<h3 id="用户请求处理步骤"><a href="#用户请求处理步骤" class="headerlink" title="用户请求处理步骤"></a>用户请求处理步骤</h3><ol>
+<li> 配置集群环境, flinkSQL读取hive的Catalog</li>
+<li> 用户界面管理Table(创建,修改,删除) DDL</li>
+<li>用户编写SQL语句实现查询与数据转换逻辑 DML<ol>
+<li> 用户一个Job只包含一条SQL(强制要求?!)</li>
+<li> 用户一个Job多条SQL(1个集群多个job/多个集群每个集群一个JOB)</li>
+<li> 用户首次提交创建一个集群(维护用户的flink集群,所有用户的任务提交到该集群)</li>
+</ol>
+</li>
+<li> 用户配置其他相关(checkpoint/重启策略)</li>
+<li>参考sql-client代码处理依赖模块加载,创建tableEnv,提交查询<ol>
+<li> 默认通过读取本地集群配置</li>
+<li> 指定路径下预先配置插件包(connector相关/udf相关)</li>
+<li> 可指定job_manager,实现多个SQL运行于相同集群</li>
+<li> flink run 模式</li>
+</ol>
+</li>
+<li>yarn-per-job启动的集群不包含提交任务相关的jar及接口,即不可重用<ol>
+<li> 每次执行JOB前先创建一个flink-yarn集群,然后分次提交SQL的任务,(select 限制返回时长和条数, insert 提交成功即返回)</li>
+<li> 每次执行SQL启动一个yarn-per-job 集群</li>
+<li>预先启动一个flink-yarn集群,配置指定集群appId<ol>
+<li> start cluster then submit queries 每次执行前先创建一个flink-yarn集群,然后分次提交SQL的任务</li>
+<li> start cluster when submit queries 每次启动一个yarn-per-job集群,再执行</li>
+<li> prepare the cluster before submit queries 提前手动创建一个flink-yarn集群,配置集群appId</li>
+</ol>
+</li>
+</ol>
+</li>
+<li> 任务状态与停止</li>
+</ol>
+<h2 id="开发备忘"><a href="#开发备忘" class="headerlink" title="开发备忘"></a>开发备忘</h2><ol>
+<li> yarn App(flink 集群) 与 flinkJob</li>
+<li> <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/ResourceManagerRest.html#Cluster_Application_State_API">yarn接口</a> 与 <a target="_blank" rel="noopener" href="https://ci.apache.org/projects/flink/flink-docs-release-1.13/docs/ops/rest_api/">flink接口</a></li>
+<li>停止集群<ol>
+<li> 当flinkjob处于running状态时,调用cancel接口, Yarn(FINISHED KILLED)</li>
+<li> 当flinkjob处于failed状态时,调用cancel接口无效,集群仍存在, 此时调用cluster的DELETE,Yarn(FINISHED SUCCEEDED)</li>
+<li> 当上面接口都调用失败时,调用yarn接口kill应用,Yarn(FINISHED KILLED)</li>
+</ol>
+</li>
+<li>权限相关异常<ul>
+<li>  create database 与create table Got exception: org.apache.hadoop.security.AccessControlException Permission denied: user=root, access=WRITE, inode=”/user/hive/warehouse/flink.db”:admin:supergroup:drwxr-xr-</li>
+</ul>
+</li>
+<li>detached与attached<ol>
+<li> detached模式下，appmaster 和jobmanager绑定，jobmanager超过retry次数后，globalFailure 退出，Yarn上的App同时Finished，FinalStatus标记为Failed</li>
+<li> attached模式下，appmaster与jobmanager分离，超过失败次数后job标记为failed，但yarn-per-job的flink集群并不会退出，同时Yarn的App为RUNNING，FinalStatus为UNDEFINED</li>
+</ol>
+</li>
+<li>flink的HA模式<ul>
+<li>  on-yarn 的HA模式一般采用zookeeper来保存中间状态，当app异常退出，yarn自动拉起对应的app进行appattempts</li>
+<li>  appattempts的最大次数配置 yarn的配置 &gt; flink的配置，两者取最小值</li>
+<li>  非程序内部异常退出，似乎不计算为attempts次数，手动kill的am可以无限次重启</li>
+<li>  flink本身retry次数用尽，会直接设置app的状态，为正常的app行为，故不会再次拉起</li>
+</ul>
+</li>
+<li> HA配置demo如下</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># /opt/flink/conf/flink-conf.yaml </span><br><span class="line"></span><br><span class="line">peline.max-parallelism: 20</span><br><span class="line">restart-strategy: fixed-delay</span><br><span class="line">pipeline.auto-watermark-interval: 5000 ms</span><br><span class="line">restart-strategy.fixed-delay.delay: 10 s</span><br><span class="line">restart-strategy.fixed-delay.attempts: 1</span><br><span class="line"># HighAvailabilityOptions HA-MODE</span><br><span class="line">yarn.application-attempts: 2</span><br><span class="line">high-availability: zookeeper</span><br><span class="line">high-availability.zookeeper.quorum: localhost:2181</span><br><span class="line">high-availability.storageDir: hdfs:///tmp/flink/recovery</span><br><span class="line">high-availability.zookeeper.path.root: /flink_on_yarn</span><br><span class="line">high-availability.cluster-id: /cluster_yarn</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/" data-id="cksy3fx2c007upnv96ebcddam" data-title="如何实现web接口提交flinkSQL" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-wp-footer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/wp-footer/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T10:20:16.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/research/">research</a>►<a class="article-category-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/wp-footer/">wp_footer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center;&quot;&gt;        </span><br><span class="line">&lt;a href=&quot;&lt;?php echo esc_url( __(&#x27;http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030502001921&#x27;,&#x27;&#x27;)); ?&gt;&quot;&gt;</span><br><span class="line">             公安备案号44030502001921</span><br><span class="line">&lt;/a&gt;</span><br><span class="line">&lt;span role=&quot;separator&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;</span><br><span class="line">        &lt;a href=&quot;&lt;?php echo esc_url( __( &#x27;http://www.miitbeian.gov.cn&#x27;, &#x27;&#x27; ) ); ?&gt;&quot;&gt;</span><br><span class="line">      粤ICP备18057738号-1</span><br><span class="line">        &lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/wp-footer/" data-id="cksy3fx23007dpnv92ktqeb2e" data-title="wp_footer" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-联系表单-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/%E8%81%94%E7%B3%BB%E8%A1%A8%E5%8D%95-1/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T08:58:24.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/%E8%81%94%E7%B3%BB%E8%A1%A8%E5%8D%95-1/">联系表单 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>您的名字 [text* your-name] 您的电邮 [email* your-email] 主题 [text* your-subject] 您的消息 (可选) [textarea your-message] [submit “提交”] [_site_title] “[your-subject]“ [_site_title] 发件人：[your-name] &lt;[your-email]&gt; 主题：[your-subject] 消息正文： [your-message] – 这封邮件来自联系表单[_site_title] ([_site_url]) [_site_admin_email] Reply-To: [your-email] 0 0 [_site_title] “[your-subject]“ [_site_title] 消息正文： [your-message] – 这封邮件来自联系表单[_site_title] ([_site_url]) [your-email] Reply-To: [_site_admin_email] 0 0 谢谢。已发送您的信息。 发生错误，请稍后再试。 出现错误，请检查后重新尝试。 发生错误，请稍后再试。 您必须阅读并接受条款和条件，才能发送信息。 必填字段。 内容太长。 内容太短。 上传文件时出错。 抱歉，不允许上传这一类型的文件。 该文件太大。 上传文件时出错。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/%E8%81%94%E7%B3%BB%E8%A1%A8%E5%8D%95-1/" data-id="cksy3fx2r008jpnv93xl15asj" data-title="联系表单 1" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-458" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/458/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T08:27:01.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/458/">Untitled Post - 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/458/" data-id="cksy3fwxy0009pnv969qzgj79" data-title="Untitled Post - 1" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-459" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/459/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T08:27:01.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/459/">Untitled Post - 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/459/" data-id="cksy3fwxz000apnv9c6wo1ivw" data-title="Untitled Post - 2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-460" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/460/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T08:27:01.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/460/">Untitled Post - 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/460/" data-id="cksy3fwy0000dpnv9hx2zcr6s" data-title="Untitled Post - 3" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-461" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/461/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T08:27:01.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/461/">Untitled Post - 4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/461/" data-id="cksy3fwy1000epnv98ypsgkc4" data-title="Untitled Post - 4" class="article-share-link">Share</a>
       
       
       
@@ -124,23 +634,49 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/program/">program</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/program/JAVA/">JAVA</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/SPRING/">SPRING</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80/">其他语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/program/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">问题求解</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/">research</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96/">数据获取</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%A7%91%E5%A4%96%E7%9F%A5%E8%AF%86/">科外知识</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">网站搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/research/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/">软件安装</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLDialects/" rel="tag">SQLDialects</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UDF/" rel="tag">UDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airflow/" rel="tag">airflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atlas/" rel="tag">atlas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/base64/" rel="tag">base64</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blob/" rel="tag">blob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dubbo/" rel="tag">dubbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/federation/" rel="tag">federation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/filter/" rel="tag">filter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink/" rel="tag">flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flink-sql/" rel="tag">flink-sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/" rel="tag">flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/footer/" rel="tag">footer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guava/" rel="tag">guava</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hbase/" rel="tag">hbase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hdfs/" rel="tag">hdfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/history/" rel="tag">history</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/" rel="tag">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jackson/" rel="tag">jackson</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/" rel="tag">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/" rel="tag">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kylin/" rel="tag">kylin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/minikube/" rel="tag">minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/parquet/" rel="tag">parquet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/password/" rel="tag">password</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ppa/" rel="tag">ppa</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/presto/" rel="tag">presto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scala/" rel="tag">scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/" rel="tag">scrapy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sink/" rel="tag">sink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slider/" rel="tag">slider</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/" rel="tag">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/streaming/" rel="tag">streaming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-with-resources/" rel="tag">try-with-resources</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/" rel="tag">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webflux/" rel="tag">webflux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/websocket/" rel="tag">websocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wtf/" rel="tag">wtf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zookeeper/" rel="tag">zookeeper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AC%E7%BD%91/" rel="tag">公网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" rel="tag">分位数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" rel="tag">分布式锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" rel="tag">前端搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E7%90%86/" rel="tag">原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" rel="tag">可见性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" rel="tag">名词解释</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" rel="tag">备案信息</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E6%B3%A8/" rel="tag">备注</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" rel="tag">多数据源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" rel="tag">奇门秘籍</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" rel="tag">容器云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" rel="tag">常用软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" rel="tag">异常分析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" rel="tag">异步读取</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="tag">排序算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="tag">数据类型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" rel="tag">数据血缘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E6%9C%9F/" rel="tag">日期</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" rel="tag">源码编译</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag">源码解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" rel="tag">版本切换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" rel="tag">目录修改</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag">科学上网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" rel="tag">窗口函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" rel="tag">系统服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" rel="tag">腾讯云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" rel="tag">行政区划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%83%E4%BC%98/" rel="tag">调优</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag">阿里云</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" rel="tag">高德地图</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SQLDialects/" style="font-size: 10px;">SQLDialects</a> <a href="/tags/UDF/" style="font-size: 10px;">UDF</a> <a href="/tags/airflow/" style="font-size: 10px;">airflow</a> <a href="/tags/atlas/" style="font-size: 10px;">atlas</a> <a href="/tags/base64/" style="font-size: 10px;">base64</a> <a href="/tags/blob/" style="font-size: 10px;">blob</a> <a href="/tags/centos/" style="font-size: 13.33px;">centos</a> <a href="/tags/chrome/" style="font-size: 10px;">chrome</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/dubbo/" style="font-size: 10px;">dubbo</a> <a href="/tags/elasticsearch/" style="font-size: 11.11px;">elasticsearch</a> <a href="/tags/element-ui/" style="font-size: 12.22px;">element-ui</a> <a href="/tags/eslint/" style="font-size: 10px;">eslint</a> <a href="/tags/federation/" style="font-size: 10px;">federation</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flink/" style="font-size: 13.33px;">flink</a> <a href="/tags/flink-sql/" style="font-size: 10px;">flink-sql</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/footer/" style="font-size: 10px;">footer</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/guava/" style="font-size: 10px;">guava</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hbase/" style="font-size: 10px;">hbase</a> <a href="/tags/hdfs/" style="font-size: 12.22px;">hdfs</a> <a href="/tags/history/" style="font-size: 10px;">history</a> <a href="/tags/hive/" style="font-size: 16.67px;">hive</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/jackson/" style="font-size: 10px;">jackson</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/jdbc/" style="font-size: 10px;">jdbc</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/json/" style="font-size: 11.11px;">json</a> <a href="/tags/k8s/" style="font-size: 12.22px;">k8s</a> <a href="/tags/kylin/" style="font-size: 13.33px;">kylin</a> <a href="/tags/mac/" style="font-size: 15.56px;">mac</a> <a href="/tags/minikube/" style="font-size: 10px;">minikube</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 17.78px;">mysql</a> <a href="/tags/nginx/" style="font-size: 11.11px;">nginx</a> <a href="/tags/parquet/" style="font-size: 10px;">parquet</a> <a href="/tags/password/" style="font-size: 10px;">password</a> <a href="/tags/ppa/" style="font-size: 10px;">ppa</a> <a href="/tags/presto/" style="font-size: 11.11px;">presto</a> <a href="/tags/python/" style="font-size: 11.11px;">python</a> <a href="/tags/redis/" style="font-size: 11.11px;">redis</a> <a href="/tags/scala/" style="font-size: 11.11px;">scala</a> <a href="/tags/scrapy/" style="font-size: 10px;">scrapy</a> <a href="/tags/shell/" style="font-size: 11.11px;">shell</a> <a href="/tags/sink/" style="font-size: 10px;">sink</a> <a href="/tags/slider/" style="font-size: 10px;">slider</a> <a href="/tags/spark/" style="font-size: 11.11px;">spark</a> <a href="/tags/spring/" style="font-size: 11.11px;">spring</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/streaming/" style="font-size: 10px;">streaming</a> <a href="/tags/try-with-resources/" style="font-size: 10px;">try-with-resources</a> <a href="/tags/ubuntu/" style="font-size: 11.11px;">ubuntu</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 14.44px;">vue</a> <a href="/tags/webflux/" style="font-size: 10px;">webflux</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/wordpress/" style="font-size: 12.22px;">wordpress</a> <a href="/tags/wtf/" style="font-size: 10px;">wtf</a> <a href="/tags/zookeeper/" style="font-size: 10px;">zookeeper</a> <a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">中间件</a> <a href="/tags/%E5%85%AC%E7%BD%91/" style="font-size: 10px;">公网</a> <a href="/tags/%E5%88%86%E4%BD%8D%E6%95%B0/" style="font-size: 10px;">分位数</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" style="font-size: 10px;">分布式锁</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.22px;">前端</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">前端搭建</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 10px;">原理</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E5%8F%AF%E8%A7%81%E6%80%A7/" style="font-size: 10px;">可见性</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 17.78px;">基础</a> <a href="/tags/%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF/" style="font-size: 10px;">备案信息</a> <a href="/tags/%E5%A4%87%E6%B3%A8/" style="font-size: 10px;">备注</a> <a href="/tags/%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90/" style="font-size: 10px;">多数据源</a> <a href="/tags/%E5%A5%87%E9%97%A8%E7%A7%98%E7%B1%8D/" style="font-size: 10px;">奇门秘籍</a> <a href="/tags/%E5%AE%B9%E5%99%A8%E4%BA%91/" style="font-size: 12.22px;">容器云</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">常用软件</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 10px;">异常分析</a> <a href="/tags/%E5%BC%82%E6%AD%A5%E8%AF%BB%E5%8F%96/" style="font-size: 10px;">异步读取</a> <a href="/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 10px;">排序算法</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 18.89px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 14.44px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" style="font-size: 10px;">数据类型</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E8%A1%80%E7%BC%98/" style="font-size: 10px;">数据血缘</a> <a href="/tags/%E6%97%A5%E6%9C%9F/" style="font-size: 10px;">日期</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" style="font-size: 10px;">源码编译</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">源码解析</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%89%88%E6%9C%AC%E5%88%87%E6%8D%A2/" style="font-size: 10px;">版本切换</a> <a href="/tags/%E7%9B%AE%E5%BD%95%E4%BF%AE%E6%94%B9/" style="font-size: 10px;">目录修改</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0/" style="font-size: 10px;">窗口函数</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1/" style="font-size: 10px;">系统服务</a> <a href="/tags/%E7%BC%96%E7%A8%8B/" style="font-size: 20px;">编程</a> <a href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/" style="font-size: 10px;">腾讯云</a> <a href="/tags/%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92/" style="font-size: 10px;">行政区划</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E8%B0%83%E4%BC%98/" style="font-size: 10px;">调优</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 10px;">阿里云</a> <a href="/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">高德地图</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
     </div>
   </div>
 
@@ -154,6 +690,22 @@
         
           <li>
             <a href="/2021/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nginxwordpressphp-fpmhttps%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">nginx&amp;wordpress&amp;php-fpm&amp;https安装配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/nimble-skp-post-page-2/">nimble___skp__post_page_2</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0web%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BA%A4flinksql/">如何实现web接口提交flinkSQL</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/24/wp-footer/">wp_footer</a>
           </li>
         
       </ul>
